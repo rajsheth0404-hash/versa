@@ -394,31 +394,29 @@ export default function YouTubeResourcesPage() {
   const getEmbedUrl = (item: PlaylistLectureItem | null) => {
     if (!item) return '';
 
-    // If item has a YouTube playlist ID
-    if (item.playlistId) {
-      if (item.videoId && item.videoId.length === 11 && item.videoId !== 'videoseries') {
-        return `https://www.youtube.com/embed/${item.videoId}?list=${item.playlistId}&autoplay=1&rel=0`;
-      }
-      return `https://www.youtube.com/embed/videoseries?list=${item.playlistId}&autoplay=1&rel=0`;
-    }
-
-    // If item has a video ID
-    if (item.videoId && item.videoId.length === 11) {
-      return `https://www.youtube.com/embed/${item.videoId}?autoplay=1&rel=0`;
+    // If item has a specific video ID (11 chars and not a known placeholder)
+    if (item.videoId && item.videoId.length === 11 && !['kYB8IZa55bM', '34dOqQ9kF10', 'E6x7WJ8m5l0', '9_j3i0c7P-s', 'F01VpGZtVbY', 'videoseries'].includes(item.videoId)) {
+      return `https://www.youtube-nocookie.com/embed/${item.videoId}?autoplay=1&rel=0&enablejsapi=1`;
     }
 
     // Fallback: extract from youtubeUrl if present
     if (item.youtubeUrl) {
       const extracted = extractYouTubeVideoId(item.youtubeUrl);
-      if (extracted.playlistId) {
-        return `https://www.youtube.com/embed/videoseries?list=${extracted.playlistId}&autoplay=1&rel=0`;
+      if (extracted.videoId && extracted.videoId.length === 11 && !['kYB8IZa55bM', '34dOqQ9kF10', 'E6x7WJ8m5l0', '9_j3i0c7P-s', 'F01VpGZtVbY'].includes(extracted.videoId)) {
+        return `https://www.youtube-nocookie.com/embed/${extracted.videoId}?autoplay=1&rel=0&enablejsapi=1`;
       }
-      if (extracted.videoId && extracted.videoId.length === 11) {
-        return `https://www.youtube.com/embed/${extracted.videoId}?autoplay=1&rel=0`;
+      if (extracted.playlistId && extracted.playlistId.length >= 18 && !extracted.playlistId.startsWith('PLm_MSClsnwm')) {
+        return `https://www.youtube-nocookie.com/embed/videoseries?list=${extracted.playlistId}&autoplay=1&rel=0`;
       }
     }
 
-    return `https://www.youtube.com/embed/kYB8IZa55bM?autoplay=1&rel=0`;
+    // If item has a real custom playlist ID (not dummy mock)
+    if (item.playlistId && item.playlistId.length >= 18 && !item.playlistId.startsWith('PLm_MSClsnwm')) {
+      return `https://www.youtube-nocookie.com/embed/videoseries?list=${item.playlistId}&autoplay=1&rel=0`;
+    }
+
+    // Default ultra-reliable syllabus fallback lecture
+    return `https://www.youtube-nocookie.com/embed/1b9iU19bJ8E?autoplay=1&rel=0&enablejsapi=1`;
   };
 
   return (
