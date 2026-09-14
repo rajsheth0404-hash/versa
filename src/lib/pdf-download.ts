@@ -134,7 +134,11 @@ export async function getAcademicPdfBlob(
     try {
       const res = await fetch(resource.filePath);
       if (res.ok) {
-        return await res.blob();
+        const contentType = res.headers.get('content-type') || '';
+        // Only return if it is an actual PDF or binary stream, NOT an HTML 404/index fallback page
+        if (contentType.includes('pdf') || contentType.includes('octet-stream')) {
+          return await res.blob();
+        }
       }
     } catch {}
   }
