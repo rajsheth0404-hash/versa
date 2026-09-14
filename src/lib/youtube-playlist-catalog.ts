@@ -108,22 +108,24 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: ENGINEERING DRAWING (316U06C105)
   // =========================================================================
   'mod-ed-1': [
-    { id: 'ed1-1', lessonNumber: 1, title: 'First Angle vs Third Angle Projection Methods', duration: '28:00', videoId: 'gT8wNlV_V_E', youtubeUrl: 'https://www.youtube.com/watch?v=gT8wNlV_V_E' },
-    { id: 'ed1-2', lessonNumber: 2, title: 'Orthographic Projections: Front View, Top View & Side View', duration: '38:45', videoId: 'gT8wNlV_V_E', youtubeUrl: 'https://www.youtube.com/watch?v=gT8wNlV_V_E' },
+    { id: 'ed1-manas-1', lessonNumber: 1, title: 'Module 1: Orthographic Projections & Sectional Views (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt&si=RwRN9EflwUAr0Pt7' },
   ],
 
   'mod-ed-2': [
-    { id: 'ed2-1', lessonNumber: 1, title: 'Projections of Straight Lines Inclined to HP and VP', duration: '36:10', videoId: '0k52fM43d7s', youtubeUrl: 'https://www.youtube.com/watch?v=0k52fM43d7s' },
-    { id: 'ed2-2', lessonNumber: 2, title: 'Projections of Regular Geometric Planes', duration: '29:40', videoId: '0k52fM43d7s', youtubeUrl: 'https://www.youtube.com/watch?v=0k52fM43d7s' },
+    { id: 'ed2-manas-1', lessonNumber: 1, title: 'Module 2 (Part 1): Projections of Straight Lines (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct&si=Um3PX5FKCcGvNgYv' },
+    { id: 'ed2-manas-2', lessonNumber: 2, title: 'Module 2 (Part 2): Projections of Planes (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx&si=cNFbH398QwhIhnBF' },
   ],
 
   'mod-ed-3': [
-    { id: 'ed3-1', lessonNumber: 1, title: 'Projections of Solids (Prisms, Pyramids, Cylinders, Cones)', duration: '35:00', videoId: 'yW6S4WzW62Y', youtubeUrl: 'https://www.youtube.com/watch?v=yW6S4WzW62Y' },
-    { id: 'ed3-2', lessonNumber: 2, title: 'Lateral Surface Development of Truncated Solids', duration: '31:15', videoId: 'yW6S4WzW62Y', youtubeUrl: 'https://www.youtube.com/watch?v=yW6S4WzW62Y' },
+    { id: 'ed3-manas-1', lessonNumber: 1, title: 'Module 3: Projections of Solids (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9&si=HjUWflNeAWl7Z2Uw' },
   ],
 
   'mod-ed-4': [
-    { id: 'ed4-1', lessonNumber: 1, title: 'Isometric Scale Construction & Machine Block Views', duration: '34:50', videoId: '8S_6h04n1fM', youtubeUrl: 'https://www.youtube.com/watch?v=8S_6h04n1fM' },
+    { id: 'ed4-manas-1', lessonNumber: 1, title: 'Module 4: Sections & Lateral Development of Solids (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W&si=DqvKa8KrKhi0ZBdm' },
+  ],
+
+  'mod-ed-5': [
+    { id: 'ed5-manas-1', lessonNumber: 1, title: 'Module 5: Isometric Projections & Views (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao&si=4w1w9DycP7T85bXP' },
   ],
 
   // =========================================================================
