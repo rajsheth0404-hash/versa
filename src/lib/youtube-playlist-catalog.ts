@@ -171,16 +171,21 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 2: OBJECT-ORIENTED PROGRAMMING (C++) (316U06C205)
   // =========================================================================
   'mod-oop-1': [
-    { id: 'oop1-1', lessonNumber: 1, title: 'Classes, Objects & Data Encapsulation Principles in C++', duration: '31:20', videoId: 'z9bZufPHFLU', youtubeUrl: 'https://www.youtube.com/watch?v=z9bZufPHFLU' },
+    { id: 'oop1-ab-initio', lessonNumber: 1, title: 'C++ OST (Full Course) - Ab Initio (Kaustubh Sir)', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'oop1-cwh', lessonNumber: 2, title: 'C++ Tutorials in Hindi (Full Playlist) - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
+    { id: 'oop1-coderarmy', lessonNumber: 3, title: 'C++ Complete Course - Coder Army', duration: 'Full Series', videoId: '', playlistId: 'PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH', youtubeUrl: 'https://youtube.com/playlist?list=PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH&si=C-d85jKjoIZCbQ-a' },
   ],
   'mod-oop-2': [
-    { id: 'oop2-1', lessonNumber: 1, title: 'Constructors, Destructors & Operator Overloading in C++', duration: '27:45', videoId: 'z9bZufPHFLU', youtubeUrl: 'https://www.youtube.com/watch?v=z9bZufPHFLU' },
+    { id: 'oop2-ab-initio', lessonNumber: 1, title: 'Constructors & Operator Overloading - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'oop2-cwh', lessonNumber: 2, title: 'Constructors & Overloading in C++ - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
   ],
   'mod-oop-3': [
-    { id: 'oop3-1', lessonNumber: 1, title: 'Inheritance Types, Virtual Functions & Polymorphism', duration: '36:00', videoId: 'z9bZufPHFLU', youtubeUrl: 'https://www.youtube.com/watch?v=z9bZufPHFLU' },
+    { id: 'oop3-ab-initio', lessonNumber: 1, title: 'Inheritance & Virtual Functions - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'oop3-cwh', lessonNumber: 2, title: 'Inheritance & Polymorphism - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
   ],
   'mod-oop-4': [
-    { id: 'oop4-1', lessonNumber: 1, title: 'Templates, Exception Handling & Standard Template Library (STL)', duration: '42:15', videoId: 'z9bZufPHFLU', youtubeUrl: 'https://www.youtube.com/watch?v=z9bZufPHFLU' },
+    { id: 'oop4-ab-initio', lessonNumber: 1, title: 'Templates & STL - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'oop4-coderarmy', lessonNumber: 2, title: 'STL & Advanced C++ - Coder Army', duration: 'Full Series', videoId: '', playlistId: 'PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH', youtubeUrl: 'https://youtube.com/playlist?list=PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH&si=C-d85jKjoIZCbQ-a' },
   ],
 
   // =========================================================================
