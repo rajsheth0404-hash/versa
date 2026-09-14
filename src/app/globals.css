@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  /* Midnight Cyber Palette (Cool & High-Tech) */
+  --cyber-bg: #0F172A;
+  --cyber-surface: #1E293B;
+  --cyber-cyan: #38BDF8;
+  --cyber-cyan-hover: #0EA5E9;
+  --cyber-indigo: #818CF8;
+  --cyber-purple: #C084FC;
+  --cyber-text: #F8FAFC;
+  --cyber-muted: #94A3B8;
+  
+  /* Dark Mode (Default Canvas) */
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card-bg: rgba(30, 41, 59, 0.75);
+  --card-border: rgba(56, 189, 248, 0.18);
+}
+
+html.light,
+body.light,
+[data-theme='light'] {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(203, 213, 225, 0.85);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode text & element adaptors */
+html.light .text-white {
+  color: #0F172A;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: #1E293B;
+}
+
+html.light .text-slate-300 {
+  color: #334155;
+}
+
+html.light .text-slate-400 {
+  color: #64748B;
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-950,
+html.light .bg-\[\#070A0F\],
+html.light .bg-\[\#0F172A\] {
+  background-color: #F1F5F9;
+}
+
+html.light .bg-slate-800,
+html.light .bg-\[\#1E293B\] {
+  background-color: #E2E8F0;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-700 {
+  border-color: #CBD5E1;
+}
+
+/* Glassmorphic Utilities */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+}
+
+html.light .glass-panel {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.light .glass-card {
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.06);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.22);
+}
+
+/* Midnight Cyber Gradients & Badges */
+.cyber-gradient-text,
+.somaiya-gradient-text {
+  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyber-badge,
+.somaiya-badge {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(129, 140, 248, 0.15) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38BDF8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38BDF8;
+}
+
+/* 3D Flip Card Effect */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Subtle Glowing Background Spots (Midnight Cyber) */
+.glow-spot-red,
+.glow-spot-cyan {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(45px);
+}
+
+.glow-spot-blue,
+.glow-spot-indigo {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.14) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(45px);
+}
