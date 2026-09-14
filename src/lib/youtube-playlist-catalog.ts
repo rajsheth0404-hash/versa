@@ -36,25 +36,29 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: ENGINEERING PHYSICS (316U06C102)
   // =========================================================================
   'mod-phy-1': [
-    { id: 'phy1-1', lessonNumber: 1, title: 'Thin Film Interference (Parallel & Wedge-Shaped Films)', duration: '35:10', videoId: 'gT8wNlV_V_E', youtubeUrl: 'https://www.youtube.com/watch?v=gT8wNlV_V_E' },
-    { id: 'phy1-2', lessonNumber: 2, title: 'Newton’s Rings Experiment & Wavelength Derivations', duration: '29:40', videoId: '0k52fM43d7s', youtubeUrl: 'https://www.youtube.com/watch?v=0k52fM43d7s' },
-    { id: 'phy1-3', lessonNumber: 3, title: 'Fraunhofer Diffraction at Single Slit & Double Slit', duration: '32:15', videoId: 'yW6S4WzW62Y', youtubeUrl: 'https://www.youtube.com/watch?v=yW6S4WzW62Y' },
+    { id: 'phy1-jessy-1', lessonNumber: 1, title: 'Interference of Light (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPmZa-W5Wku5ygnMi5psSN5s', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPmZa-W5Wku5ygnMi5psSN5s&si=tKmYP5q-Catm0Wa2' },
+    { id: 'phy1-jessy-2', lessonNumber: 2, title: 'Diffraction of Light (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPmF6vuhF_nXbRZ-JtozOiV3', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPmF6vuhF_nXbRZ-JtozOiV3&si=_8cCu23bHbrQjEDX' },
+    { id: 'phy1-sanjiv-1', lessonNumber: 3, title: 'Diffraction of Light (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq_HKqpeG-UeZrFmDz1m0_SW', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq_HKqpeG-UeZrFmDz1m0_SW&si=cG1pml1KNyLCKzf-' },
+    { id: 'phy1-sanjiv-2', lessonNumber: 4, title: 'Interference of Light (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq-tbELniG9R_NHKm7OQVUk9', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq-tbELniG9R_NHKm7OQVUk9&si=VgOjceep4J5TF-V3' },
   ],
 
   'mod-phy-2': [
-    { id: 'phy2-1', lessonNumber: 1, title: 'Laser Principles, Spontaneous & Stimulated Emission', duration: '28:10', videoId: '0k52fM43d7s', youtubeUrl: 'https://www.youtube.com/watch?v=0k52fM43d7s' },
-    { id: 'phy2-2', lessonNumber: 2, title: 'Nd:YAG Laser & He-Ne Laser Construction & Working', duration: '31:40', videoId: 'yW6S4WzW62Y', youtubeUrl: 'https://www.youtube.com/watch?v=yW6S4WzW62Y' },
-    { id: 'phy2-3', lessonNumber: 3, title: 'Numerical Aperture (NA) Derivation & Acceptance Angle', duration: '29:15', videoId: '8S_6h04n1fM', youtubeUrl: 'https://www.youtube.com/watch?v=8S_6h04n1fM' },
+    { id: 'phy2-jessy-1', lessonNumber: 1, title: 'Lasers & Einstein Coefficients (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPkAloYGB-rwfvjPqz5sr-Hk', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPkAloYGB-rwfvjPqz5sr-Hk&si=qMP1NkRSF8U5isjU' },
+    { id: 'phy2-jessy-2', lessonNumber: 2, title: 'Optical Fiber & Numerical Aperture (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPkJXmwlwWe5VwgzkZhjJV_1', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPkJXmwlwWe5VwgzkZhjJV_1&si=TAwM3kXJAXN6ljmN' },
+    { id: 'phy2-sanjiv-1', lessonNumber: 3, title: 'Lasers & Applications (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq-tYb-kl0_1hU_ICJtXKj2J', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq-tYb-kl0_1hU_ICJtXKj2J&si=x6S3vJ8un8PDEe_s' },
+    { id: 'phy2-sanjiv-2', lessonNumber: 4, title: 'Optical Fiber Cable (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq8ej59AUl6bk78kMGVsT5nS', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq8ej59AUl6bk78kMGVsT5nS&si=kXXh31QRU7aycaoZ' },
   ],
 
   'mod-phy-3': [
-    { id: 'phy3-1', lessonNumber: 1, title: 'De-Broglie Hypothesis & Matter Wave Characteristics', duration: '26:40', videoId: 'yW6S4WzW62Y', youtubeUrl: 'https://www.youtube.com/watch?v=yW6S4WzW62Y' },
-    { id: 'phy3-2', lessonNumber: 2, title: 'Time-Independent Schrödinger Wave Equation Derivation', duration: '35:20', videoId: '8S_6h04n1fM', youtubeUrl: 'https://www.youtube.com/watch?v=8S_6h04n1fM' },
+    { id: 'phy3-jessy-1', lessonNumber: 1, title: 'Quantum Mechanics & Schrödinger Equation (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPnYiytC0i9XP2tu48lgrMiN', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPnYiytC0i9XP2tu48lgrMiN&si=iBJMnSQEkBS2LeTl' },
+    { id: 'phy3-sanjiv-1', lessonNumber: 2, title: 'Quantum Mechanics (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq8Zciw0MsOdPJ1t-bpPKV6_', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq8Zciw0MsOdPJ1t-bpPKV6_&si=sxowV_VwvhPP-ZgB' },
   ],
 
   'mod-phy-4': [
-    { id: 'phy4-1', lessonNumber: 1, title: 'Intrinsic and Extrinsic Semiconductors & Fermi Level', duration: '31:10', videoId: '8S_6h04n1fM', youtubeUrl: 'https://www.youtube.com/watch?v=8S_6h04n1fM' },
-    { id: 'phy4-2', lessonNumber: 2, title: 'Maxwell’s Equations in Differential and Integral Forms', duration: '38:00', videoId: 'gT8wNlV_V_E', youtubeUrl: 'https://www.youtube.com/watch?v=gT8wNlV_V_E' },
+    { id: 'phy4-jessy-1', lessonNumber: 1, title: 'Semiconductor Physics & Fermi Level (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPnadJGAui9KWK86cFLKNF0t', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPnadJGAui9KWK86cFLKNF0t&si=MNAYRk7mDx4GtKPb' },
+    { id: 'phy4-jessy-2', lessonNumber: 2, title: 'Electrodynamics & Maxwell’s Equations (Full Playlist) - Physics Jessy', duration: 'Full Series', videoId: '', playlistId: 'PLm5sdXlz-wPnF73Q-AAnC8FtO92Jpc9JA', youtubeUrl: 'https://youtube.com/playlist?list=PLm5sdXlz-wPnF73Q-AAnC8FtO92Jpc9JA&si=EA67b3yg-VKNzebt' },
+    { id: 'phy4-sanjiv-1', lessonNumber: 3, title: 'Semiconductor Physics (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq8lfZN5836sohUpRCt2b6oB', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq8lfZN5836sohUpRCt2b6oB&si=uLGns6Q_ppWDujv9' },
+    { id: 'phy4-sanjiv-2', lessonNumber: 4, title: 'Electrodynamics & Maxwell Laws (Full Playlist) - Engineering Physics by Sanjiv', duration: 'Full Series', videoId: '', playlistId: 'PLQzUXa8lZVq97DPn9B7MlIm5CgTW6mMAc', youtubeUrl: 'https://youtube.com/playlist?list=PLQzUXa8lZVq97DPn9B7MlIm5CgTW6mMAc&si=vSlLZ4wSce1slZfo' },
   ],
 
   // =========================================================================

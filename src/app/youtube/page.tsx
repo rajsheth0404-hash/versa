@@ -99,14 +99,15 @@ export default function YouTubeResourcesPage() {
   const [videos, setVideos] = useState<YouTubeResource[]>([]);
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
 
-  // Filters: First Year / Second Year and Semesters 1 to 4
+  // Filters: First Year / Second Year and Semesters 1 to 4  // Filter State
   const [selectedYear, setSelectedYear] = useState<1 | 2>(1);
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | 3 | 4>(1);
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
   const [selectedModule, setSelectedModule] = useState<string>('all');
+  const [selectedAuthor, setSelectedAuthor] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Active In-App Video Player State
+  // Active playing video / playlist state
   const [activeVideo, setActiveVideo] = useState<YouTubeResource | null>(null);
   const [selectedPlaylistItemIndex, setSelectedPlaylistItemIndex] = useState<number>(0);
 
@@ -159,6 +160,17 @@ export default function YouTubeResourcesPage() {
     return modules.filter((m) => m.subjectId === inputSubjectId);
   }, [modules, inputSubjectId]);
 
+  // Authors / Instructors available in the selected subject or semester
+  const availableAuthors = useMemo(() => {
+    const list = videos.filter((v) => {
+      const sub = subjects.find((s) => s.id === v.subjectId);
+      if (!sub || sub.semester !== selectedSemester) return false;
+      if (selectedSubject !== 'all' && v.subjectId !== selectedSubject) return false;
+      return true;
+    });
+    return Array.from(new Set(list.map((v) => v.channelName))).filter(Boolean);
+  }, [videos, subjects, selectedSemester, selectedSubject]);
+
   // Filtered module-specific or general videos (strictly in module order 1 to 5)
   const filteredVideos = useMemo(() => {
     const list = videos.filter((v) => {
@@ -170,6 +182,10 @@ export default function YouTubeResourcesPage() {
       }
 
       if (selectedModule !== 'all' && v.moduleId !== selectedModule) {
+        return false;
+      }
+
+      if (selectedAuthor !== 'all' && v.channelName !== selectedAuthor) {
         return false;
       }
 
@@ -219,13 +235,20 @@ export default function YouTubeResourcesPage() {
 
       return a.title.localeCompare(b.title, undefined, { numeric: true });
     });
-  }, [videos, subjects, modules, selectedSemester, selectedSubject, selectedModule, searchQuery]);
+  }, [videos, subjects, modules, selectedSemester, selectedSubject, selectedModule, selectedAuthor, searchQuery]);
 
   // Playlist video list resolver: strictly resolves and sorts all videos/playlists for this subject in module order 1 to 5
   const activePlaylistVideos = useMemo<PlaylistLectureItem[]>(() => {
     if (!activeVideo) return [];
 
-    const subjectVideos = videos.filter((v) => v.subjectId === activeVideo.subjectId);
+    const subjectVideos = videos.filter((v) => {
+      if (v.subjectId !== activeVideo.subjectId) return false;
+      // If active video has a specific channel, keep that author's series grouped
+      if (activeVideo.channelName && v.channelName && activeVideo.subjectId === 'sub-phy') {
+        return v.channelName === activeVideo.channelName;
+      }
+      return true;
+    });
 
     const sorted = [...subjectVideos].sort((a, b) => {
       const isFullCourseA = !a.moduleId || !modules.some((m) => m.id === a.moduleId);
@@ -689,13 +712,50 @@ export default function YouTubeResourcesPage() {
           </div>
         )}
 
-        {(searchQuery || selectedSubject !== 'all' || selectedModule !== 'all') && (
+        {/* Instructor / Channel Quick Filter Pills */}
+        {availableAuthors.length > 1 && (
+          <div className="pt-2 border-t border-slate-800/60">
+            <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <span className="text-[10px] font-bold text-slate-400 uppercase mr-1">Instructor / Author:</span>
+              <button
+                onClick={() => setSelectedAuthor('all')}
+                className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 ${
+                  selectedAuthor === 'all'
+                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
+                    : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                }`}
+              >
+                All Instructors ({availableAuthors.length})
+              </button>
+              {availableAuthors.map((author) => {
+                const isSelected = selectedAuthor === author;
+                return (
+                  <button
+                    key={author}
+                    onClick={() => setSelectedAuthor(isSelected ? 'all' : author)}
+                    className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 flex items-center space-x-1.5 border ${
+                      isSelected
+                        ? 'bg-[#818CF8] text-slate-950 border-[#818CF8] font-bold shadow-md'
+                        : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
+                    }`}
+                  >
+                    <User className="w-3 h-3" />
+                    <span>{author}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {(searchQuery || selectedSubject !== 'all' || selectedModule !== 'all' || selectedAuthor !== 'all') && (
           <div className="flex justify-end pt-1">
             <button
               onClick={() => {
                 setSearchQuery('');
                 setSelectedSubject('all');
                 setSelectedModule('all');
+                setSelectedAuthor('all');
               }}
               className="text-xs text-[#38BDF8] hover:underline font-semibold"
             >
@@ -704,6 +764,75 @@ export default function YouTubeResourcesPage() {
           </div>
         )}
       </div>
+
+      {/* ⚛️ Engineering Physics Dual-Instructor Selector Banner */}
+      {selectedSubject === 'sub-phy' && selectedAuthor === 'all' && (
+        <div className="glass-panel bg-gradient-to-r from-cyan-950/40 to-indigo-950/40 border border-[#38BDF8]/40 p-6 rounded-3xl space-y-4 shadow-xl animate-in fade-in">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#38BDF8]/20 text-[#38BDF8] font-mono border border-[#38BDF8]/30">
+                  Dual-Instructor Course
+                </span>
+                <h3 className="text-base font-bold text-[#F8FAFC]">Choose Your Preferred Physics Instructor</h3>
+              </div>
+              <p className="text-xs text-slate-300 mt-1">
+                Engineering Physics is available in two complete, high-yield playlist series. Select your favorite instructor:
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+            {/* Physics Jessy Card */}
+            <div
+              onClick={() => setSelectedAuthor('Physics Jessy')}
+              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#38BDF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-cyan-500/20 text-[#38BDF8] flex items-center justify-center font-bold">
+                    PJ
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-sm group-hover:text-[#38BDF8] transition">Physics Jessy</h4>
+                    <p className="text-[11px] text-slate-400">7 Playlists • Complete Module 1 to 4 Series</p>
+                  </div>
+                </div>
+                <button className="px-3 py-1.5 rounded-xl bg-[#38BDF8] text-slate-950 text-xs font-bold shadow group-hover:scale-105 transition">
+                  Watch Series
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-snug">
+                Covers Thin Film Interference, Diffraction, Lasers, Optical Fibers, Quantum Mechanics, Semiconductors &amp; Electrodynamics.
+              </p>
+            </div>
+
+            {/* Engineering Physics by Sanjiv Card */}
+            <div
+              onClick={() => setSelectedAuthor('Engineering Physics by Sanjiv')}
+              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#818CF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-[#818CF8] flex items-center justify-center font-bold">
+                    ES
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-sm group-hover:text-[#818CF8] transition">Engineering Physics by Sanjiv</h4>
+                    <p className="text-[11px] text-slate-400">7 Playlists • Dr. Sanjiv Lecture Series</p>
+                  </div>
+                </div>
+                <button className="px-3 py-1.5 rounded-xl bg-[#818CF8] text-slate-950 text-xs font-bold shadow group-hover:scale-105 transition">
+                  Watch Series
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-snug">
+                Step-by-step solved derivations on Diffraction, Interference, Laser, Fiber Optics, Quantum, Semiconductors &amp; Maxwell Laws.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 📘 Biology for Engineers Subject Notice Banner */}
       {selectedSubject === 'sub-bio' && (
