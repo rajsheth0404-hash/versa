@@ -13,44 +13,23 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: APPLIED MATHEMATICS – I (316U06C101)
   // =========================================================================
   'mod-m1-1': [
-    { id: 'm1-1', lessonNumber: 1, title: 'Introduction to Matrices, Hermitian & Skew-Hermitian Matrices', duration: '18:40', videoId: 'kYJzX4M-s6o', youtubeUrl: 'https://www.youtube.com/watch?v=kYJzX4M-s6o' },
-    { id: 'm1-2', lessonNumber: 2, title: 'Row Echelon Form & Normal Form (Rank of Matrix)', duration: '24:15', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
-    { id: 'm1-3', lessonNumber: 3, title: 'Canonical Form & PAQ Reduction Method Step-by-Step', duration: '28:50', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
-    { id: 'm1-4', lessonNumber: 4, title: 'Consistency of Non-Homogeneous Linear Systems [AX = B]', duration: '22:10', videoId: '2-fN8r4sU-s', youtubeUrl: 'https://www.youtube.com/watch?v=2-fN8r4sU-s' },
-    { id: 'm1-5', lessonNumber: 5, title: 'Homogeneous Linear Systems [AX = 0] & Trivial/Non-Trivial Solutions', duration: '19:35', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-    { id: 'm1-6', lessonNumber: 6, title: 'Gauss-Seidel & Jacobi Iteration Numerical Methods', duration: '31:20', videoId: 'wH2uY-n5_sQ', youtubeUrl: 'https://www.youtube.com/watch?v=wH2uY-n5_sQ' },
+    { id: 'm1-pl-1', lessonNumber: 1, title: 'Module 1: Matrices & System of Linear Equations (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLQ2Js_nO99cE', youtubeUrl: 'https://youtube.com/playlist?list=PLQ2Js_nO99cE&si=ZG3ReSPGqzrbhOyU' },
   ],
 
   'mod-m1-2': [
-    { id: 'm2-1', lessonNumber: 1, title: 'Partial Differentiation Basics & First Order Derivatives', duration: '21:10', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
-    { id: 'm2-2', lessonNumber: 2, title: 'Higher Order Partial Derivatives & Symmetry Properties', duration: '19:45', videoId: '2-fN8r4sU-s', youtubeUrl: 'https://www.youtube.com/watch?v=2-fN8r4sU-s' },
-    { id: 'm2-3', lessonNumber: 3, title: 'Composite Functions & Total Differential Chain Rule', duration: '25:30', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-    { id: 'm2-4', lessonNumber: 4, title: 'Jacobians of Two and Three Variables with Properties', duration: '33:15', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
-    { id: 'm2-5', lessonNumber: 5, title: 'Maxima and Minima of Functions of Two Variables', duration: '29:40', videoId: 'kYJzX4M-s6o', youtubeUrl: 'https://www.youtube.com/watch?v=kYJzX4M-s6o' },
-    { id: 'm2-6', lessonNumber: 6, title: 'Lagrange’s Method of Undetermined Multipliers', duration: '36:00', videoId: 'wH2uY-n5_sQ', youtubeUrl: 'https://www.youtube.com/watch?v=wH2uY-n5_sQ' },
+    { id: 'm2-pl-1', lessonNumber: 1, title: 'Module 2: Partial Differentiation & Applications (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLL1NiXsy4ZgU', youtubeUrl: 'https://youtube.com/playlist?list=PLL1NiXsy4ZgU&si=MWbMo9FPPWlgAVdd' },
   ],
 
   'mod-m1-3': [
-    { id: 'm3-1', lessonNumber: 1, title: 'Homogeneous Functions Definition & Degree Properties', duration: '15:20', videoId: '2-fN8r4sU-s', youtubeUrl: 'https://www.youtube.com/watch?v=2-fN8r4sU-s' },
-    { id: 'm3-2', lessonNumber: 2, title: 'Euler’s Theorem Statement & Proof for Two Variables', duration: '22:45', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-    { id: 'm3-3', lessonNumber: 3, title: 'Euler’s Theorem for Composite Functions & Deductions', duration: '28:10', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
-    { id: 'm3-4', lessonNumber: 4, title: 'Second Order Euler’s Theorem Formula & Corollaries', duration: '31:15', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
+    { id: 'm3-pl-1', lessonNumber: 1, title: 'Module 3: Homogeneous Functions & Euler’s Theorem (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLYVfNY_bT6yY', youtubeUrl: 'https://youtube.com/playlist?list=PLYVfNY_bT6yY&si=4doJAzEiYHiLHmRF' },
   ],
 
   'mod-m1-4': [
-    { id: 'm4-1', lessonNumber: 1, title: 'Exact Differential Equations & Integrating Factors (Rules 1 to 4)', duration: '24:10', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-    { id: 'm4-2', lessonNumber: 2, title: 'Equations Reducible to Exact Form & Linear First Order ODEs', duration: '26:30', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
-    { id: 'm4-3', lessonNumber: 3, title: 'Higher Order Linear Differential Equations with Constant Coefficients', duration: '27:30', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
-    { id: 'm4-4', lessonNumber: 4, title: 'Particular Integral (PI) for Exponential, Sin, Cos & Polynomials', duration: '31:00', videoId: 'kYJzX4M-s6o', youtubeUrl: 'https://www.youtube.com/watch?v=kYJzX4M-s6o' },
-    { id: 'm4-5', lessonNumber: 5, title: 'Method of Variation of Parameters for 2nd Order ODEs', duration: '35:40', videoId: 'wH2uY-n5_sQ', youtubeUrl: 'https://www.youtube.com/watch?v=wH2uY-n5_sQ' },
+    { id: 'm4-pl-1', lessonNumber: 1, title: 'Module 4: Linear Differential Equations (LDE) (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLdXnNp9HebAo', youtubeUrl: 'https://youtube.com/playlist?list=PLdXnNp9HebAo&si=O-pR4nvnJAf9e8NZ' },
   ],
 
   'mod-m1-5': [
-    { id: 'm5-1', lessonNumber: 1, title: 'Complex Numbers Algebra, Modulus & Amplitude Polar Forms', duration: '19:20', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
-    { id: 'm5-2', lessonNumber: 2, title: 'De Moivre’s Theorem Statement, Proof & Power Expansions', duration: '26:40', videoId: 'kYJzX4M-s6o', youtubeUrl: 'https://www.youtube.com/watch?v=kYJzX4M-s6o' },
-    { id: 'm5-3', lessonNumber: 3, title: 'Roots of Complex Numbers & Polynomial Solutions', duration: '28:15', videoId: '2-fN8r4sU-s', youtubeUrl: 'https://www.youtube.com/watch?v=2-fN8r4sU-s' },
-    { id: 'm5-4', lessonNumber: 4, title: 'Circular and Hyperbolic Functions Interrelation & Identities', duration: '23:50', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-    { id: 'm5-5', lessonNumber: 5, title: 'Logarithm of Complex Number: General & Principal Values', duration: '32:10', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
+    { id: 'm5-pl-1', lessonNumber: 1, title: 'Module 5: Complex Numbers & Hyperbolic Functions (Full Playlist) - Saurabh Dahivadkar', duration: 'Full Series', videoId: '', playlistId: 'PLKS7ZMKnbPrSsOQDQOpYrDUp-4zQO8YFX', youtubeUrl: 'https://youtube.com/playlist?list=PLKS7ZMKnbPrSsOQDQOpYrDUp-4zQO8YFX&si=EyY0uXHV8wx3rqfL' },
   ],
 
   // =========================================================================
