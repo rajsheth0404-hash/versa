@@ -108,24 +108,24 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: ENGINEERING DRAWING (316U06C105)
   // =========================================================================
   'mod-ed-1': [
-    { id: 'ed1-manas-1', lessonNumber: 1, title: 'Module 1: Orthographic Projections & Sectional Views (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt&si=RwRN9EflwUAr0Pt7' },
+    { id: 'ed1-tikle-1', lessonNumber: 1, title: 'Module 1: Orthographic Projections & Sectional Views (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBpnIOK5r3KXdfFOVzGHJSt&si=RwRN9EflwUAr0Pt7' },
   ],
 
   'mod-ed-2': [
-    { id: 'ed2-manas-1', lessonNumber: 1, title: 'Module 2 (Part 1): Projections of Straight Lines (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct&si=Um3PX5FKCcGvNgYv' },
-    { id: 'ed2-manas-2', lessonNumber: 2, title: 'Module 2 (Part 2): Projections of Planes (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx&si=cNFbH398QwhIhnBF' },
+    { id: 'ed2-tikle-1', lessonNumber: 1, title: 'Module 2 (Part 1): Projections of Straight Lines (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiC9wFOTiDp8ekWAf40BwSct&si=Um3PX5FKCcGvNgYv' },
+    { id: 'ed2-tikle-2', lessonNumber: 2, title: 'Module 2 (Part 2): Projections of Planes (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBVR22X01vcnvVCuQIklXGx&si=cNFbH398QwhIhnBF' },
   ],
 
   'mod-ed-3': [
-    { id: 'ed3-manas-1', lessonNumber: 1, title: 'Module 3: Projections of Solids (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9&si=HjUWflNeAWl7Z2Uw' },
+    { id: 'ed3-tikle-1', lessonNumber: 1, title: 'Module 3: Projections of Solids (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiA9qy-OWuoEYoXsu7lsSaE9&si=HjUWflNeAWl7Z2Uw' },
   ],
 
   'mod-ed-4': [
-    { id: 'ed4-manas-1', lessonNumber: 1, title: 'Module 4: Sections & Lateral Development of Solids (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W&si=DqvKa8KrKhi0ZBdm' },
+    { id: 'ed4-tikle-1', lessonNumber: 1, title: 'Module 4: Sections & Lateral Development of Solids (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiCxbMOdIIVDZ4i1IslzrT1W&si=DqvKa8KrKhi0ZBdm' },
   ],
 
   'mod-ed-5': [
-    { id: 'ed5-manas-1', lessonNumber: 1, title: 'Module 5: Isometric Projections & Views (Full Playlist) - Manas Patnaik', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao&si=4w1w9DycP7T85bXP' },
+    { id: 'ed5-tikle-1', lessonNumber: 1, title: 'Module 5: Isometric Projections & Views (Full Playlist) - Tikle\'s Academy', duration: 'Full Series', videoId: '', playlistId: 'PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao', youtubeUrl: 'https://youtube.com/playlist?list=PLDN15nk5uLiBrAkdOhEvkmVPs2UtwfGao&si=4w1w9DycP7T85bXP' },
   ],
 
   // =========================================================================
