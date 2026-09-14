@@ -85,26 +85,23 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: BASIC ELECTRICAL ENGINEERING (316U06C104)
   // =========================================================================
   'mod-bee-1': [
-    { id: 'bee1-1', lessonNumber: 1, title: 'DC Circuits Basics, Ohm’s Law & Kirchhoff’s Laws (KVL/KCL)', duration: '22:10', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
-    { id: 'bee1-2', lessonNumber: 2, title: 'Thevenin’s Theorem Step-by-Step Circuit Reduction', duration: '35:10', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
-    { id: 'bee1-3', lessonNumber: 3, title: 'Norton’s Theorem Equivalent Current Source Method', duration: '29:30', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
-    { id: 'bee1-4', lessonNumber: 4, title: 'Maximum Power Transfer Theorem for Resistive Networks', duration: '31:20', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
+    { id: 'bee1-pce-1', lessonNumber: 1, title: 'Module 1: DC Circuits & Network Theorems (Full Playlist) - Perfect Computer Engineer', duration: 'Full Series', videoId: '', playlistId: 'PLPIwNooIb9vjC5Hz7xIUXJw54LkB2MG2i', youtubeUrl: 'https://youtube.com/playlist?list=PLPIwNooIb9vjC5Hz7xIUXJw54LkB2MG2i&si=ONirEgZpnE8pAGQ2' },
   ],
 
   'mod-bee-2': [
-    { id: 'bee2-1', lessonNumber: 1, title: 'AC Fundamentals: Generation of Sinusoidal AC, Frequency & Phase', duration: '24:00', videoId: 'ZtI9z-V3P_U', youtubeUrl: 'https://www.youtube.com/watch?v=ZtI9z-V3P_U' },
-    { id: 'bee2-2', lessonNumber: 2, title: 'RMS Value, Average Value, Form Factor & Peak Factor Derivations', duration: '26:30', videoId: 'ZtI9z-V3P_U', youtubeUrl: 'https://www.youtube.com/watch?v=ZtI9z-V3P_U' },
-    { id: 'bee2-3', lessonNumber: 3, title: 'Series R-L, R-C, and R-L-C Circuit Impedance & Resonance', duration: '36:00', videoId: 'ZtI9z-V3P_U', youtubeUrl: 'https://www.youtube.com/watch?v=ZtI9z-V3P_U' },
+    { id: 'bee2-pce-1', lessonNumber: 1, title: 'Module 2: AC Circuits (Single Phase) (Full Playlist) - Perfect Computer Engineer', duration: 'Full Series', videoId: '', playlistId: 'PLPIwNooIb9vgYjKb1N14ITkmhX2oNrNi3', youtubeUrl: 'https://youtube.com/playlist?list=PLPIwNooIb9vgYjKb1N14ITkmhX2oNrNi3&si=sOtE-MRfEcECn-pB' },
+    { id: 'bee2-ekeeda-1', lessonNumber: 2, title: 'Module 2: AC Circuits (Full Course) - Ekeeda', duration: 'Full Series', videoId: '', playlistId: 'PL4K9r9dYCOorFJYvPZ3VBLDJVpWA5p481', youtubeUrl: 'https://youtube.com/playlist?list=PL4K9r9dYCOorFJYvPZ3VBLDJVpWA5p481&si=jzOD6yA6KxHMEbbe' },
+    { id: 'bee2-saurabh-1', lessonNumber: 3, title: 'Module 2: AC Fundamentals & Resonance - Saurabh Dahivadkar', duration: 'Full Series', videoId: '', playlistId: 'PLKS7ZMKnbPrQZP4zxS47bzkf8sGYlaIKM', youtubeUrl: 'https://youtube.com/playlist?list=PLKS7ZMKnbPrQZP4zxS47bzkf8sGYlaIKM&si=UOBk3HHNQ4uu-b2e' },
   ],
 
   'mod-bee-3': [
-    { id: 'bee3-1', lessonNumber: 1, title: 'Balanced Star (Y) & Delta (Δ) Connected 3-Phase Systems', duration: '29:10', videoId: 'UfG1zTj0j8M', youtubeUrl: 'https://www.youtube.com/watch?v=UfG1zTj0j8M' },
-    { id: 'bee3-2', lessonNumber: 2, title: 'Power Measurement in 3-Phase Circuits using Two-Wattmeter Method', duration: '38:15', videoId: 'UfG1zTj0j8M', youtubeUrl: 'https://www.youtube.com/watch?v=UfG1zTj0j8M' },
+    { id: 'bee3-saurabh-1', lessonNumber: 1, title: 'Module 3: Three Phase AC Circuits - Saurabh Dahivadkar', duration: 'Full Series', videoId: '', playlistId: 'PLKS7ZMKnbPrSS6_Mk0UbOySQzDBY-uHJQ', youtubeUrl: 'https://youtube.com/playlist?list=PLKS7ZMKnbPrSS6_Mk0UbOySQzDBY-uHJQ&si=kJlmzuqGUhfI-vf2' },
+    { id: 'bee3-ekeeda-1', lessonNumber: 2, title: 'Module 3: Three Phase AC Systems - Ekeeda', duration: 'Full Series', videoId: '', playlistId: 'PL4K9r9dYCOooO5s49HTN7Tavmg5q_Ufqn', youtubeUrl: 'https://youtube.com/playlist?list=PL4K9r9dYCOooO5s49HTN7Tavmg5q_Ufqn&si=9LC-HNMVs5wzUeoy' },
   ],
 
   'mod-bee-4': [
-    { id: 'bee4-1', lessonNumber: 1, title: 'Single Phase Transformer Principle, Construction & EMF Equation', duration: '30:20', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
-    { id: 'bee4-2', lessonNumber: 2, title: 'Transformer Losses, Efficiency & 3-Phase Induction Motor Basics', duration: '34:10', videoId: '0h3jP26-q5k', youtubeUrl: 'https://www.youtube.com/watch?v=0h3jP26-q5k' },
+    { id: 'bee4-ekeeda-1', lessonNumber: 1, title: 'Module 4 (Part 1): Single Phase Transformers - Ekeeda', duration: 'Full Series', videoId: '', playlistId: 'PL4K9r9dYCOors6MRFwoIe9_iBzSzUp2Zi', youtubeUrl: 'https://youtube.com/playlist?list=PL4K9r9dYCOors6MRFwoIe9_iBzSzUp2Zi&si=aOD_gO13eU-Kion9' },
+    { id: 'bee4-ekeeda-2', lessonNumber: 2, title: 'Module 4 (Part 2): Electrical Machines & Induction Motors - Ekeeda', duration: 'Full Series', videoId: '', playlistId: 'PL4K9r9dYCOooB-nXHA6uOBmaWMDYrhhLM', youtubeUrl: 'https://youtube.com/playlist?list=PL4K9r9dYCOooB-nXHA6uOBmaWMDYrhhLM&si=AKN0W2oKTUN31AK4' },
   ],
 
   // =========================================================================
