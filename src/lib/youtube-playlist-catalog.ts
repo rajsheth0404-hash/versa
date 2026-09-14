@@ -65,24 +65,20 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // SEMESTER 1: ENGINEERING CHEMISTRY (316U06C103)
   // =========================================================================
   'mod-ch-1': [
-    { id: 'ch1-1', lessonNumber: 1, title: 'Types of Hardness & EDTA Titration Method Principle', duration: '28:15', videoId: 'de9vwMGgTvg', youtubeUrl: 'https://www.youtube.com/watch?v=de9vwMGgTvg' },
-    { id: 'ch1-2', lessonNumber: 2, title: 'Zeolite & Ion-Exchange Industrial Water Softening Processes', duration: '24:30', videoId: '9_H8XWz9J_g', youtubeUrl: 'https://www.youtube.com/watch?v=9_H8XWz9J_g' },
-    { id: 'ch1-3', lessonNumber: 3, title: 'Reverse Osmosis (RO) & Desalination Technologies', duration: '20:30', videoId: '7O2sH_P5U48', youtubeUrl: 'https://www.youtube.com/watch?v=7O2sH_P5U48' },
+    { id: 'ch1-avani-1', lessonNumber: 1, title: 'Module 1: Water Treatment & Hardness (Full Playlist) - Science by Avani', duration: 'Full Series', videoId: '', playlistId: 'PL2xHbdoT5bU8eQGswUpK8-223kHBuiCqz', youtubeUrl: 'https://youtube.com/playlist?list=PL2xHbdoT5bU8eQGswUpK8-223kHBuiCqz&si=5-qXIVwIlrqFbCk-' },
   ],
 
   'mod-ch-2': [
-    { id: 'ch2-1', lessonNumber: 1, title: 'Twelve Principles of Green Chemistry with Industrial Examples', duration: '35:20', videoId: '9_H8XWz9J_g', youtubeUrl: 'https://www.youtube.com/watch?v=9_H8XWz9J_g' },
-    { id: 'ch2-2', lessonNumber: 2, title: 'Atom Economy & Environmental E-Factor Calculations', duration: '27:15', videoId: '7O2sH_P5U48', youtubeUrl: 'https://www.youtube.com/watch?v=7O2sH_P5U48' },
+    { id: 'ch2-anjali-1', lessonNumber: 1, title: 'Module 2: Green Chemistry (Full Playlist) - Chemistry by Dr. Anjali Saxena', duration: 'Full Series', videoId: '', playlistId: 'PLLf6O8XdGj03fkukqcW7HOTSK8u_up7nJ', youtubeUrl: 'https://youtube.com/playlist?list=PLLf6O8XdGj03fkukqcW7HOTSK8u_up7nJ&si=t1rKVL-dCPZQ7v8M' },
   ],
 
   'mod-ch-3': [
-    { id: 'ch3-1', lessonNumber: 1, title: 'Gibbs Phase Rule Equation Statement & Definitions (P, C, F)', duration: '26:30', videoId: '7O2sH_P5U48', youtubeUrl: 'https://www.youtube.com/watch?v=7O2sH_P5U48' },
-    { id: 'ch3-2', lessonNumber: 2, title: 'Two-Component Lead-Silver (Pb-Ag) Eutectic System', duration: '31:20', videoId: 'H74S9zRk-8M', youtubeUrl: 'https://www.youtube.com/watch?v=H74S9zRk-8M' },
+    { id: 'ch3-mix-1', lessonNumber: 1, title: 'Module 3: Engineering Chemistry Tutorials (Full Playlist)', duration: 'Full Series', videoId: '', playlistId: 'PLE-8tLvduWGQ9eV3LJ0E2EtzmXUJ7ZqBz', youtubeUrl: 'https://youtube.com/playlist?list=PLE-8tLvduWGQ9eV3LJ0E2EtzmXUJ7ZqBz&si=ECQVb8tOb4vpbmht' },
   ],
 
   'mod-ch-4': [
-    { id: 'ch4-1', lessonNumber: 1, title: 'Mechanism of Dry and Wet (Electrochemical) Corrosion', duration: '30:10', videoId: 'H74S9zRk-8M', youtubeUrl: 'https://www.youtube.com/watch?v=H74S9zRk-8M' },
-    { id: 'ch4-2', lessonNumber: 2, title: 'Lithium-Ion Battery Working, Reactions & Supercapacitors', duration: '33:00', videoId: 'de9vwMGgTvg', youtubeUrl: 'https://www.youtube.com/watch?v=de9vwMGgTvg' },
+    { id: 'ch4-anjali-1', lessonNumber: 1, title: 'Module 4 (Part 1): Electrochemistry (Full Playlist) - Chemistry by Dr. Anjali Saxena', duration: 'Full Series', videoId: '', playlistId: 'PLLf6O8XdGj03pNhe069q3fHouzq64Vvsm', youtubeUrl: 'https://youtube.com/playlist?list=PLLf6O8XdGj03pNhe069q3fHouzq64Vvsm&si=HwEpVQm5voAVhvYK' },
+    { id: 'ch4-anjali-2', lessonNumber: 2, title: 'Module 4 (Part 2): Corrosion Science (Full Playlist) - Chemistry by Dr. Anjali Saxena', duration: 'Full Series', videoId: '', playlistId: 'PLLf6O8XdGj00lVydanLfC6bcT4aXGJN4V', youtubeUrl: 'https://youtube.com/playlist?list=PLLf6O8XdGj00lVydanLfC6bcT4aXGJN4V&si=ffsTRur_-oJ9llk6' },
   ],
 
   // =========================================================================
