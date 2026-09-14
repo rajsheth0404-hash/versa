@@ -16,6 +16,9 @@ import {
   Edit2,
   Settings2,
   X,
+  Link2,
+  ExternalLink,
+  FolderPlus,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -23,6 +26,10 @@ export default function AdminUploadPage() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [modules, setModules] = useState<Module[]>([]);
   const [resources, setResources] = useState<AcademicResource[]>([]);
+
+  // Ingestion Mode: Google Drive link vs Direct File Upload
+  const [uploadMode, setUploadMode] = useState<'drive' | 'file'>('drive');
+  const [driveLinkInput, setDriveLinkInput] = useState('');
 
   const [selectedSemester, setSelectedSemester] = useState<1 | 2>(1);
   const [selectedSubjectId, setSelectedSubjectId] = useState<string>('');
@@ -105,7 +112,7 @@ export default function AdminUploadPage() {
 
   const handlePublish = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedFiles.length === 0 || !selectedSubjectId || !resourceTitle) return;
+    if (!selectedSubjectId || !resourceTitle) return;
 
     setIsPublishing(true);
 
@@ -115,40 +122,82 @@ export default function AdminUploadPage() {
       .filter(Boolean);
 
     try {
-      for (let index = 0; index < selectedFiles.length; index++) {
-        const file = selectedFiles[index];
+      if (uploadMode === 'drive') {
+        if (!driveLinkInput.trim()) {
+          alert('Please enter a valid Google Drive or document link.');
+          setIsPublishing(false);
+          return;
+        }
 
-        const newRes = HubStore.addResource({
+        HubStore.addResource({
           subjectId: selectedSubjectId,
           moduleId: selectedModuleId || undefined,
-          title: selectedFiles.length === 1 ? resourceTitle : `${resourceTitle} (Part ${index + 1})`,
+          title: resourceTitle,
           type: resourceType,
-          filePath: `/uploads/${file.name}`,
-          fileName: file.name,
-          fileSizeBytes: file.size,
-          fileMime: file.type || 'application/pdf',
+          filePath: driveLinkInput.trim(),
+          fileName: `${resourceTitle.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`,
+          fileSizeBytes: 2500000,
+          fileMime: 'application/pdf',
           academicYear: academicYear,
           scheme: 'REV_2025',
           uploaderName: uploaderName,
           isVerified: isVerifiedResource,
-          tags: tagsArray.length > 0 ? tagsArray : ['First Year', `Sem${selectedSemester}`],
+          tags: tagsArray.length > 0 ? tagsArray : ['First Year', `Sem${selectedSemester}`, 'Google Drive'],
         });
 
-        // Store exact file blob in IndexedDB for 100% fidelity downloads without localStorage quota limits
-        await storeUploadedFile(newRes.id, file);
+        setIsPublishing(false);
+        setPublishedCount(1);
+        setDriveLinkInput('');
+        setResourceTitle('');
+
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#38BDF8', '#818CF8', '#10B981'],
+        });
+      } else {
+        if (selectedFiles.length === 0) {
+          alert('Please select or drop at least one file.');
+          setIsPublishing(false);
+          return;
+        }
+
+        for (let index = 0; index < selectedFiles.length; index++) {
+          const file = selectedFiles[index];
+
+          const newRes = HubStore.addResource({
+            subjectId: selectedSubjectId,
+            moduleId: selectedModuleId || undefined,
+            title: selectedFiles.length === 1 ? resourceTitle : `${resourceTitle} (Part ${index + 1})`,
+            type: resourceType,
+            filePath: `/uploads/${file.name}`,
+            fileName: file.name,
+            fileSizeBytes: file.size,
+            fileMime: file.type || 'application/pdf',
+            academicYear: academicYear,
+            scheme: 'REV_2025',
+            uploaderName: uploaderName,
+            isVerified: isVerifiedResource,
+            tags: tagsArray.length > 0 ? tagsArray : ['First Year', `Sem${selectedSemester}`],
+          });
+
+          // Store exact file blob in IndexedDB for fidelity downloads
+          await storeUploadedFile(newRes.id, file);
+        }
+
+        setIsPublishing(false);
+        setPublishedCount(selectedFiles.length);
+        setSelectedFiles([]);
+        setResourceTitle('');
+
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#38BDF8', '#818CF8', '#10B981'],
+        });
       }
-
-      setIsPublishing(false);
-      setPublishedCount(selectedFiles.length);
-      setSelectedFiles([]);
-      setResourceTitle('');
-
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#38BDF8', '#818CF8', '#10B981'],
-      });
     } catch (err) {
       console.error('Failed to upload resources:', err);
       setIsPublishing(false);
@@ -362,21 +411,81 @@ export default function AdminUploadPage() {
           </div>
         </div>
 
-        {/* Step 3: Multi-File Dropzone */}
-        <div className="space-y-3 pt-4 border-t border-slate-800">
-          <h3 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider flex items-center space-x-2">
-            <span className="w-5 h-5 rounded-full bg-[#38BDF8] text-slate-950 font-bold flex items-center justify-center text-[10px]">3</span>
-            <span>Upload Documents & Slides</span>
-          </h3>
+        {/* Step 3: Ingestion Source (Google Drive / File) */}
+        <div className="space-y-4 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h3 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-5 h-5 rounded-full bg-[#38BDF8] text-slate-950 font-bold flex items-center justify-center text-[10px]">3</span>
+              <span>Source: Google Drive Link or File Upload</span>
+            </h3>
 
-          <FileDropzone onFilesSelected={handleFilesSelected} />
+            {/* Mode Switcher Tabs */}
+            <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+              <button
+                type="button"
+                onClick={() => setUploadMode('drive')}
+                className={`flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                  uploadMode === 'drive'
+                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Link2 className="w-3.5 h-3.5" />
+                <span>Google Drive Link</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setUploadMode('file')}
+                className={`flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                  uploadMode === 'file'
+                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <UploadCloud className="w-3.5 h-3.5" />
+                <span>Upload Local File</span>
+              </button>
+            </div>
+          </div>
+
+          {uploadMode === 'drive' ? (
+            <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-3">
+              <div>
+                <label className="text-xs font-semibold text-slate-200 block mb-1">
+                  Google Drive / Cloud Share Link *
+                </label>
+                <input
+                  type="url"
+                  placeholder="https://drive.google.com/file/d/.../view?usp=sharing"
+                  value={driveLinkInput}
+                  onChange={(e) => setDriveLinkInput(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-[#38BDF8] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition"
+                />
+              </div>
+
+              <div className="flex items-start space-x-2 text-[11px] text-slate-400 bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+                <ExternalLink className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-slate-300">How to share from Google Drive:</p>
+                  <p className="text-slate-400 mt-0.5">
+                    1. Right-click the PDF/PPT in Drive ➔ Click <strong>Share</strong> ➔ Set access to <strong>&ldquo;Anyone with the link can view&rdquo;</strong>.
+                  </p>
+                  <p className="text-slate-400 mt-0.5">
+                    2. Copy the link and paste it above. Versa will automatically stream in-app previews and high-speed downloads for all students!
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <FileDropzone onFilesSelected={handleFilesSelected} />
+          )}
         </div>
 
         {/* Submit */}
         <div className="pt-4 border-t border-slate-800 flex justify-end">
           <button
             type="submit"
-            disabled={isPublishing || selectedFiles.length === 0}
+            disabled={isPublishing || (uploadMode === 'drive' ? !driveLinkInput.trim() : selectedFiles.length === 0)}
             className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-xl shadow-cyan-950/50 transition disabled:opacity-40"
           >
             {isPublishing ? (
@@ -384,7 +493,11 @@ export default function AdminUploadPage() {
             ) : (
               <>
                 <UploadCloud className="w-4 h-4 text-slate-950" />
-                <span>Publish to Academic Hub ({selectedFiles.length} files)</span>
+                <span>
+                  {uploadMode === 'drive'
+                    ? 'Publish Google Drive Resource'
+                    : `Publish ${selectedFiles.length} Local File(s)`}
+                </span>
               </>
             )}
           </button>

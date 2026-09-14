@@ -97,6 +97,64 @@ export function generateAcademicPdfBlob(
 }
 
 /**
+ * Parses Google Drive, Google Docs, or direct URLs to provide an embeddable preview URL.
+ */
+export function getGoogleDrivePreviewUrl(url?: string): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+
+  // 1. Google Drive File: https://drive.google.com/file/d/FILE_ID/view...
+  const fileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (fileMatch && fileMatch[1]) {
+    return `https://drive.google.com/file/d/${fileMatch[1]}/preview`;
+  }
+
+  // 2. Google Drive open?id=FILE_ID
+  const idParamMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (idParamMatch && idParamMatch[1] && trimmed.includes('drive.google.com')) {
+    return `https://drive.google.com/file/d/${idParamMatch[1]}/preview`;
+  }
+
+  // 3. Google Drive Folder: https://drive.google.com/drive/folders/FOLDER_ID
+  const folderMatch = trimmed.match(/\/folders\/([a-zA-Z0-9_-]+)/);
+  if (folderMatch && folderMatch[1]) {
+    return `https://drive.google.com/embeddedfolderview?id=${folderMatch[1]}#grid`;
+  }
+
+  // 4. Google Docs / Slides / Sheets: https://docs.google.com/presentation/d/ID/edit
+  const docsMatch = trimmed.match(/docs\.google\.com\/(presentation|document|spreadsheets)\/d\/([a-zA-Z0-9_-]+)/);
+  if (docsMatch && docsMatch[2]) {
+    return `https://docs.google.com/${docsMatch[1]}/d/${docsMatch[2]}/preview`;
+  }
+
+  // 5. Standard https URL
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    return trimmed;
+  }
+
+  return null;
+}
+
+/**
+ * Parses Google Drive links to provide direct file download URLs.
+ */
+export function getGoogleDriveDownloadUrl(url?: string): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+
+  const fileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (fileMatch && fileMatch[1] && trimmed.includes('drive.google.com')) {
+    return `https://drive.google.com/uc?export=download&id=${fileMatch[1]}`;
+  }
+
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    return trimmed;
+  }
+
+  return null;
+}
+
+/**
  * Resolves or generates the PDF Blob for any academic resource.
  * Works seamlessly for:
  * 1. User-uploaded files stored in IndexedDB (PDFs, docs).
@@ -149,16 +207,22 @@ export async function getAcademicPdfBlob(
 
 /**
  * Downloads an academic resource.
- * 1. Checks IndexedDB for the exact file uploaded by the user.
- * 2. Checks if the resource has a real Data URL (Base64).
- * 3. Attempts to fetch from public storage / URL if available.
- * 4. Falls back to generating a valid PDF if no file was uploaded.
+ * 1. Checks for Google Drive / External URL.
+ * 2. Checks IndexedDB for the exact file uploaded by the user.
+ * 3. Falls back to generating a valid PDF if no file was uploaded.
  */
 export async function downloadAcademicResource(
   resource: AcademicResource,
   subjectName?: string,
   moduleName?: string
 ): Promise<void> {
+  // Handle Google Drive or external web link
+  if (resource.filePath && (resource.filePath.startsWith('http://') || resource.filePath.startsWith('https://'))) {
+    const downloadUrl = getGoogleDriveDownloadUrl(resource.filePath) || resource.filePath;
+    window.open(downloadUrl, '_blank', 'noopener,noreferrer');
+    return;
+  }
+
   const fileName = resource.fileName || `${resource.title.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
   const blob = await getAcademicPdfBlob(resource, subjectName, moduleName);
   const blobUrl = URL.createObjectURL(blob);

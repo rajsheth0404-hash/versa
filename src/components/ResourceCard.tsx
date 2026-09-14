@@ -22,7 +22,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
-import { downloadAcademicResource, getAcademicPdfBlob } from '@/lib/pdf-download';
+import { downloadAcademicResource, getAcademicPdfBlob, getGoogleDrivePreviewUrl } from '@/lib/pdf-download';
 
 interface ResourceCardProps {
   resource: AcademicResource;
@@ -95,11 +95,19 @@ export default function ResourceCard({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isPreviewOpen, safeIndex, resourceList]);
 
-  // Load PDF Blob URL for in-website live viewing when Look is clicked or next/prev navigated
+  // Load PDF Blob URL or Google Drive preview for in-website live viewing
   useEffect(() => {
     let activeBlobUrl: string | null = null;
     if (isPreviewOpen) {
       setIsLoadingPreview(true);
+
+      const drivePreview = getGoogleDrivePreviewUrl(activeResource.filePath);
+      if (drivePreview && (activeResource.filePath?.startsWith('http://') || activeResource.filePath?.startsWith('https://'))) {
+        setPdfPreviewUrl(drivePreview);
+        setIsLoadingPreview(false);
+        return;
+      }
+
       getAcademicPdfBlob(activeResource, subjectName, moduleName)
         .then((blob) => {
           activeBlobUrl = URL.createObjectURL(blob);
