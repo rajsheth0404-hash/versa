@@ -129,26 +129,27 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   ],
 
   // =========================================================================
-  // SEMESTER 1: STRUCTURED PROGRAMMING METHODOLOGY (C) (316U06C107)
+  // SEMESTER 1: STRUCTURED PROGRAMMING METHODOLOGY (C/C++) (316U06C107)
   // =========================================================================
   'mod-spm-1': [
-    { id: 'spm1-1', lessonNumber: 1, title: 'Problem Solving Concepts: Algorithms, Flowcharts & Pseudo-code', duration: '24:10', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
-    { id: 'spm1-2', lessonNumber: 2, title: 'Basic C Program Structure, Data Types, Variables & Constants', duration: '26:30', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
+    { id: 'spm1-ab-initio', lessonNumber: 1, title: 'Programming & OST (Full Course) - Ab Initio (Kaustubh Sir)', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'spm1-cwh', lessonNumber: 2, title: 'Programming Tutorials in Hindi (Full Playlist) - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
+    { id: 'spm1-coderarmy', lessonNumber: 3, title: 'Complete Programming Course - Coder Army', duration: 'Full Series', videoId: '', playlistId: 'PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH', youtubeUrl: 'https://youtube.com/playlist?list=PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH&si=C-d85jKjoIZCbQ-a' },
   ],
 
   'mod-spm-2': [
-    { id: 'spm2-1', lessonNumber: 1, title: 'Conditional Branching: if, if-else, nested if & switch-case', duration: '28:30', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
-    { id: 'spm2-2', lessonNumber: 2, title: 'Iteration: while, do-while, and for loop control statements', duration: '31:15', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
+    { id: 'spm2-ab-initio', lessonNumber: 1, title: 'Module 2: Control Structures & Loops - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'spm2-cwh', lessonNumber: 2, title: 'Module 2: Conditionals & Loops - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
   ],
 
   'mod-spm-3': [
-    { id: 'spm3-1', lessonNumber: 1, title: '1D Array Declaration, Initialization, Traversal & Search Algorithms', duration: '29:30', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
-    { id: 'spm3-2', lessonNumber: 2, title: '2D Array Matrix Operations & String Handling in C', duration: '35:40', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
+    { id: 'spm3-ab-initio', lessonNumber: 1, title: 'Module 3: Arrays & Strings - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'spm3-coderarmy', lessonNumber: 2, title: 'Module 3: Arrays & String Manipulation - Coder Army', duration: 'Full Series', videoId: '', playlistId: 'PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH', youtubeUrl: 'https://youtube.com/playlist?list=PLQEaRBV9gAFsdNoZYUcVG6ygpwd0lUrIH&si=C-d85jKjoIZCbQ-a' },
   ],
 
   'mod-spm-4': [
-    { id: 'spm4-1', lessonNumber: 1, title: 'User Defined Functions & Call by Value vs Reference', duration: '25:20', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
-    { id: 'spm4-2', lessonNumber: 2, title: 'Pointers Basics, Pointer Arithmetic & Dynamic Memory (malloc, free)', duration: '38:00', videoId: 'YXcgD8hRHYY', youtubeUrl: 'https://www.youtube.com/watch?v=YXcgD8hRHYY' },
+    { id: 'spm4-ab-initio', lessonNumber: 1, title: 'Module 4: Functions, Pointers & Memory - Ab Initio', duration: 'Full Series', videoId: '', playlistId: 'PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9', youtubeUrl: 'https://youtube.com/playlist?list=PLILyE8uN3CXMm2XkwNPKu3Y7qBSipP1R9&si=5oJ-9NrerRHEvbhI' },
+    { id: 'spm4-cwh', lessonNumber: 2, title: 'Module 4: Pointers & Dynamic Memory - CodeWithHarry', duration: 'Full Series', videoId: '', playlistId: 'PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL', youtubeUrl: 'https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=hczkeMUtEYycxhAW' },
   ],
 
   // =========================================================================

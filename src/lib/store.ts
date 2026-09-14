@@ -24,7 +24,7 @@ const STORAGE_KEYS = {
   SUBJECTS: 'somaiya_fy_subjects_v3',
   MODULES: 'somaiya_fy_modules_v3',
   RESOURCES: 'somaiya_fy_resources_v3',
-  YOUTUBE: 'versa_fy_youtube_v15',
+  YOUTUBE: 'versa_fy_youtube_v16',
   DECKS: 'somaiya_fy_flashcards_v3',
   DIAGRAMS: 'somaiya_fy_diagrams_v3',
   ATTENDANCE: 'somaiya_fy_attendance_v3',
