@@ -395,7 +395,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Year Selector: First Year / Second Year */}
-      <div className="flex flex-col items-center justify-center gap-3">
+      <div className="flex flex-col items-start justify-start gap-2.5">
         <div className="flex bg-[#1E293B]/90 p-1.5 rounded-2xl border border-slate-700 shadow-xl gap-1">
           <button
             onClick={() => {
