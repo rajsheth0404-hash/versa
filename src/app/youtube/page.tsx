@@ -849,7 +849,7 @@ export default function YouTubeResourcesPage() {
                 <h3 className="text-base font-bold text-[#F8FAFC]">Biology for Engineers</h3>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
-                There is no official YouTube video playlist for Biology for Engineers. Please refer to the Notes &amp; Materials section for complete faculty notes.
+                There is no official YouTube video playlist needed for Biology for Engineers. Please refer to the Notes &amp; Materials section for complete faculty notes.
               </p>
               <div className="pt-2">
                 <Link
@@ -865,9 +865,71 @@ export default function YouTubeResourcesPage() {
         </div>
       )}
 
+      {/* 🌿 Environmental Science (EVS) Subject Notice Banner */}
+      {selectedSubject === 'sub-evs' && (
+        <div className="glass-panel bg-emerald-950/30 border border-emerald-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+          <div className="flex items-start space-x-3.5">
+            <div className="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 flex-shrink-0">
+              <BookOpen className="w-6 h-6" />
+            </div>
+            <div className="space-y-1.5 flex-1">
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
+                  316U06C204 • HSS
+                </span>
+                <h3 className="text-base font-bold text-[#F8FAFC]">Environmental Science (EVS)</h3>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+                There is no need to watch YouTube video lectures for Environmental Science. The curriculum is theory &amp; reading-focused — please follow the lecture notes, presentations, and syllabus materials directly.
+              </p>
+              <div className="pt-2">
+                <Link
+                  href="/resources?subject=sub-evs"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow-lg shadow-emerald-950/40"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Refer to EVS Notes &amp; Materials Section</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 🔬 Applied Science for Computer & Allied Programs (ASCT) Subject Notice Banner */}
+      {selectedSubject === 'sub-ascap' && (
+        <div className="glass-panel bg-cyan-950/30 border border-cyan-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+          <div className="flex items-start space-x-3.5">
+            <div className="p-3 rounded-2xl bg-cyan-500/20 border border-cyan-500/30 text-[#38BDF8] flex-shrink-0">
+              <BookOpen className="w-6 h-6" />
+            </div>
+            <div className="space-y-1.5 flex-1">
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30">
+                  316U06E211 • BS
+                </span>
+                <h3 className="text-base font-bold text-[#F8FAFC]">Applied Science for Computer &amp; Allied Programs (ASCT)</h3>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+                There is no need to watch YouTube video playlists for ASCT. Just follow the Academic Resources, reference notes, and textbook question banks directly.
+              </p>
+              <div className="pt-2">
+                <Link
+                  href="/resources?subject=sub-ascap"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs transition shadow-lg shadow-cyan-950/40"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Follow ASCT Resources &amp; Notes</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Video Grid (Thumbnail-Free, Badge-First Layout) */}
       {filteredVideos.length === 0 ? (
-        selectedSubject === 'sub-bio' ? null : selectedSubject === 'sub-spm' && selectedModule !== 'all' ? (
+        selectedSubject === 'sub-bio' || selectedSubject === 'sub-evs' || selectedSubject === 'sub-ascap' ? null : selectedSubject === 'sub-spm' && selectedModule !== 'all' ? (
           <div className="glass-panel bg-[#1E293B]/70 p-12 rounded-3xl text-center border border-indigo-500/30 space-y-4 shadow-xl">
             <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mx-auto">
               <Sparkles className="w-7 h-7" />

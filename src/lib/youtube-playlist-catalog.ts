@@ -193,12 +193,11 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   ],
 
   // =========================================================================
-  // SEMESTER 2: ENVIRONMENTAL SCIENCE (316U06C204)
+  // SEMESTER 2: DIGITAL LOGIC DESIGN (316U06C203)
   // =========================================================================
-  'mod-evs-1': [
-    { id: 'evs1-1', lessonNumber: 1, title: 'Ecosystem Dynamics, Biodiversity & Conservation', duration: '26:10', videoId: 'de9vwMGgTvg', youtubeUrl: 'https://www.youtube.com/watch?v=de9vwMGgTvg' },
-  ],
-  'mod-evs-2': [
-    { id: 'evs2-1', lessonNumber: 1, title: 'Pollution Control Technologies & Environmental Laws', duration: '29:40', videoId: '9_H8XWz9J_g', youtubeUrl: 'https://www.youtube.com/watch?v=9_H8XWz9J_g' },
-  ],
+  'mod-dld-1': [],
+  'mod-dld-2': [],
+  'mod-dld-3': [],
+  'mod-dld-4': [],
+  'mod-dld-5': [],
 };
