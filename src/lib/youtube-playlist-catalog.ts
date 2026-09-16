@@ -155,18 +155,11 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // =========================================================================
   // SEMESTER 2: APPLIED MATHEMATICS – II (316U06C201)
   // =========================================================================
-  'mod-m2-1': [
-    { id: 'm2sub1-1', lessonNumber: 1, title: 'Exact First Order ODEs, Integrating Factors & Orthogonal Trajectories', duration: '29:10', videoId: '3-lQ4zWl4qQ', youtubeUrl: 'https://www.youtube.com/watch?v=3-lQ4zWl4qQ' },
-  ],
-  'mod-m2-2': [
-    { id: 'm2sub2-1', lessonNumber: 1, title: 'Higher Order Linear ODEs, Cauchy-Euler & Variation of Parameters', duration: '34:20', videoId: 'U9l1K5uQy8Y', youtubeUrl: 'https://www.youtube.com/watch?v=U9l1K5uQy8Y' },
-  ],
-  'mod-m2-3': [
-    { id: 'm2sub3-1', lessonNumber: 1, title: 'Beta & Gamma Functions Standard Properties & DUIS', duration: '28:40', videoId: '2-fN8r4sU-s', youtubeUrl: 'https://www.youtube.com/watch?v=2-fN8r4sU-s' },
-  ],
-  'mod-m2-4': [
-    { id: 'm2sub4-1', lessonNumber: 1, title: 'Double Integrals & Area Calculations in Cartesian/Polar Coordinates', duration: '36:00', videoId: 'G7j2P3l9M2w', youtubeUrl: 'https://www.youtube.com/watch?v=G7j2P3l9M2w' },
-  ],
+  'mod-m2-1': [],
+  'mod-m2-2': [],
+  'mod-m2-3': [],
+  'mod-m2-4': [],
+  'mod-m2-5': [],
 
   // =========================================================================
   // SEMESTER 2: OBJECT-ORIENTED PROGRAMMING (C++) (316U06C205)
