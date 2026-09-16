@@ -712,41 +712,7 @@ export default function YouTubeResourcesPage() {
           </div>
         )}
 
-        {/* Instructor / Channel Quick Filter Pills */}
-        {availableAuthors.length > 1 && (
-          <div className="pt-2 border-t border-slate-800/60">
-            <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
-              <span className="text-[10px] font-bold text-slate-400 uppercase mr-1">Instructor / Author:</span>
-              <button
-                onClick={() => setSelectedAuthor('all')}
-                className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 ${
-                  selectedAuthor === 'all'
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
-                }`}
-              >
-                All Instructors ({availableAuthors.length})
-              </button>
-              {availableAuthors.map((author) => {
-                const isSelected = selectedAuthor === author;
-                return (
-                  <button
-                    key={author}
-                    onClick={() => setSelectedAuthor(isSelected ? 'all' : author)}
-                    className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 flex items-center space-x-1.5 border ${
-                      isSelected
-                        ? 'bg-[#818CF8] text-slate-950 border-[#818CF8] font-bold shadow-md'
-                        : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
-                    }`}
-                  >
-                    <User className="w-3 h-3" />
-                    <span>{author}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
+
 
         {(searchQuery || selectedSubject !== 'all' || selectedModule !== 'all' || selectedAuthor !== 'all') && (
           <div className="flex justify-end pt-1">
