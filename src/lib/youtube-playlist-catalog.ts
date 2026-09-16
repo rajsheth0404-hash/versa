@@ -155,11 +155,21 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // =========================================================================
   // SEMESTER 2: APPLIED MATHEMATICS – II (316U06C201)
   // =========================================================================
-  'mod-m2-1': [],
-  'mod-m2-2': [],
-  'mod-m2-3': [],
-  'mod-m2-4': [],
-  'mod-m2-5': [],
+  'mod-m2-1': [
+    { id: 'm2-1-pradeep', lessonNumber: 1, title: 'Module 1: Eigenvalues and Eigenvectors (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLVloHBWdUExc', youtubeUrl: 'https://youtube.com/playlist?list=PLVloHBWdUExc&si=YsRnVx8pLTscZ7fK' },
+  ],
+  'mod-m2-2': [
+    { id: 'm2-2-pradeep', lessonNumber: 1, title: 'Module 2: Successive Differentiation & Expansion of Functions (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLGZl4p6vpALc', youtubeUrl: 'https://youtube.com/playlist?list=PLGZl4p6vpALc&si=F_rPd3vuYn_C5jTF' },
+  ],
+  'mod-m2-3': [
+    { id: 'm2-3-pradeep', lessonNumber: 1, title: 'Module 3: Beta & Gamma Functions & DUIS (Full Playlist) - Pradeep Giri', duration: 'Full Series', videoId: '', playlistId: 'PLZlV12KqUIyc', youtubeUrl: 'https://youtube.com/playlist?list=PLZlV12KqUIyc&si=1iC-E89f0vgQOrLb' },
+  ],
+  'mod-m2-4': [
+    { id: 'm2-4-mathmagix', lessonNumber: 1, title: 'Module 4: Rectification of Plane Curves (Full Playlist) - MathMagix', duration: 'Full Series', videoId: '', playlistId: 'PLMoHHTLiAvKU', youtubeUrl: 'https://youtube.com/playlist?list=PLMoHHTLiAvKU&si=JRPfBkWwFCogLHYR' },
+  ],
+  'mod-m2-5': [
+    { id: 'm2-5-mix', lessonNumber: 1, title: 'Module 5: Multiple Integration & Applications (Full Playlist)', duration: 'Full Series', videoId: '', playlistId: 'PLD0wrDr01Qiw', youtubeUrl: 'https://youtube.com/playlist?list=PLD0wrDr01Qiw&si=toiT0vHVdDt490mu' },
+  ],
 
   // =========================================================================
   // SEMESTER 2: OBJECT-ORIENTED PROGRAMMING (C++) (316U06C205)
