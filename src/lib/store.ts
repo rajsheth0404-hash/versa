@@ -21,7 +21,7 @@ import {
 } from './somaiya-data';
 
 const STORAGE_KEYS = {
-  SUBJECTS: 'somaiya_fy_subjects_v4',
+  SUBJECTS: 'somaiya_fy_subjects_v5',
   MODULES: 'somaiya_fy_modules_v4',
   RESOURCES: 'somaiya_fy_resources_v3',
   YOUTUBE: 'versa_fy_youtube_v18',

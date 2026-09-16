@@ -214,9 +214,9 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="p-1 font-mono font-bold text-slate-950">4</td>
                       </tr>
                       <tr className="bg-slate-50/60">
-                        <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06C202</td>
+                        <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06E211</td>
                         <td className="border-r border-slate-800 p-1 font-semibold">BS</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Program-Specific Science Course</td>
+                        <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Applied Science for Computer & Allied Programs</td>
                         <td className="border-r border-slate-800 p-1 font-mono">3 – 0 – 0</td>
                         <td className="border-r border-slate-800 p-1 font-mono">3</td>
                         <td className="border-r border-slate-800 p-1 font-mono font-semibold">3 – 0 – 0</td>
@@ -225,7 +225,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                       <tr>
                         <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06C203</td>
                         <td className="border-r border-slate-800 p-1 font-semibold">ES</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Program-Specific Core Course</td>
+                        <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Digital Logic Design</td>
                         <td className="border-r border-slate-800 p-1 font-mono">3 – 0 – 0</td>
                         <td className="border-r border-slate-800 p-1 font-mono">3</td>
                         <td className="border-r border-slate-800 p-1 font-mono font-semibold">3 – 0 – 0</td>
@@ -235,10 +235,10 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06C204</td>
                         <td className="border-r border-slate-800 p-1 font-semibold">HSS</td>
                         <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Environmental Science</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">2 – 0 – 1@</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">3</td>
-                        <td className="border-r border-slate-800 p-1 font-mono font-semibold">2 – 0 – 1</td>
-                        <td className="p-1 font-mono font-bold text-slate-950">3</td>
+                        <td className="border-r border-slate-800 p-1 font-mono">2 – 0 – 0</td>
+                        <td className="border-r border-slate-800 p-1 font-mono">2</td>
+                        <td className="border-r border-slate-800 p-1 font-mono font-semibold">2 – 0 – 0</td>
+                        <td className="p-1 font-mono font-bold text-slate-950">2</td>
                       </tr>
                       <tr>
                         <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06C205</td>
@@ -261,7 +261,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                       <tr className="text-slate-600">
                         <td className="border-r border-slate-800 p-1 font-mono">316U06L201</td>
                         <td className="border-r border-slate-800 p-1">BS</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2">Program-Specific Science Course Laboratory</td>
+                        <td className="border-r border-slate-800 p-1 text-left pl-2">Applied Science Laboratory - II</td>
                         <td className="border-r border-slate-800 p-1 font-mono">0 – 2 – 0</td>
                         <td className="border-r border-slate-800 p-1 font-mono">2</td>
                         <td className="border-r border-slate-800 p-1 font-mono">0 – 1 – 0</td>
@@ -270,7 +270,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                       <tr className="bg-slate-50/60 text-slate-600">
                         <td className="border-r border-slate-800 p-1 font-mono">316U06L202</td>
                         <td className="border-r border-slate-800 p-1">ES</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2">Program-Specific Core Course Laboratory</td>
+                        <td className="border-r border-slate-800 p-1 text-left pl-2">Digital Logic Design Laboratory</td>
                         <td className="border-r border-slate-800 p-1 font-mono">0 – 2 – 0</td>
                         <td className="border-r border-slate-800 p-1 font-mono">2</td>
                         <td className="border-r border-slate-800 p-1 font-mono">0 – 1 – 0</td>
@@ -285,21 +285,12 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1 font-mono">0 – 1 – 0</td>
                         <td className="p-1 font-mono font-bold">1</td>
                       </tr>
-                      <tr className="bg-slate-50/60 text-slate-600">
-                        <td className="border-r border-slate-800 p-1 font-mono">316U06X101</td>
-                        <td className="border-r border-slate-800 p-1">VAC</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2">Sports</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">0 – 0 – 1</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">1</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">0 – 0 – 1</td>
-                        <td className="p-1 font-mono font-bold">1</td>
-                      </tr>
                       <tr className="bg-slate-200 font-bold border-t-2 border-slate-800">
                         <td colSpan={3} className="border-r border-slate-800 p-1.5 text-right pr-3 uppercase">Total</td>
-                        <td className="border-r border-slate-800 p-1.5 font-mono">14 – 8 – 4</td>
-                        <td className="border-r border-slate-800 p-1.5 font-mono">27</td>
-                        <td className="border-r border-slate-800 p-1.5 font-mono">14 – 4 – 4</td>
-                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">22</td>
+                        <td className="border-r border-slate-800 p-1.5 font-mono">14 – 8 – 2</td>
+                        <td className="border-r border-slate-800 p-1.5 font-mono">24+1#</td>
+                        <td className="border-r border-slate-800 p-1.5 font-mono">14 – 4 – 2</td>
+                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">20</td>
                       </tr>
                     </>
                   )}
