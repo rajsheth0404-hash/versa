@@ -195,9 +195,25 @@ export const MODULE_PLAYLIST_CATALOG: Record<string, ModuleLectureItem[]> = {
   // =========================================================================
   // SEMESTER 2: DIGITAL LOGIC DESIGN (316U06C203)
   // =========================================================================
-  'mod-dld-1': [],
-  'mod-dld-2': [],
-  'mod-dld-3': [],
-  'mod-dld-4': [],
-  'mod-dld-5': [],
+  'mod-dld-1': [
+    { id: 'dld-sudhakar', lessonNumber: 1, title: 'Digital Logic Design: Complete Course - Sudhakar Atchala', duration: 'Full Series', videoId: '', playlistId: 'PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP', youtubeUrl: 'https://youtube.com/playlist?list=PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP&si=tdTTFU6BtL4vIDad' },
+    { id: 'dld-neso', lessonNumber: 2, title: 'Digital Electronics & Logic Design (Full Playlist) - Neso Academy', duration: 'Full Series', videoId: '', playlistId: 'PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm', youtubeUrl: 'https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=29-KAx_-9bePTkuA' },
+    { id: 'dld-aae', lessonNumber: 3, title: 'Digital Electronics (Complete Master Series) - All About Electronics', duration: 'Full Series', videoId: '', playlistId: 'PLwjK_iyK4LLBC_so3odA64E2MLgIRKafl', youtubeUrl: 'https://youtube.com/playlist?list=PLwjK_iyK4LLBC_so3odA64E2MLgIRKafl&si=cTbrzA9TYRr3lRC-' },
+  ],
+  'mod-dld-2': [
+    { id: 'dld2-sudhakar', lessonNumber: 1, title: 'DLD: Complete Course - Sudhakar Atchala', duration: 'Full Series', videoId: '', playlistId: 'PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP', youtubeUrl: 'https://youtube.com/playlist?list=PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP&si=tdTTFU6BtL4vIDad' },
+    { id: 'dld2-neso', lessonNumber: 2, title: 'Digital Electronics - Neso Academy', duration: 'Full Series', videoId: '', playlistId: 'PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm', youtubeUrl: 'https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=29-KAx_-9bePTkuA' },
+  ],
+  'mod-dld-3': [
+    { id: 'dld3-sudhakar', lessonNumber: 1, title: 'DLD: Complete Course - Sudhakar Atchala', duration: 'Full Series', videoId: '', playlistId: 'PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP', youtubeUrl: 'https://youtube.com/playlist?list=PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP&si=tdTTFU6BtL4vIDad' },
+    { id: 'dld3-neso', lessonNumber: 2, title: 'Digital Electronics - Neso Academy', duration: 'Full Series', videoId: '', playlistId: 'PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm', youtubeUrl: 'https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=29-KAx_-9bePTkuA' },
+  ],
+  'mod-dld-4': [
+    { id: 'dld4-sudhakar', lessonNumber: 1, title: 'DLD: Complete Course - Sudhakar Atchala', duration: 'Full Series', videoId: '', playlistId: 'PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP', youtubeUrl: 'https://youtube.com/playlist?list=PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP&si=tdTTFU6BtL4vIDad' },
+    { id: 'dld4-neso', lessonNumber: 2, title: 'Digital Electronics - Neso Academy', duration: 'Full Series', videoId: '', playlistId: 'PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm', youtubeUrl: 'https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=29-KAx_-9bePTkuA' },
+  ],
+  'mod-dld-5': [
+    { id: 'dld5-sudhakar', lessonNumber: 1, title: 'DLD: Complete Course - Sudhakar Atchala', duration: 'Full Series', videoId: '', playlistId: 'PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP', youtubeUrl: 'https://youtube.com/playlist?list=PLXj4XH7LcRfBQXAd8FPZXmMzxZY-rViLP&si=tdTTFU6BtL4vIDad' },
+    { id: 'dld5-neso', lessonNumber: 2, title: 'Digital Electronics - Neso Academy', duration: 'Full Series', videoId: '', playlistId: 'PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm', youtubeUrl: 'https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm&si=29-KAx_-9bePTkuA' },
+  ],
 };

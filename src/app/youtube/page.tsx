@@ -834,6 +834,99 @@ export default function YouTubeResourcesPage() {
         </div>
       )}
 
+      {/* 💡 Digital Logic Design Multi-Instructor Selector Banner */}
+      {selectedSubject === 'sub-dld' && selectedAuthor === 'all' && (
+        <div className="glass-panel bg-gradient-to-r from-amber-950/40 via-cyan-950/40 to-indigo-950/40 border border-[#38BDF8]/40 p-6 rounded-3xl space-y-4 shadow-xl animate-in fade-in">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#38BDF8]/20 text-[#38BDF8] font-mono border border-[#38BDF8]/30">
+                  316U06C203 • 3 Curated Master Series
+                </span>
+                <h3 className="text-base font-bold text-[#F8FAFC]">Choose Your Preferred DLD Instructor</h3>
+              </div>
+              <p className="text-xs text-slate-300 mt-1">
+                Digital Logic Design has full-syllabus comprehensive playlists from top computer engineering educators. Select an instructor or browse all below:
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+            {/* Sudhakar Atchala Card */}
+            <div
+              onClick={() => setSelectedAuthor('Sudhakar Atchala')}
+              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#38BDF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-cyan-500/20 text-[#38BDF8] flex items-center justify-center font-bold">
+                    SA
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-xs group-hover:text-[#38BDF8] transition">Sudhakar Atchala</h4>
+                    <p className="text-[10px] text-slate-400">Complete Syllabus Playlist</p>
+                  </div>
+                </div>
+                <button className="px-2.5 py-1 rounded-lg bg-[#38BDF8] text-slate-950 text-[11px] font-bold shadow group-hover:scale-105 transition">
+                  Watch
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-snug">
+                Step-by-step lecture series covering Number Systems, Boolean Algebra, K-Maps, Combinational &amp; Sequential Circuits, Flip-Flops, Registers &amp; FSM.
+              </p>
+            </div>
+
+            {/* Neso Academy Card */}
+            <div
+              onClick={() => setSelectedAuthor('Neso Academy')}
+              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-amber-400 hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold">
+                    NA
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-xs group-hover:text-amber-300 transition">Neso Academy</h4>
+                    <p className="text-[10px] text-slate-400">Master Electronics Series</p>
+                  </div>
+                </div>
+                <button className="px-2.5 py-1 rounded-lg bg-amber-400 text-slate-950 text-[11px] font-bold shadow group-hover:scale-105 transition">
+                  Watch
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-snug">
+                The world-renowned complete course on Digital Electronics, logic gates, minimization, and comprehensive circuit design.
+              </p>
+            </div>
+
+            {/* All About Electronics Card */}
+            <div
+              onClick={() => setSelectedAuthor('All About Electronics')}
+              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#818CF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-[#818CF8] flex items-center justify-center font-bold">
+                    AE
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-xs group-hover:text-[#818CF8] transition">All About Electronics</h4>
+                    <p className="text-[10px] text-slate-400">Visual Animations &amp; Solved Sets</p>
+                  </div>
+                </div>
+                <button className="px-2.5 py-1 rounded-lg bg-[#818CF8] text-slate-950 text-[11px] font-bold shadow group-hover:scale-105 transition">
+                  Watch
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 leading-snug">
+                Crystal clear diagrams and intuitive explanations for Adders, Subtractors, Sequential circuits, Flip-Flops, Counters, and PLDs.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 📘 Biology for Engineers Subject Notice Banner */}
       {selectedSubject === 'sub-bio' && (
         <div className="glass-panel bg-emerald-950/30 border border-emerald-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
