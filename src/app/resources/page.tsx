@@ -467,7 +467,7 @@ export default function ResourcesPage() {
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Semester 2 Courses (6 Subjects)
+              Semester 2 Courses (5 Subjects)
             </button>
           </div>
         ) : (

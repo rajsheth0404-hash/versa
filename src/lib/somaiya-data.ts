@@ -195,22 +195,6 @@ export const INITIAL_SUBJECTS: Subject[] = [
     description: 'Classes, data abstraction, encapsulation, constructors/destructors, operator overloading, inheritance hierarchies, runtime polymorphism, virtual functions, templates, and STL.',
     thumbnailUrl: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&auto=format&fit=crop&q=80',
     iconName: 'Code',
-  },
-  {
-    id: 'sub-pcs',
-    semester: 2,
-    code: '316U06T201',
-    name: 'Presentation and Communication Skills',
-    category: 'HS',
-    scheme: 'REV_2025',
-    credits: 2,
-    theoryCredits: 1,
-    tutorialCredits: 1,
-    practicalCredits: 0,
-    hasLab: false,
-    description: 'Professional business correspondence, technical report drafting, presentation design, group discussions, job interview strategies, and engineering workplace ethics.',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&auto=format&fit=crop&q=80',
-    iconName: 'MessageSquare',
   }
 ];
 
@@ -715,35 +699,6 @@ export const INITIAL_MODULES: Module[] = [
     description: 'Function and class templates, try-catch exception handling, standard template library (vector, list, map), and iterators.',
     topics: ['Function & Class Templates', 'Exception Handling Mechanisms', 'STL Vectors, Maps & Iterators'],
     weightageMarks: 18,
-  },
-
-  // --- Presentation and Communication Skills (316U06T201) ---
-  {
-    id: 'mod-pcs-1',
-    subjectId: 'sub-pcs',
-    moduleNumber: 1,
-    title: 'Business & Professional Correspondence',
-    description: 'Formal business emails, professional memos, cover letters, and organizational communication channels.',
-    topics: ['Email Etiquette & Structure', 'Cover Letter & Resume Writing', 'Organizational Communication Channels'],
-    weightageMarks: 16,
-  },
-  {
-    id: 'mod-pcs-2',
-    subjectId: 'sub-pcs',
-    moduleNumber: 2,
-    title: 'Technical Report Drafting & Presentations',
-    description: 'Structure of engineering technical reports, visual data representation, and high-impact presentation delivery techniques.',
-    topics: ['Technical Report Architecture', 'Visual Aids & Slide Design', 'Oral Presentation Delivery'],
-    weightageMarks: 18,
-  },
-  {
-    id: 'mod-pcs-3',
-    subjectId: 'sub-pcs',
-    moduleNumber: 3,
-    title: 'Group Discussions, Interviews & Professional Ethics',
-    description: 'Group discussion dynamics, non-verbal communication, interview preparation strategies, and engineering professional ethics.',
-    topics: ['Group Discussion Leadership', 'Interview Question Strategies', 'Engineering Ethics & Professionalism'],
-    weightageMarks: 16,
   }
 ];
 

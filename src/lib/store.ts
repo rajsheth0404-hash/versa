@@ -21,10 +21,10 @@ import {
 } from './somaiya-data';
 
 const STORAGE_KEYS = {
-  SUBJECTS: 'somaiya_fy_subjects_v5',
-  MODULES: 'somaiya_fy_modules_v5',
+  SUBJECTS: 'somaiya_fy_subjects_v6',
+  MODULES: 'somaiya_fy_modules_v6',
   RESOURCES: 'somaiya_fy_resources_v3',
-  YOUTUBE: 'versa_fy_youtube_v20',
+  YOUTUBE: 'versa_fy_youtube_v21',
   DECKS: 'somaiya_fy_flashcards_v3',
   DIAGRAMS: 'somaiya_fy_diagrams_v3',
   ATTENDANCE: 'somaiya_fy_attendance_v3',
