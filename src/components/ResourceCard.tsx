@@ -299,25 +299,23 @@ export default function ResourceCard({
             )}
           </button>
 
-          {/* Admin Edit & Delete */}
-          {currentUser?.role === 'admin' && (
-            <div className="flex items-center space-x-1 border-l border-slate-800/80 pl-2">
-              <button
-                onClick={() => setIsEditOpen(true)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-[#38BDF8] hover:bg-slate-800/80 transition"
-                title="Edit Resource"
-              >
-                <Edit2 className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={handleDeleteResource}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800/80 transition"
-                title="Delete Resource"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          )}
+          {/* Quick Edit & Delete Actions */}
+          <div className="flex items-center space-x-1 border-l border-slate-800/80 pl-2">
+            <button
+              onClick={() => setIsEditOpen(true)}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-[#38BDF8] hover:bg-slate-800/80 transition"
+              title="Edit Resource"
+            >
+              <Edit2 className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={handleDeleteResource}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800/80 transition"
+              title="Delete Resource"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
 
