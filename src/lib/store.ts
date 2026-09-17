@@ -23,7 +23,7 @@ import {
 const STORAGE_KEYS = {
   SUBJECTS: 'somaiya_fy_subjects_v6',
   MODULES: 'somaiya_fy_modules_v6',
-  RESOURCES: 'somaiya_fy_resources_v4',
+  RESOURCES: 'somaiya_fy_resources_v5',
   YOUTUBE: 'versa_fy_youtube_v21',
   DECKS: 'somaiya_fy_flashcards_v3',
   DIAGRAMS: 'somaiya_fy_diagrams_v3',
