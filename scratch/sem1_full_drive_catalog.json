@@ -1,0 +1,1006 @@
+{
+  "AM-1": {
+    "id": "15fAcQWYUkYCvxC70hvyEKgLylykQPYYa",
+    "name": "Applied Mathematics - I",
+    "direct_items": [],
+    "subfolders": {
+      "Module 1": {
+        "id": "1-VEzxGXMxNea2-PoWLG2SgQ3FpZwmF8i",
+        "items": [
+          {
+            "id": "1Aj0ctCQ0gTKCiu-zCe5VXhcsaN18UVOM",
+            "title": "MAtrix PYQs",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1uIn_9NSf063x8lDHHKx7e5sirFcH39KI",
+            "title": "ppt notes",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1-Y81o5s7pX5wnWYn33A29krTL6kNW7gm",
+            "title": "Matrices_Theory_Notes.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1C4XekFmlUj0zmCLj_mIetIEcWxMM_c0M",
+            "title": "Module 1.1 \\u0026 1.2 Rank of Matrices.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1aKTKa-yY2uT88BKBvQk-9pPXv8zrlGAZ",
+            "title": "Module 1.3 \\u0026 1.4 System of Equations.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "199pkpfiQW0lQobDviaX4bNH7K1XyOzgu",
+            "title": "Module 1.5 Numerical Methods Ques.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1sxbLDcesWBhqrajLPK-VqU6WHMfpZWZq",
+            "title": "Module 1.5 Numerical Methods Theory.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1JBfzKbJXwbKl8nXHp_vGBUKC2cy6QXrz",
+            "title": "Module 1.6 Encryption \\u0026 Decryption Theory.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "Module 2": {
+        "id": "1_0Mw9AUBEz3wSMyDhtzMr7AzZQyNOtQO",
+        "items": [
+          {
+            "id": "1OgIIIlL158vCaWy8AoO2OnGcm1eKAf1p",
+            "title": "ppt notes",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1dFjdPl-0GCacy-hoCYJ9mYfhVgMQLtjS",
+            "title": "Module 2.1- Partial derivatives of first and  higher order.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1Q5_B_teUTTRIDEioXlK1EGAhnw0jW5y4",
+            "title": "Module 2.2 - Composite Function.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1msTjapGssvhLq3MSVDjbBBI-n0GJuHFo",
+            "title": "Module 2.3 - Maxima \\u0026 Minima.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1b1PALYpnyfswGyUz9RFQFslub3WGF0kj",
+            "title": "Module 2.4 - Jacobian.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "Module 3": {
+        "id": "1ASseDavf9I0PsJ_7HP_HTUIU-OXpSSan",
+        "items": [
+          {
+            "id": "17jnMdxs1XA0EZjhvCvkwBjrUvEznbIAK",
+            "title": "ppt notes",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1zO0BxPQzO-TgzESijPDnoZTO7PqgAZiO",
+            "title": "1_Homogeneous functions Theorem  Corollaries.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1vsc6VYo8v5zFgqVxGnIcDhqwsHSsXfoR",
+            "title": "1_Homogeneous functions Theorem  Corollariess.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1cOsfu22i4VxnIIfhGqV93vz5GUs-I-ng",
+            "title": "Homo Functions with egs.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1eAek-Bkiio28PlLzNc9Qk7JGi5LeY94B",
+            "title": "Homogeneous functions (1).pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1_yR8zlzfQOLx4eaqjvW5jcNGBSaR9mDX",
+            "title": "Homogeneous functions(better).pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1U1E34Az4_kq6Drvd4j9ZCauPZz_a0MyW",
+            "title": "Homogenous Functions.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1AF76OlvjBovFg3jd1EGN9M9N0NdT_ePP",
+            "title": "Mod3 Prac Ques.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1aReEae_flvBgehGCQgb8saDTFTFxVKgk",
+            "title": "Module 3 Homogeneous Functions.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "Module 4": {
+        "id": "1F2MwOBH7EpeEaBWCsoRv7UvvqJL5s7LP",
+        "items": [
+          {
+            "id": "1IldOR83A-oST8IM0ShArucXSRb6VML3G",
+            "title": "prac ques",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1Im_Qsf72OQ-Vmh9B7HpY655xl6lyrir9",
+            "title": "1. Exact DE 1.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "133YgEZo6tvYoIudZQ1qYQ7z4D0Ka_Zaw",
+            "title": "2 reduciable to Exact DE.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1U2r4s1Iw6EobxpPCSKNpD9LniHqGJ32B",
+            "title": "3. Linear DE.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1op3MweKnYBEy9d0_ofcVAKekRzuM0xb_",
+            "title": "5. CF .pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "12ZM1a8jTSdUhDat_o6IB_8Ivq8jX6Oeo",
+            "title": "6. PI .pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1HlsQthRKnl_5yQpuSSg6otWGYmOjWSZf",
+            "title": "Practice Problems- DE.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "Module 5": {
+        "id": "1ETIb5RkTghQ5eOA9elCKqTa4T_9UQWEf",
+        "items": [
+          {
+            "id": "1pKCgVFZsdbUbRAhgpVTCjWwt7klm08lz",
+            "title": "notes",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "17BUpym1xY1hZ7hi_6VaIXczEiEdYcA1R",
+            "title": "prac ques",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1ky1Mk2n4AShJWW8avEZXnlVeFgWvRcEL",
+            "title": "Hyperbolic Function Formulae.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1LnzG1CHDAphHvR7pd_nANPlA9gmYeS3h",
+            "title": "Module 1.1 and 1.2 Demoivres thm and Roots.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1JoNHQYLj-QsUXneKJuncdcIuNmLX4Unf",
+            "title": "Module 1.3-1.6  Hyperbolic, Inverse hyperbolic, Separation into real Img, Log of complex.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "resources": {
+        "id": "1o7j3ixpqfrixBTNo-otDW14qBgd84l1W",
+        "items": [
+          {
+            "id": "1AV_Juedu4wLzSFaZkUpNJQTkHBZRF7yk",
+            "title": "G.V Kumbhojkar 2.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1pEUVJlE7DtgIiSHznTbPrVj-90h4G-_z",
+            "title": "G.V. Kumbhojkar book .pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      }
+    }
+  },
+  "BE": {
+    "id": "1a9aC61SdNhfT7m2-xviDYNAtWeSAUFzr",
+    "name": "Basic Electronics",
+    "direct_items": [],
+    "subfolders": {
+      "mod1": {
+        "id": "1jjXXDn7dXTOpSbqQiI50OMSikHmO-PN7",
+        "items": [
+          {
+            "id": "1QymaylFSSKu91d9KRY3TffFeE02mV7Gl",
+            "title": "Lecture 1.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1BahTR_d2I-2OaC7tE1BV_zZe92Wb87um",
+            "title": "Lecture 2 - 3.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1PX1UFviYlm6-RAEfF-D7qDHhmqd1rgr1",
+            "title": "Lecture 4.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          }
+        ]
+      },
+      "mod2": {
+        "id": "1-SHYaedL6OF93XOUd4kT7JxWF3z8EshU",
+        "items": [
+          {
+            "id": "1tvNF1zvsmHBxM22MAkpvAMA3bZzmaoSe",
+            "title": "DNA-Replication-and-Transcription-The-Blueprint-of-Life-in-Action.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1iSUKBO6jZTCHgX9R8XOR_d-TWoFI9Mwt",
+            "title": "Introduciton to Basic Cell Biology.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1zpI4d578VgvCG7Ry-o_x_L4tLuicAzTa",
+            "title": "Introduction-to-Bioinformatics.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          }
+        ]
+      },
+      "mod3": {
+        "id": "1634j1xw5G4uJozcKsoS4tdDMWqoCum0y",
+        "items": [
+          {
+            "id": "12jefCFk3Za0dgXP6SIb6hQnROG_YuZb-",
+            "title": "Fermentation - Lecture 1 and  2.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1PH3Il8Y5p7uS1cTVmvdztz5ktddekH0f",
+            "title": "Fermentation - Lecture 3.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1ElQyY0DPipxkunuKoPhwY_aUoFKjl-bG",
+            "title": "Fermentation - Lecture 4.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1cpwj0iWEr3ipW0D0zfBm3C-1wQGIXshI",
+            "title": "Fermentation - Lecture 5.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1e_oX86-rAr8dOq6r1mYU4W-UeLvjSi5Z",
+            "title": "Fermentation - Lecture 6.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          }
+        ]
+      },
+      "mod5": {
+        "id": "1i3oZBgf2Opa_KqbRY42ujgpcMOjTznsp",
+        "items": [
+          {
+            "id": "1J2odcLuhi3AOASHz-a9lH526EZe9_eYV",
+            "title": "Systems Lecture 1.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1yRd8eNdt2Vj7vQf2GoBElzkfoa-oia7l",
+            "title": "Systems Lecture 2.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "14X_W6vgmxoBX30aXwVuA3vuqIEpu_gZo",
+            "title": "Systems Lecture 3.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          }
+        ]
+      }
+    }
+  },
+  "BEE": {
+    "id": "1xqPi9bmThNNmTuz7rnbtA293WD_Sb6a_",
+    "name": "Basic Electrical Engineering",
+    "direct_items": [],
+    "subfolders": {
+      "mod1": {
+        "id": "1T79Z7s5v6nvUbi80CT67umXYnOrsOsoy",
+        "items": [
+          {
+            "id": "1VPrGK-wXlPW4uXbXpU020ILdEeinvZ4g",
+            "title": "Chapter_1_Mesh_analysis_DC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1XSBqUqkqrYm_GP2aVw3hPhMlfakIhizH",
+            "title": "Chapter_1.1_DC Circuit_Basics_1.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "18bH8r3Fz73_NAmN2zmVy5eBZl6BrXoWT",
+            "title": "Chapter_1.2_DC circuits_Interconnection of sources.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "15rhDgW9_2Peeyci5zzFZhfLIO5HLtd3S",
+            "title": "Chapter_1.3_DC Circuits_ressitive nw simplification.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1e-3EiJW8dqEC0LLHeZEVtpIIuIR4LgF0",
+            "title": "Chapter_1.4_DC circuit_star_delta.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "19yOvlU45ZTLJqclZPjyKxMgGZEd4GRES",
+            "title": "Chapter_1.6_Nodal_Analysis_DC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1cifl3ph7ozwER_gktMxrHGHEE5M4TXTZ",
+            "title": "chapter_1.7_Super_Position _ Pracice_DC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "14--QP697NBFDbUVLXLBPbsdtrv7nDw0p",
+            "title": "Chapter_1.8_THEVENIN_DC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1iinu02_mOwMGKC-RKB1gnxZmeK1WrTAa",
+            "title": "Chapter_1.9_NORTON_DC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1nHb_ixQt3NnQcFR1XIn0HCPQnO14xeQ6",
+            "title": "Chapter_1.10_Maximum power transfer.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "17fe3ztCvXE_geqGmDAVf2ZIc5VdpRvsk",
+            "title": "Chapter_1.11_practice numericals.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "mod2": {
+        "id": "1ATL-et8iDXVzCfvWw1HJkYYLGodHWmf9",
+        "items": [
+          {
+            "id": "1mug-r4g5ynqxErhiEfJW1G5grP3HnXM0",
+            "title": "2.1, 2.2, 2.3 Previous year AC circuits.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1j3oMZZP-bNXyU9FxhkLIx39mnsSENXq2",
+            "title": "AC circuits_2.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1i3Qd2H3AIveKCTv93gaRKP6eKq7TRSvN",
+            "title": "Chapter_2.1_AC Circuits_1.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "mod3": {
+        "id": "14jq8xlhInMPh6gcOrRqa5BQ0gxD1jvBV",
+        "items": [
+          {
+            "id": "16HgAxjFCrHFvjJjOBniDBd-ZWM9HDvmg",
+            "title": "3 Phase AC.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1D_hGyGffSLiJQAbm9wSqOQjWD-6Pz5G7",
+            "title": "Chapter_3_Three phase ac.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "mod4": {
+        "id": "1P0EmY4ENxcM3eW8-NEn48Z5koliauxTf",
+        "items": [
+          {
+            "id": "1T4hht9l8ASvUwEyQH0T_Y5hCIHgZBYni",
+            "title": "Electrical Machines.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "resources": {
+        "id": "1tV0q95Mr6KollLUXX-OMpECG2JYNhbNf",
+        "items": [
+          {
+            "id": "1XR0I7Sz1akyizx5U1tVJx8QHLv_ZXn0a",
+            "title": "Ravish R Singh_ ReferenceBook.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      }
+    }
+  },
+  "EC": {
+    "id": "1-KQRv2MT7XW9KJVrDnJ98Ey9JKASSCMi",
+    "name": "Engineering Chemistry",
+    "direct_items": [
+      {
+        "id": "1jjzJ5oc8S_iBsJHity0OSn66buB7GsxF",
+        "title": "CHEMISTRY TRUPTI PARADKAR.pdf",
+        "is_folder": false,
+        "mime": "application\\/pdf"
+      },
+      {
+        "id": "1zThLgkISd_J_4HvMMoiOy8BlPolyDHLx",
+        "title": "Jain \\u0026 Jain Engineering Chemistry.pdf",
+        "is_folder": false,
+        "mime": "application\\/pdf"
+      },
+      {
+        "id": "1zf0zNBc09YD6GZ24yRMtclxhVxZJ7fNT",
+        "title": "Sample Questions - FY-ESE [2025-26].docx - Google Docs.pdf",
+        "is_folder": false,
+        "mime": "application\\/pdf"
+      }
+    ],
+    "subfolders": {
+      "corrosion \\u0026 electrochem": {
+        "id": "1CV0IjCZBSmX2ZeZixg2Q2aLWMpPuKDgu",
+        "items": [
+          {
+            "id": "12eD3leq-s6Z8ZUjO8QJ9T7k0Kzpqk6nK",
+            "title": "corrosion_final.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "16BsFsGgAkGU1yY8ulYkuWJ5zlgu4GD0w",
+            "title": "Corrosion.doc",
+            "is_folder": false,
+            "mime": "application\\/msword"
+          },
+          {
+            "id": "1uqK3stcsPK9fPGRUtpD4N389RFwktlfJ",
+            "title": "ELECTROCHEM \\u0026 COROSSION.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "greenchem": {
+        "id": "1HC3BH9o1S_MaXxmQAxYiFBu2L_Cx7194",
+        "items": [
+          {
+            "id": "1M-u63StKtIegj-U1hJ2RYIWaTL-whIKo",
+            "title": "GREEN CHEMISTRY.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "organic": {
+        "id": "1IuMOfaswg_29aIyuJ_2zNjYyIDXKXnkX",
+        "items": [
+          {
+            "id": "1jTLk3V6ts3Kj3NLJfFmlUN6KLAISTYvR",
+            "title": "Reaction mechanism \\u0026 Rearrangements.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1IymRxNV-il_r3gN3wJ0HN-tKtmCXM-Xb",
+            "title": "Reaction mechanism \\u0026 Rearrangements.pptx.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1PvGfYff6pdNmKAkEOCBtRh-29fjv7gXW",
+            "title": "Reaction mechanism.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          }
+        ]
+      },
+      "water": {
+        "id": "1uKWboecUBstIV2S41T4UyaW3MWADP9JN",
+        "items": [
+          {
+            "id": "1ltRpZBydFi98gIkH1O9_wjSoRCH_73oZ",
+            "title": "Hardness \\u0026 soda lime numericals.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1hnii-xHqfUiOfguKMf6eeIid9VC8pxGl",
+            "title": "ion exchange numerical.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1mr5h3hlIlW9dsWuoXfEJJQAVDaz6pIxR",
+            "title": "Numericals on WATER.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1QaL3C60V5iXzIc1JVRYEfkkkn6LxW8X-",
+            "title": "Water 17-11-25.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1lnXyiwcY4hlZZPX6RhtPPujOZdo9tbDe",
+            "title": "WATER.pptx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.presentationml.presentation"
+          },
+          {
+            "id": "1BW3qVhFUH3_q5vFGPYDicZPMJ55chUKu",
+            "title": "zeolite numericals.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      }
+    }
+  },
+  "ED": {
+    "id": "1YYlq9MPoPa430XBUpJAsIHbn00HJ2Zzl",
+    "name": "Engineering Drawing",
+    "direct_items": [],
+    "subfolders": {
+      "notes": {
+        "id": "1SHt1PMmG9bqCuKClM6NdNf_z2dlSZS5E",
+        "items": [
+          {
+            "id": "1ZkTteZq0KNJ2NLs_XK7Vn6rcEEic84wM",
+            "title": "mod1",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1IfXY-WUWXmn7UuOwSFe7ec1eAu6ltDlW",
+            "title": "mod2",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1W2Vtlj63nRjtQDEPd04JaWp21o_mDv3M",
+            "title": "mod3",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1KuHBDpsiNDDNXrkT8AOIdrnWkM-opf6o",
+            "title": "mod4",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1Nzv9K78nTXL8peKePC7ecIr6ig4c9zqh",
+            "title": "mod5",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          }
+        ]
+      },
+      "ques bank": {
+        "id": "1MG-eGL0IG_jKpi-aFpDlf00Qh8Dr9Sai",
+        "items": [
+          {
+            "id": "11h3_nXr71MySH-KTwUIxW-yvKPfIskSm",
+            "title": "ED ACAD Aug Dec 2025.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "13bKWeQ4RRajOZKNRW26qazdmSbhiSCpV",
+            "title": "ED Booklet 4th Aug 2025.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1-LHjxDr-pcFidxAxr6p4dJ2nzNPQQ-t9",
+            "title": "ED Sketch book Aug Nov 2025.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "resources or books": {
+        "id": "12qJt8N0kcEOr3GvimMzcPUNn8p1fq0y2",
+        "items": [
+          {
+            "id": "1FodBAADtp64eFq_du_lOIhGGQWVVkU5D",
+            "title": "EDrawing N.H DUBEY.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1gWpoRzQWZi_jZ95cxWcHCUPuyOojq2Zo",
+            "title": "ENGINEERING DRAWING BY N.D BHATT.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      }
+    }
+  },
+  "EP": {
+    "id": "1RdTJhQmbOgBiEvUTTJB3OjvXoYiPBwhD",
+    "name": "Engineering Physics",
+    "direct_items": [],
+    "subfolders": {
+      "derivations": {
+        "id": "1lWBfqyLG-m1j-h7ZAZ_ta2Dgou4uh5bR",
+        "items": [
+          {
+            "id": "1HCRys9ZJdeQ0_cssoTaqvfirMCk1Z12S",
+            "title": "ALL EP DERIVATIONS.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1AewDfo1BW5BZJdBkn5rOrn4izMeQti-c",
+            "title": "Einstein's Coefficients.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1D7Ou9i1q-vOxWEwq9iFuFJfbmhYSPjse",
+            "title": "Lasing Threshold.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1QPwXMSLYpZGPiMex9SKmpNBr_3b7aF66",
+            "title": "Maximum and Minimum Condition (Thin Film Interference).pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "10CCebgqndxj7cabOiwiVItDRr874-Uzb",
+            "title": "Maximum and Minimum For Transmitted Rays.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1_wAhkCPXXUu4kUBFV_ygpJUz5yobgivK",
+            "title": "Numerical Aperture.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1s67V0GcQXrKw6zn8kY9va3JCtfamcauC",
+            "title": "Physics Derivations.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "mod1": {
+        "id": "1QaXCLCG6l00ZVSfEooNKpKQtwVv-Zu1r",
+        "items": [
+          {
+            "id": "1CqdkVl_0XyptWv5dwWgjhesg4-QgwUcu",
+            "title": "diffraction",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1lUEc5JoEpkmKEz2Gw-OXGVkw5D7L-KgI",
+            "title": "interference",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          }
+        ]
+      },
+      "mod2": {
+        "id": "1mnBWt3YozmeYCuHNcepiAjuO3Dt-SIZy",
+        "items": [
+          {
+            "id": "12IJ7IhcAxYF5MdIf3iXT93m5EtqSH4ax",
+            "title": "laser",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1DgNanQcppe9ABfhKJKbki2sifWe1bfG-",
+            "title": "optical fibres",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          }
+        ]
+      },
+      "mod3": {
+        "id": "18atGcK2zahYOIl0HQ_9wAxehFRkYnm_G",
+        "items": [
+          {
+            "id": "1RCF5Ptzdlch1Biv_jOo5dNn_n4CzvUjB",
+            "title": "Basics of Quantum Computing.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "11mTg7gwP-VlXYE1NweY-vZPbXDCt0pnf",
+            "title": "Binding Energy.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1kpZ0dtVGYwftFb4GgdaiI2Icgb6zULvX",
+            "title": "PPT_  Quantum Mechanics.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1J1OLClGv08pIRVLGKKCZCrgeuNqFqewk",
+            "title": "Prof. Surens Notes on Quantum Mechanics.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1cfgXn1MD5GgcfAaMMmfm85hah3WfQzbF",
+            "title": "QM - Numericals.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1S_x7qOUlqBa7AGp36e5BhvczmiGGkGGd",
+            "title": "Quantum Mechanics_Numerical problems.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1yw2zw667vbhQsQj_wOVJUq10BN-SnbE1",
+            "title": "Quantum Mechanics_solved numericals.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1bbqIvfTVpG4XRvn9ATlEOn_vYiIEGsym",
+            "title": "Qubits and Qunatum logic gates.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1rP2gdkU4ZgO7UZZwgfg56g9W7XD_OKXd",
+            "title": "Solutions to Quantum Mechanics_Numerical problems.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1T5xXpzYTs18q7KiJoInZin2lxjaf_kok",
+            "title": "Unit - 3.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1gSQWZnX5kgDqJvLBMcdqOrmxb-h6-xR7",
+            "title": "WM - 4BTech_removed.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      },
+      "mod4": {
+        "id": "1Vq2HSgzCnXvjOnxR0nsRm4sRIQsHleLi",
+        "items": [
+          {
+            "id": "12iBSPYRG2O3EXd6Tj1fmzRtSpzYCEl1W",
+            "title": "electromagnetism",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "13rGrjO6exJUVny3OuEkY_ubmzNDeyNCb",
+            "title": "semiconductor",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          }
+        ]
+      }
+    }
+  },
+  "SPM": {
+    "id": "1Mf21AaFpLEVvYNO0KEex0KUPyJuAz_oK",
+    "name": "Structured Programming Methodology",
+    "direct_items": [],
+    "subfolders": {
+      "notes": {
+        "id": "1ecJbqgH1Hp7k7CdqzcR-eYYZ_pXaYqLd",
+        "items": [
+          {
+            "id": "1hEsZsMSHYDgfOy_oMVfg1lVAZ0ZOqh6A",
+            "title": "mod1",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "15Akydexrl5dmsY075yDqCb8wu90bDnok",
+            "title": "mod2",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1qKKb_UXHgUvAWrHL897BFOkVAPmMg_pD",
+            "title": "mod3",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          },
+          {
+            "id": "1z9Kg_J1-hFnFThklih2zEOgXvjCILRlf",
+            "title": "mod4",
+            "is_folder": true,
+            "mime": "application\\/vnd.google-apps.folder"
+          }
+        ]
+      },
+      "Questions": {
+        "id": "1yte1tkeUjvxQgg6cEGuajyXXSShpeBhK",
+        "items": [
+          {
+            "id": "1bdkee7zPOJTH7wV1_vy0LI7jZAkUOggk",
+            "title": "MODULE 1.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1xxH80Roo1i9V5l73P1fyVlqsmmKsfs7m",
+            "title": "MODULE 2.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1ipCM7ZCr-vOQ1ePQ3vWZ1eX2KAxTcE8w",
+            "title": "Module 3.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "13aKutowT51qqFT80ft-GtWkt-egtFmMz",
+            "title": "Module 4.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1BU7-S9tS7fAA1EXdLq6wed1M3yo1YG-8",
+            "title": "Module 5.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "1XTMuGVeo9pAAZckARHJ-GFT3Hj2Ef7yu",
+            "title": "mseqb.docx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          },
+          {
+            "id": "1_t44OMVGgc6YMODu6a5nOEyeZHWLmdLZ",
+            "title": "PIC Practice question_Array.docx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          },
+          {
+            "id": "1zcQwSqTx5NLALQnzdd-69m4tM9Z_PIrV",
+            "title": "PIC Question _ LOOP.docx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          },
+          {
+            "id": "1Ey8qbuKZdtR6KAwb1N2KOCFswhCjxS5v",
+            "title": "PIC_Question_Conditional.docx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          },
+          {
+            "id": "17cxRCdl7UmwrHJ6lQcNk3T-TITumr545",
+            "title": "spmqb.docx",
+            "is_folder": false,
+            "mime": "application\\/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          }
+        ]
+      },
+      "resources": {
+        "id": "1fHuQhJRHIVv-pUkS7yMCNtAlGk5wniY7",
+        "items": [
+          {
+            "id": "1HAAhZPZ7p2_-VZe5et9bTOcChPQCriA2",
+            "title": "Let Us C.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          },
+          {
+            "id": "19If0DZjfvEMg6ow20l_EuMIvRAETR829",
+            "title": "LET US C++.pdf",
+            "is_folder": false,
+            "mime": "application\\/pdf"
+          }
+        ]
+      }
+    }
+  }
+}
