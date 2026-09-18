@@ -443,18 +443,18 @@ export default function YouTubeResourcesPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 animate-in fade-in duration-300 bg-[#0F172A] min-h-screen">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 animate-in fade-in duration-300 min-h-screen">
       {/* Top Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/20 text-xs font-semibold mb-2">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full amber-badge text-xs font-semibold mb-2">
             <Tv className="w-3.5 h-3.5" />
             <span>Syllabus-Aligned Video Lectures • Semester {selectedSemester}</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-[#F8FAFC] tracking-tight">
+          <h1 className="text-3xl font-extrabold text-[var(--primary-text)] tracking-tight">
             Video Lectures & Master Playlists
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[var(--muted-text)] mt-1">
             Curated YouTube playlists, solved numericals, and step-by-step topic lectures.
           </p>
         </div>
@@ -463,7 +463,7 @@ export default function YouTubeResourcesPage() {
         <div className="flex items-center space-x-2 flex-shrink-0">
           <button
             onClick={() => handleOpenAddModal('module_playlist')}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 text-xs font-bold shadow-lg shadow-cyan-950/40 transition"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-zinc-950 text-xs font-bold shadow-md shadow-amber-950/20 transition"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Module Video / Playlist</span>
@@ -473,7 +473,7 @@ export default function YouTubeResourcesPage() {
 
       {/* Year Selector: First Year / Second Year */}
       <div className="flex flex-col items-start justify-start gap-2.5">
-        <div className="flex bg-[#1E293B]/90 p-1.5 rounded-2xl border border-slate-700 shadow-xl gap-1">
+        <div className="flex bg-[var(--subtle-surface)] p-1.5 rounded-2xl border border-[var(--subtle-border)] shadow-sm gap-1">
           <button
             onClick={() => {
               setSelectedYear(1);
@@ -483,8 +483,8 @@ export default function YouTubeResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 1
-                ? 'bg-[#38BDF8] text-slate-950 shadow-lg shadow-cyan-950/40 font-extrabold'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
+                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
             }`}
           >
             <span>First Year</span>
@@ -498,18 +498,12 @@ export default function YouTubeResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 2
-                ? 'bg-[#38BDF8] text-slate-950 shadow-lg shadow-cyan-950/40 font-extrabold'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
+                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
             }`}
           >
             <span>Second Year</span>
-            <span
-              className={`text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold ${
-                selectedYear === 2
-                  ? 'bg-slate-950/30 text-slate-950'
-                  : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-              }`}
-            >
+            <span className="text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold amber-badge">
               Soon
             </span>
           </button>
@@ -517,7 +511,7 @@ export default function YouTubeResourcesPage() {
 
         {/* Nested Semester Selector for Selected Year */}
         {selectedYear === 1 ? (
-          <div className="flex bg-slate-900/90 p-1 rounded-xl border border-slate-800 shadow-md mt-1 animate-in fade-in">
+          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(1);
@@ -526,11 +520,11 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 1
-                  ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
+                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
               }`}
             >
-              Semester 1 Courses (7 Subjects)
+              Semester 1 Video Catalog (7 Subjects)
             </button>
             <button
               onClick={() => {
@@ -540,15 +534,15 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 2
-                  ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
+                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
               }`}
             >
-              Semester 2 Courses (5 Subjects)
+              Semester 2 Video Catalog (5 Subjects)
             </button>
           </div>
         ) : (
-          <div className="flex bg-slate-900/90 p-1 rounded-xl border border-slate-800 shadow-md mt-1 animate-in fade-in">
+          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(3);
@@ -557,8 +551,8 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 3
-                  ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
+                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
               }`}
             >
               Semester 3 Courses
@@ -571,8 +565,8 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 4
-                  ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
+                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
               }`}
             >
               Semester 4 Courses

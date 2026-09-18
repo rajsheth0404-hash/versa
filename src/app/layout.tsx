@@ -15,13 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#0F172A] text-slate-100 selection:bg-[#38BDF8] selection:text-slate-950">
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--brand-accent)] selection:text-black">
         <Navbar />
         <div className="flex-1 md:pl-64 flex flex-col min-w-0">
           <main className="flex-1 w-full">
             <Suspense fallback={
               <div className="flex items-center justify-center min-h-[50vh]">
-                <div className="w-8 h-8 border-2 border-[#38BDF8] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-2 border-[var(--brand-accent)] border-t-transparent rounded-full animate-spin"></div>
               </div>
             }>
               {children}

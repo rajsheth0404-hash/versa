@@ -102,25 +102,25 @@ export default function Navbar() {
       {/* ======================================================== */}
       {/* DESKTOP: FIXED LEFT SIDEBAR NAVIGATION (Stacked Vertically) */}
       {/* ======================================================== */}
-      <aside className="hidden md:flex flex-col justify-between fixed top-0 left-0 h-screen w-64 bg-[#0F172A]/95 backdrop-blur-xl border-r border-slate-800/80 p-5 z-40 shadow-2xl">
+      <aside className="hidden md:flex flex-col justify-between fixed top-0 left-0 h-screen w-64 bg-[var(--sidebar-bg)] backdrop-blur-xl border-r border-[var(--sidebar-border)] p-5 z-40 shadow-sm transition-colors">
         <div className="space-y-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center space-x-3 group px-1">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#38BDF8] via-[#6366F1] to-[#818CF8] flex items-center justify-center shadow-lg shadow-cyan-950/40 group-hover:scale-105 transition-transform text-slate-950 font-black">
-              <GraduationCap className="w-6 h-6 text-slate-950" />
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#F59E0B] via-[#D97706] to-[#B45309] flex items-center justify-center shadow-md shadow-amber-950/20 group-hover:scale-105 transition-transform text-white font-black">
+              <GraduationCap className="w-6 h-6 text-zinc-950" />
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-extrabold text-xl tracking-tight text-[#F8FAFC]">Versa</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#38BDF8]/20 text-[#38BDF8] font-bold">FY</span>
+                <span className="font-extrabold text-xl tracking-tight text-[var(--primary-text)]">Versa</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded-md amber-badge font-bold">FY</span>
               </div>
-              <p className="text-[11px] text-slate-400 font-medium">Computer Engineering</p>
+              <p className="text-[11px] text-[var(--muted-text)] font-medium">Computer Engineering</p>
             </div>
           </Link>
 
           {/* Section Header with Quick Edit Action */}
           <div className="flex items-center justify-between px-2 pt-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted-text)]">
               Academic Hub
             </span>
             <button
@@ -128,7 +128,7 @@ export default function Navbar() {
                 setTempNames(tabNames);
                 setIsEditingTabs(true);
               }}
-              className="p-1 rounded-md text-slate-400 hover:text-[#38BDF8] hover:bg-slate-800 transition"
+              className="p-1 rounded-md text-[var(--muted-text)] hover:text-[var(--brand-accent)] hover:bg-[var(--subtle-surface)] transition"
               title="Edit Tab Names"
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -148,22 +148,20 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                     isActive
-                      ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-lg shadow-cyan-950/50'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/80 border border-transparent'
+                      ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-md shadow-amber-950/20'
+                      : 'text-[var(--muted-text)] hover:text-[var(--primary-text)] hover:bg-[var(--subtle-surface)] border border-transparent'
                   }`}
                 >
                   <div className="flex items-center space-x-3">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-slate-400 group-hover:text-[#38BDF8]'}`} />
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-zinc-950' : 'text-[var(--muted-text)] group-hover:text-[var(--brand-accent)]'}`} />
                     <span>{displayName}</span>
                   </div>
                   {link.badge && (
                     <span
                       className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
                         isActive
-                          ? 'bg-slate-950/30 text-slate-950 font-extrabold'
-                          : link.badge === 'Soon'
-                          ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                          : 'bg-sky-500/20 text-sky-300 border border-sky-500/30'
+                          ? 'bg-black/20 text-zinc-950 font-extrabold'
+                          : 'amber-badge'
                       }`}
                     >
                       {link.badge}
@@ -176,39 +174,39 @@ export default function Navbar() {
         </div>
 
         {/* Bottom Sidebar Section: Theme Toggle, Admin Studio, Quick Role Pill */}
-        <div className="pt-4 border-t border-slate-800/80 space-y-3">
+        <div className="pt-4 border-t border-[var(--card-border)] space-y-3">
           {/* Admin Studio Link */}
           <Link
             href="/admin"
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold tracking-wide uppercase transition-all ${
               pathname.startsWith('/admin')
-                ? 'bg-[#38BDF8] text-slate-950 shadow-md shadow-cyan-950/50'
-                : 'bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/80 hover:border-[#38BDF8]/50'
+                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-md shadow-amber-950/20'
+                : 'bg-[var(--subtle-surface)] text-[var(--muted-text)] hover:text-[var(--primary-text)] border border-[var(--subtle-border)] hover:border-[var(--brand-accent)]'
             }`}
           >
             <div className="flex items-center space-x-2.5">
-              <ShieldCheck className={`w-4 h-4 ${pathname.startsWith('/admin') ? 'text-slate-950' : 'text-[#38BDF8]'}`} />
+              <ShieldCheck className={`w-4 h-4 ${pathname.startsWith('/admin') ? 'text-zinc-950' : 'text-[var(--brand-accent)]'}`} />
               <span>Admin Studio</span>
             </div>
-            <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300">Staff</span>
+            <span className="text-[9px] px-1.5 py-0.2 rounded amber-badge">Staff</span>
           </Link>
 
           {/* Role Switcher Pill & Theme Toggle */}
           <div className="flex items-center justify-between gap-2 pt-1">
             <button
               onClick={toggleRole}
-              className="flex-1 flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-[#38BDF8]/50 transition text-left group"
+              className="flex-1 flex items-center justify-between px-3 py-2 rounded-xl bg-[var(--subtle-surface)] border border-[var(--subtle-border)] hover:border-[var(--brand-accent)] transition text-left group"
               title="Click to switch role between Student and Admin"
             >
               <div className="flex items-center space-x-2 min-w-0">
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#38BDF8] to-[#6366F1] flex items-center justify-center text-[10px] font-extrabold text-slate-950 flex-shrink-0">
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#F59E0B] to-[#D97706] flex items-center justify-center text-[10px] font-extrabold text-zinc-950 flex-shrink-0">
                   {user?.role === 'admin' ? 'AD' : 'ST'}
                 </div>
                 <div className="truncate">
-                  <p className="font-bold text-slate-200 text-xs truncate capitalize leading-tight group-hover:text-[#38BDF8]">
+                  <p className="font-bold text-[var(--primary-text)] text-xs truncate capitalize leading-tight group-hover:text-[var(--brand-accent)]">
                     {user?.role === 'admin' ? 'Admin Mode' : 'Student Mode'}
                   </p>
-                  <p className="text-[9px] text-slate-400 truncate leading-tight">Click to switch</p>
+                  <p className="text-[9px] text-[var(--muted-text)] truncate leading-tight">Click to switch</p>
                 </div>
               </div>
             </button>
@@ -221,27 +219,27 @@ export default function Navbar() {
       {/* ======================================================== */}
       {/* MOBILE: TOP BAR HEADER & MOBILE DRAWER */}
       {/* ======================================================== */}
-      <header className="md:hidden sticky top-0 z-50 bg-[#0F172A]/90 backdrop-blur-md border-b border-slate-800/80">
+      <header className="md:hidden sticky top-0 z-50 bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--card-border)]">
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#38BDF8] via-[#6366F1] to-[#818CF8] flex items-center justify-center text-slate-950 font-black">
-              <GraduationCap className="w-5 h-5 text-slate-950" />
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-zinc-950 font-black">
+              <GraduationCap className="w-5 h-5 text-zinc-950" />
             </div>
-            <span className="font-extrabold text-lg text-[#F8FAFC]">Versa</span>
+            <span className="font-extrabold text-lg text-[var(--primary-text)]">Versa</span>
           </Link>
 
           <div className="flex items-center space-x-2">
             <ThemeToggle />
             <button
               onClick={() => setIsEditingTabs(true)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+              className="p-1.5 rounded-lg text-[var(--muted-text)] hover:text-[var(--primary-text)]"
               title="Edit Tab Names"
             >
               <Edit2 className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+              className="p-1.5 rounded-lg text-[var(--muted-text)] hover:text-[var(--primary-text)]"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
