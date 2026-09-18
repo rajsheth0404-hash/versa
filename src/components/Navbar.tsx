@@ -15,7 +15,12 @@ import {
   Edit2,
   RotateCcw,
   Sparkles,
+  LogOut,
+  LogIn,
+  CheckCircle2,
+  User,
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { HubStore } from '@/lib/store';
 import { UserProfile } from '@/lib/types';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -30,10 +35,12 @@ const DEFAULT_TAB_NAMES: Record<string, string> = {
 const TAB_STORAGE_KEY = 'somaiya_nav_tab_names_pure_notes_v3';
 
 export default function Navbar() {
+  const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState<UserProfile | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   // Tab Customization State
   const [tabNames, setTabNames] = useState<Record<string, string>>(DEFAULT_TAB_NAMES);
@@ -55,6 +62,7 @@ export default function Navbar() {
 
     const handleUpdate = () => {
       setUser(HubStore.getCurrentUser());
+      setImgError(false);
     };
 
     window.addEventListener('somaiya_store_updated', handleUpdate);
@@ -97,6 +105,21 @@ export default function Navbar() {
     }
     setRoleDropdownOpen(false);
   };
+
+  const handleLogout = () => {
+    HubStore.logout();
+    setRoleDropdownOpen(false);
+    router.push('/auth/login');
+  };
+
+  const userInitials = user?.fullName
+    ? user.fullName
+        .split(' ')
+        .map((n) => n[0])
+        .slice(0, 2)
+        .join('')
+        .toUpperCase()
+    : 'SO';
 
   return (
     <>
@@ -176,7 +199,7 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Bottom Sidebar Section: Theme Toggle, Admin Studio, User Profile */}
+        {/* Bottom Sidebar Section: Theme Toggle, Admin Studio, User Profile Photo */}
         <div className="pt-4 border-t border-slate-800/80 space-y-3">
           {/* Admin Studio Link */}
           <Link
@@ -194,48 +217,108 @@ export default function Navbar() {
             <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300">Staff</span>
           </Link>
 
-          {/* Theme & User Profile Controls */}
+          {/* Theme & Somaiya User Profile Controls */}
           <div className="flex items-center justify-between gap-2 pt-1">
-            <div className="relative flex-1">
-              <button
-                onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                className="w-full flex items-center space-x-2 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-[#38BDF8]/40 transition text-left"
-              >
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-slate-700 to-[#1E293B] border border-slate-600 flex items-center justify-center text-xs font-bold text-[#38BDF8] flex-shrink-0">
-                  {user?.role === 'admin' ? 'AD' : 'ST'}
-                </div>
-                <div className="truncate pr-1">
-                  <p className="font-semibold text-slate-200 text-xs truncate leading-tight">
-                    {user?.fullName?.split(' ')[0] || 'User'}
-                  </p>
-                  <p className="text-[10px] text-slate-400 capitalize leading-tight">{user?.role || 'student'}</p>
-                </div>
-              </button>
+            <div className="relative flex-1 min-w-0">
+              {user ? (
+                <button
+                  onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
+                  className="w-full flex items-center space-x-2.5 p-1.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-[#38BDF8]/50 transition text-left group"
+                >
+                  {/* Profile Photo Avatar */}
+                  <div className="relative flex-shrink-0">
+                    {user.avatarUrl && !imgError ? (
+                      <img
+                        src={user.avatarUrl}
+                        alt={user.fullName}
+                        onError={() => setImgError(true)}
+                        className="w-8 h-8 rounded-full object-cover border border-[#38BDF8]/60 shadow-md group-hover:scale-105 transition-transform"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#38BDF8] to-[#6366F1] flex items-center justify-center text-xs font-extrabold text-slate-950 shadow-md">
+                        {userInitials}
+                      </div>
+                    )}
+                    <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full" title="Active Somaiya Session"></span>
+                  </div>
 
-              {roleDropdownOpen && (
-                <div className="absolute left-0 bottom-full mb-2 w-56 glass-panel bg-[#1E293B] rounded-2xl shadow-2xl p-3 border border-slate-700 text-xs z-50 animate-in fade-in zoom-in-95">
-                  <div className="pb-2 border-b border-slate-700/80 mb-2">
-                    <p className="font-semibold text-slate-200">{user?.fullName}</p>
-                    <p className="text-slate-400 text-[11px] truncate">{user?.email}</p>
+                  <div className="truncate pr-1 min-w-0 flex-1">
+                    <p className="font-bold text-slate-100 text-xs truncate leading-tight group-hover:text-[#38BDF8] transition">
+                      {user.fullName}
+                    </p>
+                    <p className="text-[10px] text-slate-400 truncate leading-tight flex items-center gap-1">
+                      <span className="text-cyan-400 font-semibold">@somaiya</span>
+                      <span className="capitalize text-slate-400">• {user.role}</span>
+                    </p>
+                  </div>
+                </button>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  className="w-full flex items-center justify-center space-x-2 p-2 rounded-xl bg-[#38BDF8]/15 border border-[#38BDF8]/40 hover:bg-[#38BDF8] hover:text-slate-950 text-[#38BDF8] text-xs font-bold transition"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Somaiya Sign In</span>
+                </Link>
+              )}
+
+              {roleDropdownOpen && user && (
+                <div className="absolute left-0 bottom-full mb-2 w-64 glass-panel bg-[#131C31] rounded-2xl shadow-2xl p-3.5 border border-slate-700 text-xs z-50 animate-in fade-in zoom-in-95">
+                  <div className="flex items-center space-x-3 pb-3 border-b border-slate-700/80 mb-2.5">
+                    {user.avatarUrl && !imgError ? (
+                      <img
+                        src={user.avatarUrl}
+                        alt={user.fullName}
+                        className="w-10 h-10 rounded-full object-cover border-2 border-[#38BDF8] shadow-md flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#38BDF8] to-[#6366F1] flex items-center justify-center text-sm font-extrabold text-slate-950 flex-shrink-0">
+                        {userInitials}
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center space-x-1">
+                        <p className="font-bold text-slate-100 truncate text-xs">{user.fullName}</p>
+                        <CheckCircle2 className="w-3 h-3 text-[#38BDF8] flex-shrink-0" />
+                      </div>
+                      <p className="text-slate-400 text-[10px] truncate">{user.email}</p>
+                      <span className="inline-block mt-0.5 text-[9px] px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-semibold uppercase">
+                        {user.role} • Sem {user.currentSemester}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="space-y-1">
                     <button
                       onClick={toggleRole}
-                      className="w-full text-left px-2.5 py-2 rounded-xl hover:bg-slate-800 text-slate-300 flex items-center justify-between"
+                      className="w-full text-left px-2.5 py-2 rounded-xl hover:bg-slate-800 text-slate-300 flex items-center justify-between transition"
                     >
                       <span>Switch Role</span>
                       <span className="font-bold text-[#38BDF8]">
-                        {user?.role === 'admin' ? '→ Student' : '→ Admin'}
+                        {user.role === 'admin' ? '→ Student' : '→ Admin'}
                       </span>
                     </button>
                     <Link
                       href="/admin"
                       onClick={() => setRoleDropdownOpen(false)}
-                      className="block px-2.5 py-2 rounded-xl hover:bg-slate-800 text-slate-300"
+                      className="block px-2.5 py-2 rounded-xl hover:bg-slate-800 text-slate-300 transition"
                     >
                       Admin Studio Dashboard
                     </Link>
+                    <Link
+                      href="/auth/login"
+                      onClick={() => setRoleDropdownOpen(false)}
+                      className="block px-2.5 py-2 rounded-xl hover:bg-slate-800 text-slate-300 transition"
+                    >
+                      Switch Somaiya Account
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-2.5 py-2 rounded-xl hover:bg-rose-500/20 text-rose-300 flex items-center space-x-2 transition pt-2 border-t border-slate-800/80 mt-1"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      <span>Sign Out</span>
+                    </button>
                   </div>
                 </div>
               )}
@@ -316,7 +399,40 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="pt-3 border-t border-slate-800 space-y-2">
+            {user && (
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                <div className="flex items-center space-x-2.5 min-w-0">
+                  {user.avatarUrl && !imgError ? (
+                    <img
+                      src={user.avatarUrl}
+                      alt={user.fullName}
+                      className="w-8 h-8 rounded-full object-cover border border-[#38BDF8]"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#38BDF8] to-[#6366F1] flex items-center justify-center text-xs font-bold text-slate-950">
+                      {userInitials}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-bold text-slate-200 text-xs truncate">{user.fullName}</p>
+                    <p className="text-[10px] text-slate-400 truncate">{user.email}</p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleLogout();
+                  }}
+                  className="p-1.5 rounded-lg bg-rose-500/10 text-rose-300 hover:bg-rose-500/20 text-[11px] font-semibold flex items-center space-x-1"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Logout</span>
+                </button>
+              </div>
+            )}
+
+            <div className="pt-2 space-y-2">
               <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}

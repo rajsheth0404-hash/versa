@@ -118,11 +118,11 @@ export class HubStore {
   }
 
   // --- Auth & User State ---
-  static getCurrentUser(): UserProfile {
-    return this.get<UserProfile>(STORAGE_KEYS.USER, DEFAULT_USER);
+  static getCurrentUser(): UserProfile | null {
+    return this.get<UserProfile | null>(STORAGE_KEYS.USER, DEFAULT_USER);
   }
 
-  static setCurrentUser(user: UserProfile): void {
+  static setCurrentUser(user: UserProfile | null): void {
     this.set(STORAGE_KEYS.USER, user);
   }
 
@@ -132,6 +132,15 @@ export class HubStore {
 
   static loginAsStudent(): void {
     this.setCurrentUser(DEFAULT_USER);
+  }
+
+  static logout(): void {
+    this.setCurrentUser(null);
+  }
+
+  static isAuthenticated(): boolean {
+    const user = this.getCurrentUser();
+    return !!(user && (user.email.endsWith('@somaiya.edu') || user.email.endsWith('@somaiya.edu.in')));
   }
 
   // --- Subjects (Sem 1 & Sem 2 Common) ---
