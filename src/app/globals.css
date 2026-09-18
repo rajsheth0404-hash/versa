@@ -34,7 +34,7 @@ body.light,
   --cyber-cyan-hover: #0369A1;
   --cyber-indigo: #4F46E5;
   --cyber-text: #0F172A;
-  --cyber-muted: #64748B;
+  --cyber-muted: #475569;
 }
 
 body {
@@ -49,51 +49,116 @@ body {
 /* ============================================================ */
 /* LIGHT MODE COMPREHENSIVE CONTRAST & ADAPTATION UTILITIES    */
 /* ============================================================ */
-html.light .text-white {
+
+/* Force all headings and titles in Light Mode to high contrast dark obsidian */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
   color: #0F172A !important;
 }
 
-html.light .text-slate-100 {
-  color: #0F172A !important;
-}
-
+html.light [class*="text-[#F8FAFC]"],
+html.light .text-white,
+html.light .text-slate-100,
 html.light .text-slate-200 {
-  color: #1E293B !important;
+  color: #0F172A !important;
 }
 
 html.light .text-slate-300 {
-  color: #334155 !important;
+  color: #1E293B !important;
 }
 
 html.light .text-slate-400 {
-  color: #64748B !important;
-}
-
-html.light .text-slate-500 {
   color: #475569 !important;
 }
 
 /* Background overrides in light mode */
-html.light .bg-slate-950,
-html.light .bg-\[\#090D16\],
-html.light .bg-\[\#0F172A\] {
+html.light [class*="bg-[#0F172A]"],
+html.light [class*="bg-[#090D16]"],
+html.light .bg-slate-950 {
   background-color: #F8FAFC !important;
 }
 
+html.light [class*="bg-[#131C31]"],
+html.light [class*="bg-[#1E293B]"],
 html.light .bg-slate-900,
-html.light .bg-\[\#131C31\] {
+html.light .bg-slate-800 {
   background-color: #FFFFFF !important;
 }
 
-html.light .bg-slate-800,
-html.light .bg-\[\#1E293B\] {
-  background-color: #FFFFFF !important;
+/* Specific pills, filters & sub-controls in light mode */
+html.light [class*="bg-[#1E293B]/90"],
+html.light [class*="bg-slate-900/90"],
+html.light [class*="bg-slate-900/80"],
+html.light [class*="bg-slate-900"] {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
 }
 
+html.light [class*="bg-black/60"],
+html.light [class*="bg-slate-800/80"],
+html.light [class*="bg-slate-800/50"],
+html.light [class*="bg-slate-800"] {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Gradients in light mode */
+html.light .glass-card,
+html.light [class*="from-[#1E293B]"] {
+  background: #FFFFFF !important;
+  background-image: none !important;
+}
+
+/* Search and text inputs in light mode */
+html.light input[type="text"],
+html.light input[type="search"] {
+  color: #0F172A !important;
+}
+html.light input::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Borders in Light mode */
 html.light .border-slate-800,
 html.light .border-slate-700,
-html.light .border-slate-600 {
+html.light .border-slate-600,
+html.light [class*="border-slate-700"],
+html.light [class*="border-slate-800"] {
   border-color: #E2E8F0 !important;
+}
+
+/* Desktop Sidebar in Light Mode */
+html.light aside {
+  background-color: #FFFFFF !important;
+  border-right-color: #E2E8F0 !important;
+  box-shadow: 4px 0 24px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+html.light aside [class*="text-[#F8FAFC]"],
+html.light aside .text-slate-100,
+html.light aside .text-slate-200 {
+  color: #0F172A !important;
+}
+
+html.light aside .text-slate-300,
+html.light aside .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light aside [class*="bg-slate-900"],
+html.light aside [class*="bg-slate-800"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light aside [class*="bg-slate-900"]:hover,
+html.light aside [class*="bg-slate-800"]:hover {
+  background-color: #F1F5F9 !important;
 }
 
 /* Glassmorphism in Light vs Dark */
