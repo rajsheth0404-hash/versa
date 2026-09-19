@@ -14,7 +14,11 @@ import {
   GraduationCap,
   Edit2,
   RotateCcw,
+  LogIn,
+  LogOut,
+  User,
 } from 'lucide-react';
+import { signOutFirebaseUser } from '@/lib/firebase-services';
 import { HubStore } from '@/lib/store';
 import { UserProfile } from '@/lib/types';
 
@@ -170,12 +174,62 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Bottom Sidebar Section: Admin Studio & Role Switcher */}
-        <div className="pt-4 border-t border-[#1C271E] space-y-3">
+        {/* Bottom Sidebar Section: User Account & Admin Studio */}
+        <div className="pt-4 border-t border-[#1C271E] space-y-2.5">
+          {/* Sign In / User Profile Card */}
+          {user ? (
+            <div className="bg-[#0F1410] rounded-xl p-2.5 border border-[#1C271E] flex items-center justify-between gap-2">
+              <Link
+                href="/auth/login"
+                className="flex items-center space-x-2.5 min-w-0 flex-1 group"
+                title="Manage Account / Switch User"
+              >
+                {user.avatarUrl ? (
+                  <img
+                    src={user.avatarUrl}
+                    alt={user.fullName}
+                    className="w-7 h-7 rounded-lg object-cover border border-[#10B981]/30 flex-shrink-0"
+                  />
+                ) : (
+                  <div className="w-7 h-7 rounded-lg bg-[#10B981] flex items-center justify-center text-[10px] font-black text-black flex-shrink-0">
+                    {user.fullName.slice(0, 2).toUpperCase()}
+                  </div>
+                )}
+                <div className="truncate min-w-0">
+                  <p className="font-bold text-[#F0FDF4] text-xs truncate group-hover:text-[#34D399] transition">
+                    {user.fullName}
+                  </p>
+                  <p className="text-[10px] text-[#86998A] truncate font-mono">
+                    {user.email || 'student@somaiya.edu'}
+                  </p>
+                </div>
+              </Link>
+
+              <button
+                onClick={() => {
+                  signOutFirebaseUser();
+                  HubStore.loginAsStudent();
+                }}
+                className="p-1.5 rounded-lg text-[#86998A] hover:text-rose-400 hover:bg-rose-950/30 transition flex-shrink-0"
+                title="Sign Out"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="flex items-center justify-center space-x-2 px-3.5 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition w-full"
+            >
+              <LogIn className="w-4 h-4 text-black" />
+              <span>Sign In with @somaiya.edu</span>
+            </Link>
+          )}
+
           {/* Admin Studio Link */}
           <Link
             href="/admin"
-            className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold tracking-wide uppercase transition-all ${
+            className={`flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-bold tracking-wide uppercase transition-all ${
               pathname.startsWith('/admin')
                 ? 'bg-[#10B981] text-black shadow-md shadow-emerald-950/40'
                 : 'bg-[#0F1410] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E] hover:border-[#10B981]'
@@ -187,25 +241,6 @@ export default function Navbar() {
             </div>
             <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30">Staff</span>
           </Link>
-
-          {/* Role Switcher Pill */}
-          <button
-            onClick={toggleRole}
-            className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#0F1410] border border-[#1C271E] hover:border-[#10B981] transition text-left group"
-            title="Click to switch role between Student and Admin"
-          >
-            <div className="flex items-center space-x-2.5 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#10B981] to-[#059669] flex items-center justify-center text-[10px] font-extrabold text-black flex-shrink-0">
-                {user?.role === 'admin' ? 'AD' : 'ST'}
-              </div>
-              <div className="truncate">
-                <p className="font-bold text-[#F0FDF4] text-xs truncate capitalize leading-tight group-hover:text-[#34D399]">
-                  {user?.role === 'admin' ? 'Admin Mode' : 'Student Mode'}
-                </p>
-                <p className="text-[9px] text-[#86998A] truncate leading-tight">Click to switch</p>
-              </div>
-            </div>
-          </button>
         </div>
       </aside>
 
@@ -222,6 +257,14 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-center space-x-2">
+            <Link
+              href="/auth/login"
+              className="px-2.5 py-1 rounded-lg bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-xs font-bold flex items-center space-x-1"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>{user ? user.fullName.split(' ')[0] : 'Sign In'}</span>
+            </Link>
+
             <button
               onClick={() => setIsEditingTabs(true)}
               className="p-1.5 rounded-lg text-[#86998A] hover:text-[#F0FDF4]"
@@ -272,6 +315,17 @@ export default function Navbar() {
               })}
 
               <Link
+                href="/auth/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#34D399] bg-[#10B981]/10 border border-[#10B981]/30"
+              >
+                <div className="flex items-center space-x-2.5">
+                  <LogIn className="w-4 h-4" />
+                  <span>{user ? `Account (${user.fullName})` : 'Sign in with Somaiya Google'}</span>
+                </div>
+              </Link>
+
+              <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase ${
@@ -287,17 +341,6 @@ export default function Navbar() {
                 <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30">Staff</span>
               </Link>
             </nav>
-
-            <button
-              onClick={() => {
-                toggleRole();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#0F1410] border border-[#1C271E] text-xs font-semibold text-[#86998A]"
-            >
-              <span>Current Role: {user?.role === 'admin' ? 'Admin Mode' : 'Student Mode'}</span>
-              <span className="text-[10px] text-[#34D399] font-bold">Switch</span>
-            </button>
           </div>
         )}
       </header>
