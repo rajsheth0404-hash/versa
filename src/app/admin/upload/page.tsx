@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+import { uploadResourceFileToStorage } from '@/lib/firebase-services';
+
 export default function AdminUploadPage() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [modules, setModules] = useState<Module[]>([]);
@@ -39,6 +41,7 @@ export default function AdminUploadPage() {
   const [tagsInput, setTagsInput] = useState('Sem1, Lecture Notes, Official');
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isPublishing, setIsPublishing] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [publishedCount, setPublishedCount] = useState<number | null>(null);
 
   // Metadata Customization State
@@ -116,6 +119,7 @@ export default function AdminUploadPage() {
     }
 
     setIsPublishing(true);
+    setUploadProgress(0);
 
     try {
       const tagsArray = tagsInput.split(',').map((t) => t.trim()).filter(Boolean);
@@ -164,26 +168,42 @@ export default function AdminUploadPage() {
         for (let index = 0; index < selectedFiles.length; index++) {
           const file = selectedFiles[index];
 
+          // Upload to Firebase Cloud Storage with real-time progress
+          const uploadResult = await uploadResourceFileToStorage(
+            file,
+            'academic-resources',
+            (prog) => {
+              const totalProg = Math.round(((index + prog / 100) / selectedFiles.length) * 100);
+              setUploadProgress(totalProg);
+            }
+          );
+
           const newRes = HubStore.addResource({
             subjectId: selectedSubjectId,
             moduleId: selectedModuleId || undefined,
             title: selectedFiles.length === 1 ? resourceTitle : `${resourceTitle} (Part ${index + 1})`,
             type: resourceType,
-            filePath: `/uploads/${file.name}`,
-            fileName: file.name,
-            fileSizeBytes: file.size,
-            fileMime: file.type || 'application/pdf',
+            filePath: uploadResult.downloadUrl,
+            fileName: uploadResult.fileName,
+            fileSizeBytes: uploadResult.fileSizeBytes,
+            fileMime: uploadResult.fileMime,
             academicYear: academicYear,
             scheme: 'REV_2025',
             uploaderName: uploaderName,
             isVerified: isVerifiedResource,
-            tags: tagsArray.length > 0 ? tagsArray : ['First Year', `Sem${selectedSemester}`],
+            tags: tagsArray.length > 0 ? tagsArray : ['First Year', `Sem${selectedSemester}`, 'Firebase Cloud'],
           });
 
-          await storeUploadedFile(newRes.id, file);
+          // Local backup
+          try {
+            await storeUploadedFile(newRes.id, file);
+          } catch (e) {
+            // Non-critical local storage fallback
+          }
         }
 
         setIsPublishing(false);
+        setUploadProgress(100);
         setPublishedCount(selectedFiles.length);
         setSelectedFiles([]);
         setResourceTitle('');
@@ -479,21 +499,36 @@ export default function AdminUploadPage() {
         </div>
 
         {/* Submit */}
-        <div className="pt-4 border-t border-[#1C271E] flex justify-end">
+        <div className="pt-4 border-t border-[#1C271E] flex items-center justify-between">
+          {uploadProgress > 0 && isPublishing && (
+            <div className="flex items-center space-x-2 text-xs text-[#34D399]">
+              <div className="w-24 bg-[#080A08] rounded-full h-2 border border-[#1C271E] overflow-hidden">
+                <div
+                  className="bg-[#10B981] h-full transition-all duration-300 rounded-full"
+                  style={{ width: `${uploadProgress}%` }}
+                ></div>
+              </div>
+              <span className="font-mono font-bold">{uploadProgress}%</span>
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={isPublishing || (uploadMode === 'drive' ? !driveLinkInput.trim() : selectedFiles.length === 0)}
-            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-sm transition disabled:opacity-40"
+            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-sm transition disabled:opacity-40 ml-auto"
           >
             {isPublishing ? (
-              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+              <>
+                <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                <span>Uploading to Firebase Cloud ({uploadProgress}%)...</span>
+              </>
             ) : (
               <>
                 <UploadCloud className="w-4 h-4 text-black" />
                 <span>
                   {uploadMode === 'drive'
                     ? 'Publish Google Drive Resource'
-                    : `Publish ${selectedFiles.length} Local File(s)`}
+                    : `Publish ${selectedFiles.length} File(s) to Firebase`}
                 </span>
               </>
             )}

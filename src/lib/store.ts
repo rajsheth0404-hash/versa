@@ -225,18 +225,51 @@ export class HubStore {
       createdAt: new Date().toISOString(),
     };
     this.set(STORAGE_KEYS.RESOURCES, [newRes, ...resources]);
+
+    // Background Firestore Sync
+    if (typeof window !== 'undefined') {
+      import('./firebase-services').then(({ saveResourceToCloud }) => {
+        saveResourceToCloud(newRes);
+      }).catch((e) => console.warn('Cloud sync error:', e));
+    }
+
     return newRes;
+  }
+
+  static addOrUpdateResourceSilent(resource: AcademicResource): void {
+    const resources = this.get<AcademicResource[]>(STORAGE_KEYS.RESOURCES, INITIAL_RESOURCES);
+    const exists = resources.some((r) => r.id === resource.id);
+    let updatedList: AcademicResource[];
+    if (exists) {
+      updatedList = resources.map((r) => (r.id === resource.id ? { ...r, ...resource } : r));
+    } else {
+      updatedList = [resource, ...resources];
+    }
+    this.set(STORAGE_KEYS.RESOURCES, updatedList);
   }
 
   static updateResource(id: string, updated: Partial<AcademicResource>): void {
     const resources = this.get<AcademicResource[]>(STORAGE_KEYS.RESOURCES, INITIAL_RESOURCES);
     const modified = resources.map((r) => (r.id === id ? { ...r, ...updated } : r));
     this.set(STORAGE_KEYS.RESOURCES, modified);
+
+    const target = modified.find((r) => r.id === id);
+    if (target && typeof window !== 'undefined') {
+      import('./firebase-services').then(({ saveResourceToCloud }) => {
+        saveResourceToCloud(target);
+      }).catch((e) => console.warn('Cloud sync error:', e));
+    }
   }
 
   static deleteResource(id: string): void {
     const resources = this.get<AcademicResource[]>(STORAGE_KEYS.RESOURCES, INITIAL_RESOURCES).filter((r) => r.id !== id);
     this.set(STORAGE_KEYS.RESOURCES, resources);
+
+    if (typeof window !== 'undefined') {
+      import('./firebase-services').then(({ deleteResourceFromCloud }) => {
+        deleteResourceFromCloud(id);
+      }).catch((e) => console.warn('Cloud sync error:', e));
+    }
   }
 
   static incrementDownload(id: string): void {
@@ -425,25 +458,44 @@ export class HubStore {
     return this.get<AttendanceCourse[]>(STORAGE_KEYS.ATTENDANCE, initial);
   }
 
+  static setAttendanceRecords(records: AttendanceCourse[]): void {
+    this.set(STORAGE_KEYS.ATTENDANCE, records);
+  }
+
   static saveAttendanceCourse(course: Omit<AttendanceCourse, 'id' | 'updatedAt'> & { id?: string }): void {
     const list = this.getAttendanceCourses();
     const now = new Date().toISOString();
+    let updatedList: AttendanceCourse[];
     if (course.id) {
-      const updated = list.map((c) => (c.id === course.id ? { ...course, id: course.id, updatedAt: now } : c));
-      this.set(STORAGE_KEYS.ATTENDANCE, updated);
+      updatedList = list.map((c) => (c.id === course.id ? { ...course, id: course.id, updatedAt: now } : c));
     } else {
       const newItem: AttendanceCourse = {
         ...course,
         id: `att-${Date.now()}`,
         updatedAt: now,
       };
-      this.set(STORAGE_KEYS.ATTENDANCE, [...list, newItem]);
+      updatedList = [...list, newItem];
+    }
+    this.set(STORAGE_KEYS.ATTENDANCE, updatedList);
+
+    const currentUser = this.getCurrentUser();
+    if (currentUser && typeof window !== 'undefined') {
+      import('./firebase-services').then(({ saveAttendanceToCloud }) => {
+        saveAttendanceToCloud(currentUser.id, updatedList);
+      }).catch((e) => console.warn('Cloud attendance sync error:', e));
     }
   }
 
   static deleteAttendanceCourse(id: string): void {
     const list = this.getAttendanceCourses().filter((c) => c.id !== id);
     this.set(STORAGE_KEYS.ATTENDANCE, list);
+
+    const currentUser = this.getCurrentUser();
+    if (currentUser && typeof window !== 'undefined') {
+      import('./firebase-services').then(({ saveAttendanceToCloud }) => {
+        saveAttendanceToCloud(currentUser.id, list);
+      }).catch((e) => console.warn('Cloud attendance sync error:', e));
+    }
   }
 
   // --- CGPA Records ---

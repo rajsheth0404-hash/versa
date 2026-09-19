@@ -13,6 +13,9 @@ import {
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
 
+import { signInWithSomaiyaGoogle } from '@/lib/firebase-services';
+import { isFirebaseConfigured } from '@/lib/firebase';
+
 export default function LoginPage() {
   const router = useRouter();
   const [emailInput, setEmailInput] = useState('student.fy@somaiya.edu');
@@ -20,6 +23,29 @@ export default function LoginPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleGoogleFirebaseSignIn = async () => {
+    setIsLoading(true);
+    setErrorMsg(null);
+    setSuccessMsg(null);
+
+    if (isFirebaseConfigured) {
+      const res = await signInWithSomaiyaGoogle();
+      setIsLoading(false);
+      if (res.success && res.user) {
+        HubStore.setCurrentUser(res.user);
+        setSuccessMsg(`Welcome, ${res.user.fullName}! Redirecting to study portal...`);
+        setTimeout(() => {
+          router.push('/resources');
+        }, 600);
+      } else {
+        setErrorMsg(res.error || 'Google Sign-in failed. Please try again.');
+      }
+    } else {
+      // Graceful demo login when keys are pending in .env.local
+      handleSignIn();
+    }
+  };
 
   const handleSignIn = (forcedEmail?: string, forcedName?: string, forcedAvatar?: string) => {
     setIsLoading(true);
@@ -129,7 +155,7 @@ export default function LoginPage() {
           </div>
 
           <button
-            onClick={() => handleSignIn()}
+            onClick={handleGoogleFirebaseSignIn}
             disabled={isLoading}
             className="w-full flex items-center justify-center space-x-3 py-3 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition disabled:opacity-50 group"
           >
