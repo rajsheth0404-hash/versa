@@ -118,11 +118,25 @@ export class HubStore {
   }
 
   // --- User & Role State ---
-  static getCurrentUser(): UserProfile {
-    return this.get<UserProfile>(STORAGE_KEYS.USER, DEFAULT_USER) || DEFAULT_USER;
+  static getCurrentUser(): UserProfile | null {
+    const user = this.get<UserProfile | null>(STORAGE_KEYS.USER, null);
+    if (user && (user.id === 'usr-fy-student-1' || user.email === 'student.fy@somaiya.edu')) {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(STORAGE_KEYS.USER);
+      }
+      return null;
+    }
+    return user;
   }
 
-  static setCurrentUser(user: UserProfile): void {
+  static setCurrentUser(user: UserProfile | null): void {
+    if (user === null) {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(STORAGE_KEYS.USER);
+        window.dispatchEvent(new Event('somaiya_store_updated'));
+      }
+      return;
+    }
     this.set(STORAGE_KEYS.USER, user);
   }
 
@@ -131,7 +145,7 @@ export class HubStore {
   }
 
   static loginAsStudent(): void {
-    this.setCurrentUser(DEFAULT_USER);
+    this.setCurrentUser(null);
   }
 
   // --- Subjects (Sem 1 & Sem 2 Common) ---

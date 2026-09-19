@@ -32,6 +32,8 @@ export default function FirebaseSyncProvider({ children }: { children: React.Rea
             HubStore.setAttendanceRecords(cloudAttendance);
           }
         });
+      } else {
+        HubStore.setCurrentUser(null);
       }
     });
 

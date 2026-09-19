@@ -208,7 +208,7 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   signOutFirebaseUser();
-                  HubStore.loginAsStudent();
+                  HubStore.setCurrentUser(null);
                 }}
                 className="p-1.5 rounded-lg text-[#86998A] hover:text-rose-400 hover:bg-rose-950/30 transition flex-shrink-0"
                 title="Sign Out"
