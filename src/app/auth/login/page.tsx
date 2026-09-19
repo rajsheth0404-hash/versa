@@ -6,7 +6,6 @@ import {
   GraduationCap,
   AlertOctagon,
   CheckCircle2,
-  Lock,
   ArrowRight,
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
@@ -112,12 +111,6 @@ export default function LoginPage() {
             <span>Sign in with @somaiya.edu</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-        </div>
-
-        {/* Footer */}
-        <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] text-[#86998A]">
-          <Lock className="w-3.5 h-3.5 text-[#34D399]" />
-          <span>Protected by Somaiya University Single Sign-On (SSO) Gate</span>
         </div>
       </div>
     </div>
