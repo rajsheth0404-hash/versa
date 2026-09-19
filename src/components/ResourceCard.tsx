@@ -265,23 +265,8 @@ export default function ResourceCard({
           </div>
         </div>
 
-        {/* Right: Drive Link (High Contrast), Look & Download Actions */}
+        {/* Right: Look, Download & Admin Actions */}
         <div className="flex items-center space-x-2 flex-shrink-0 self-end sm:self-center">
-          {/* High-Contrast Google Drive Link */}
-          {isDriveLink && (
-            <a
-              href={activeResource.filePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/60 px-3 py-1.5 rounded-lg transition-colors text-xs shrink-0"
-              title="Open Google Drive Link"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span>Drive Link</span>
-            </a>
-          )}
-
           {/* Look / Preview Button */}
           <button
             onClick={() => {
@@ -521,17 +506,18 @@ export default function ResourceCard({
 
               {/* Right: Header Controls */}
               <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-                {/* Google Drive / New Tab Button */}
-                <a
-                  href={activeResource.filePath?.startsWith('http') ? activeResource.filePath : (pdfPreviewUrl || '#')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/60 px-3 py-1.5 rounded-lg transition-colors text-xs"
-                  title="Open document in Google Drive / New Tab"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Open Drive Link</span>
-                </a>
+                {pdfPreviewUrl && (
+                  <a
+                    href={pdfPreviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition text-xs font-semibold"
+                    title="Open document in New Tab"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-indigo-600 dark:text-sky-400" />
+                    <span className="hidden sm:inline">Open in New Tab</span>
+                  </a>
+                )}
 
                 <button
                   onClick={handleDownload}
@@ -596,24 +582,13 @@ export default function ResourceCard({
                   <div>
                     <h4 className="font-semibold text-slate-200 text-sm">Unable to render PDF preview</h4>
                     <p className="text-slate-400 text-xs mt-1 max-w-sm">
-                      You can still download the complete resource or view it directly on Google Drive.
+                      You can still download the complete resource to view it directly on your device.
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    {isDriveLink && (
-                      <a
-                        href={activeResource.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 font-medium text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/60 px-4 py-2 rounded-lg transition-colors text-xs"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Open Drive Link</span>
-                      </a>
-                    )}
                     <button
                       onClick={handleDownload}
-                      className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold shadow-lg"
+                      className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-sm"
                     >
                       Download PDF File
                     </button>
