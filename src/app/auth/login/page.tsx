@@ -5,21 +5,16 @@ import { useRouter } from 'next/navigation';
 import {
   GraduationCap,
   AlertOctagon,
-  User,
-  Shield,
   CheckCircle2,
   Lock,
   ArrowRight,
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
-
 import { signInWithSomaiyaGoogle } from '@/lib/firebase-services';
 import { isFirebaseConfigured } from '@/lib/firebase';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [emailInput, setEmailInput] = useState('student.fy@somaiya.edu');
-  const [nameInput, setNameInput] = useState('Aarav Shah');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,67 +37,26 @@ export default function LoginPage() {
         setErrorMsg(res.error || 'Google Sign-in failed. Please try again.');
       }
     } else {
-      // Graceful demo login when keys are pending in .env.local
-      handleSignIn();
-    }
-  };
-
-  const handleSignIn = (forcedEmail?: string, forcedName?: string, forcedAvatar?: string) => {
-    setIsLoading(true);
-    setErrorMsg(null);
-    setSuccessMsg(null);
-
-    const email = (forcedEmail || emailInput).trim().toLowerCase();
-    const rawName = forcedName || nameInput || email.split('@')[0].replace('.', ' ');
-    const formattedName = rawName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-
-    // Strict Institutional Domain Gate
-    if (!email.endsWith('@somaiya.edu') && !email.endsWith('@somaiya.edu.in')) {
-      setTimeout(() => {
-        setIsLoading(false);
-        setErrorMsg('Access Denied: Only institutional Google accounts ending in @somaiya.edu are permitted.');
-      }, 400);
-      return;
-    }
-
-    const avatarUrl = forcedAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(formattedName)}&background=10B981&color=080A08&bold=true&size=128`;
-
-    setTimeout(() => {
       setIsLoading(false);
-      const isAdmin = email.startsWith('admin') || email.includes('faculty') || email.includes('council');
-      
-      const userProfile = {
-        id: `usr-${isAdmin ? 'admin' : 'student'}-${Date.now()}`,
-        email,
-        fullName: formattedName,
-        avatarUrl,
-        role: (isAdmin ? 'admin' : 'student') as 'admin' | 'student',
-        currentSemester: 1 as 1 | 2,
-        createdAt: new Date().toISOString(),
-      };
-
-      HubStore.setCurrentUser(userProfile);
-      setSuccessMsg(`Welcome, ${formattedName}! Redirecting to study portal...`);
-
-      setTimeout(() => {
-        router.push('/resources');
-      }, 600);
-    }, 600);
+      setErrorMsg('Firebase is not yet configured. Please check your environment variables.');
+    }
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center p-4 relative">
-      <div className="bg-[#0F1410]/90 w-full max-w-md rounded-3xl p-7 sm:p-8 border border-[#1C271E] shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-md">
+    <div className="min-h-[80vh] flex items-center justify-center p-4 relative">
+      <div className="bg-[#0F1410]/90 w-full max-w-md rounded-3xl p-7 sm:p-9 border border-[#1C271E] shadow-2xl space-y-6 relative overflow-hidden backdrop-blur-md">
         {/* Somaiya Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl bg-[#10B981] mx-auto flex items-center justify-center text-black shadow-xl shadow-[#10B981]/20 mb-3">
-            <GraduationCap className="w-8 h-8 text-black" />
+        <div className="text-center space-y-2.5">
+          <div className="w-16 h-16 rounded-2xl bg-[#10B981] mx-auto flex items-center justify-center text-black shadow-xl shadow-[#10B981]/20 mb-3">
+            <GraduationCap className="w-9 h-9 text-black" />
           </div>
-          <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-[10px] font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-[11px] font-bold uppercase tracking-wider">
             <span>Institutional Login</span>
           </div>
-          <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight">Versa Study Portal</h2>
-          <p className="text-xs text-[#86998A]">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#F0FDF4] tracking-tight">
+            Versa Study Portal
+          </h2>
+          <p className="text-xs sm:text-sm text-[#86998A] max-w-xs mx-auto">
             Sign in using your official <span className="text-[#34D399] font-semibold">@somaiya.edu</span> Google account
           </p>
         </div>
@@ -112,7 +66,7 @@ export default function LoginPage() {
           <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 flex items-start space-x-2.5 animate-in fade-in">
             <AlertOctagon className="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0" />
             <div className="leading-relaxed">
-              <strong className="block text-rose-200">Non-Institutional Account</strong>
+              <strong className="block text-rose-200 font-semibold mb-0.5">Authentication Error</strong>
               {errorMsg}
             </div>
           </div>
@@ -126,43 +80,17 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Login Form */}
-        <div className="space-y-4">
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-[#86998A] block font-semibold">
-              Student Full Name
-            </label>
-            <input
-              type="text"
-              value={nameInput}
-              onChange={(e) => setNameInput(e.target.value)}
-              placeholder="e.g. Aarav Shah"
-              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3.5 py-2.5 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-[11px] text-[#86998A] block font-semibold">
-              Somaiya Google Email ID
-            </label>
-            <input
-              type="email"
-              value={emailInput}
-              onChange={(e) => setEmailInput(e.target.value)}
-              placeholder="your.name@somaiya.edu"
-              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3.5 py-2.5 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
-            />
-          </div>
-
+        {/* Action Button */}
+        <div className="pt-2">
           <button
             onClick={handleGoogleFirebaseSignIn}
             disabled={isLoading}
-            className="w-full flex items-center justify-center space-x-3 py-3 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition disabled:opacity-50 group"
+            className="w-full flex items-center justify-center space-x-3 py-3.5 px-4 rounded-2xl bg-[#10B981] hover:bg-[#059669] active:scale-[0.99] text-black font-bold text-sm shadow-lg shadow-[#10B981]/25 hover:shadow-[#10B981]/40 transition-all disabled:opacity-50 group cursor-pointer"
           >
             {isLoading ? (
-              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
             ) : (
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
                 <path
                   fill="#000000"
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -182,55 +110,13 @@ export default function LoginPage() {
               </svg>
             )}
             <span>Sign in with @somaiya.edu</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Quick Demo Pre-sets */}
-        <div className="pt-4 border-t border-[#1C271E] space-y-2.5">
-          <p className="text-[10px] uppercase font-bold text-[#86998A] tracking-wider text-center">
-            One-Click Verified Somaiya Presets
-          </p>
-
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => {
-                setNameInput('Aarav Shah');
-                setEmailInput('aarav.shah@somaiya.edu');
-                handleSignIn('aarav.shah@somaiya.edu', 'Aarav Shah', 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120&auto=format&fit=crop&q=80');
-              }}
-              className="p-2.5 rounded-2xl bg-[#080A08] hover:bg-[#151D17] border border-[#1C271E] text-left transition flex items-center space-x-2.5 group"
-            >
-              <div className="w-8 h-8 rounded-xl bg-[#10B981]/20 flex items-center justify-center text-[#34D399] shrink-0 font-bold text-xs">
-                AS
-              </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#F0FDF4] truncate group-hover:text-[#34D399] transition">Aarav Shah</p>
-                <p className="text-[9px] text-[#86998A] truncate">Student ID</p>
-              </div>
-            </button>
-
-            <button
-              onClick={() => {
-                setNameInput('Prof. Somaiya Admin');
-                setEmailInput('admin.council@somaiya.edu');
-                handleSignIn('admin.council@somaiya.edu', 'Prof. Somaiya Admin', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&auto=format&fit=crop&q=80');
-              }}
-              className="p-2.5 rounded-2xl bg-[#080A08] hover:bg-[#151D17] border border-[#1C271E] text-left transition flex items-center space-x-2.5 group"
-            >
-              <div className="w-8 h-8 rounded-xl bg-[#34D399]/20 flex items-center justify-center text-[#34D399] shrink-0 font-bold text-xs">
-                AD
-              </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-[#F0FDF4] truncate group-hover:text-[#34D399] transition">Admin Staff</p>
-                <p className="text-[9px] text-[#86998A] truncate">Faculty ID</p>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center space-x-1 text-[10px] text-[#86998A]">
-          <Lock className="w-3 h-3 text-[#34D399]" />
+        {/* Footer */}
+        <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] text-[#86998A]">
+          <Lock className="w-3.5 h-3.5 text-[#34D399]" />
           <span>Protected by Somaiya University Single Sign-On (SSO) Gate</span>
         </div>
       </div>
