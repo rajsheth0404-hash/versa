@@ -127,13 +127,13 @@ export default function AttendanceTracker() {
       {/* Top Banner Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Aggregate Percentage */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 relative overflow-hidden flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] relative overflow-hidden flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               Aggregate Attendance
             </span>
-            <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] flex items-center justify-center text-slate-950 font-bold">
-              <Percent className="w-4 h-4" />
+            <span className="w-8 h-8 rounded-xl bg-[#10B981] flex items-center justify-center text-black font-bold">
+              <Percent className="w-4 h-4 text-black" />
             </span>
           </div>
 
@@ -141,22 +141,22 @@ export default function AttendanceTracker() {
             <div className="flex items-baseline space-x-2">
               <span
                 className={`text-4xl font-extrabold tracking-tight ${
-                  aggregatePercentage >= 75 ? 'text-emerald-400' : 'text-rose-400'
+                  aggregatePercentage >= 75 ? 'text-[#34D399]' : 'text-rose-400'
                 }`}
               >
                 {aggregatePercentage.toFixed(1)}%
               </span>
-              <span className="text-xs text-slate-400 font-medium">/ 75% Somaiya Rule</span>
+              <span className="text-xs text-[#86998A] font-medium">/ 75% Somaiya Rule</span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#86998A] mt-1">
               Total: {totalAttendedAll} attended / {totalConductedAll} conducted lectures
             </p>
           </div>
 
-          <div className="w-full bg-[#0F172A] rounded-full h-2 overflow-hidden border border-slate-700/60">
+          <div className="w-full bg-[#080A08] rounded-full h-2 overflow-hidden border border-[#1C271E]">
             <div
               className={`h-full transition-all duration-500 ${
-                aggregatePercentage >= 75 ? 'bg-emerald-400' : 'bg-rose-500'
+                aggregatePercentage >= 75 ? 'bg-[#10B981]' : 'bg-rose-500'
               }`}
               style={{ width: `${Math.min(100, aggregatePercentage)}%` }}
             ></div>
@@ -164,50 +164,50 @@ export default function AttendanceTracker() {
         </div>
 
         {/* Somaiya Mandate Status */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               Defaulter Clearance Status
             </span>
-            <span className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center">
+            <span className="w-8 h-8 rounded-xl bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4" />
             </span>
           </div>
 
           <div className="my-3">
-            <p className="text-lg font-bold text-[#F8FAFC]">
+            <p className="text-lg font-bold text-[#F0FDF4]">
               {aggregatePercentage >= 75 ? '🟢 Eligible for End-Sem Exam' : '🔴 Warning: In Defaulter Zone'}
             </p>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#86998A] mt-1">
               {aggregatePercentage >= 75
                 ? 'All subject attendances satisfy KJSCE autonomous requirements.'
                 : 'Attend upcoming lectures consecutively to restore eligibility.'}
             </p>
           </div>
 
-          <div className="text-[11px] text-[#38BDF8] flex items-center space-x-1">
+          <div className="text-[11px] text-[#34D399] flex items-center space-x-1">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Official Somaiya SVU Policy</span>
           </div>
         </div>
 
         {/* Quick Add Subject */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               Manage Subjects
             </span>
-            <h4 className="font-bold text-[#F8FAFC] text-base mt-2">Add New Course</h4>
-            <p className="text-xs text-slate-400 mt-1">
+            <h4 className="font-bold text-[#F0FDF4] text-base mt-2">Add New Course</h4>
+            <p className="text-xs text-[#86998A] mt-1">
               Track lecture & tutorial attendance with real-time bunk safety limits.
             </p>
           </div>
 
           <button
             onClick={() => setIsAddingCourse(!isAddingCourse)}
-            className="w-full mt-4 flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 text-xs font-bold shadow-lg shadow-cyan-950/40 transition"
+            className="w-full mt-4 flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black text-xs font-bold shadow-lg shadow-[#10B981]/20 transition"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-black" />
             <span>{isAddingCourse ? 'Cancel' : 'Add Subject to Tracker'}</span>
           </button>
         </div>
@@ -217,49 +217,49 @@ export default function AttendanceTracker() {
       {isAddingCourse && (
         <form
           onSubmit={handleAddCourse}
-          className="bg-[#1E293B] p-6 rounded-3xl border border-[#38BDF8]/40 space-y-4 animate-in fade-in zoom-in-95 duration-150 shadow-2xl"
+          className="bg-[#0F1410] p-6 rounded-3xl border border-[#10B981]/40 space-y-4 animate-in fade-in zoom-in-95 duration-150 shadow-2xl"
         >
-          <h4 className="text-sm font-bold text-[#F8FAFC]">Register Subject for Attendance Tracker</h4>
+          <h4 className="text-sm font-bold text-[#F0FDF4]">Register Subject for Attendance Tracker</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Subject Name *</label>
+              <label className="text-[11px] text-[#86998A] block mb-1">Subject Name *</label>
               <input
                 type="text"
                 placeholder="e.g. Applied Mathematics I"
                 value={newSubjectName}
                 onChange={(e) => setNewSubjectName(e.target.value)}
                 required
-                className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
               />
             </div>
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Course Code</label>
+              <label className="text-[11px] text-[#86998A] block mb-1">Course Code</label>
               <input
                 type="text"
                 placeholder="e.g. BSC101"
                 value={newSubjectCode}
                 onChange={(e) => setNewSubjectCode(e.target.value)}
-                className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
               />
             </div>
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Conducted Lectures</label>
+              <label className="text-[11px] text-[#86998A] block mb-1">Conducted Lectures</label>
               <input
                 type="number"
                 min="0"
                 value={newTotalConducted}
                 onChange={(e) => setNewTotalConducted(Number(e.target.value))}
-                className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
               />
             </div>
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Attended Lectures</label>
+              <label className="text-[11px] text-[#86998A] block mb-1">Attended Lectures</label>
               <input
                 type="number"
                 min="0"
                 value={newTotalAttended}
                 onChange={(e) => setNewTotalAttended(Number(e.target.value))}
-                className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
               />
             </div>
           </div>
@@ -267,13 +267,13 @@ export default function AttendanceTracker() {
             <button
               type="button"
               onClick={() => setIsAddingCourse(false)}
-              className="px-4 py-2 rounded-xl bg-[#0F172A] text-slate-300 text-xs font-semibold hover:bg-slate-800 border border-slate-700"
+              className="px-4 py-2 rounded-xl bg-[#080A08] text-[#86998A] text-xs font-semibold hover:bg-[#151D17] border border-[#1C271E]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-[#38BDF8] text-slate-950 font-bold text-xs hover:bg-[#0EA5E9]"
+              className="px-5 py-2 rounded-xl bg-[#10B981] text-black font-bold text-xs hover:bg-[#059669]"
             >
               Save Subject
             </button>
@@ -290,18 +290,18 @@ export default function AttendanceTracker() {
           return (
             <div
               key={course.id}
-              className={`glass-card rounded-3xl p-6 border flex flex-col justify-between relative overflow-hidden transition ${
-                isSafe ? 'border-slate-800' : 'border-rose-900/60 bg-rose-950/10'
+              className={`bg-[#0F1410]/80 backdrop-blur-md rounded-3xl p-6 border flex flex-col justify-between relative overflow-hidden transition-all ${
+                isSafe ? 'border-[#1C271E] hover:border-[#2B3C2E]' : 'border-rose-900/60 bg-rose-950/10'
               }`}
             >
               <div>
                 {/* Header with Edit and Delete Buttons */}
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#151D17] text-[#86998A] font-mono border border-[#1C271E]">
                       {course.subjectCode || 'COURSE'}
                     </span>
-                    <h3 className="font-bold text-slate-100 text-base mt-1 leading-snug">
+                    <h3 className="font-bold text-[#F0FDF4] text-base mt-1 leading-snug">
                       {course.subjectName}
                     </h3>
                   </div>
@@ -309,14 +309,14 @@ export default function AttendanceTracker() {
                   <div className="flex items-center space-x-1">
                     <button
                       onClick={() => setEditingCourse(course)}
-                      className="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition"
+                      className="text-[#86998A] hover:text-[#F0FDF4] p-1.5 rounded-lg hover:bg-[#151D17] transition"
                       title="Edit Subject Name & Details"
                     >
                       <Edit2 className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => handleDeleteCourse(course.id)}
-                      className="text-slate-500 hover:text-rose-400 p-1.5 rounded-lg hover:bg-slate-800 transition"
+                      className="text-[#86998A] hover:text-rose-400 p-1.5 rounded-lg hover:bg-rose-950/30 transition"
                       title="Remove Subject"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -329,20 +329,20 @@ export default function AttendanceTracker() {
                   <div className="flex items-baseline justify-between">
                     <span
                       className={`text-2xl font-extrabold ${
-                        isSafe ? 'text-emerald-400' : 'text-rose-400'
+                        isSafe ? 'text-[#34D399]' : 'text-rose-400'
                       }`}
                     >
                       {stats.percentage.toFixed(1)}%
                     </span>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-xs text-[#86998A]">
                       {course.totalAttended} / {course.totalConducted} Lectures
                     </span>
                   </div>
 
-                  <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                  <div className="w-full bg-[#080A08] rounded-full h-2 overflow-hidden border border-[#1C271E]">
                     <div
                       className={`h-full transition-all duration-300 ${
-                        isSafe ? 'bg-emerald-500' : 'bg-rose-500'
+                        isSafe ? 'bg-[#10B981]' : 'bg-rose-500'
                       }`}
                       style={{ width: `${Math.min(100, stats.percentage)}%` }}
                     ></div>
@@ -353,13 +353,13 @@ export default function AttendanceTracker() {
                 <div
                   className={`p-3.5 rounded-2xl border text-xs leading-relaxed mb-4 ${
                     isSafe
-                      ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+                      ? 'bg-[#10B981]/10 border-[#10B981]/25 text-[#34D399]'
                       : 'bg-rose-500/10 border-rose-500/20 text-rose-300'
                   }`}
                 >
                   {isSafe ? (
                     <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
                       <span>
                         You can safely bunk <strong>{stats.safeBunks}</strong> next lecture{stats.safeBunks === 1 ? '' : 's'} and stay above 75%.
                       </span>
@@ -376,8 +376,8 @@ export default function AttendanceTracker() {
               </div>
 
               {/* Attendance Quick Logger Buttons */}
-              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <span className="text-slate-400 font-medium">Quick Log Today:</span>
+              <div className="pt-4 border-t border-[#1C271E] flex items-center justify-between text-xs">
+                <span className="text-[#86998A] font-medium">Quick Log Today:</span>
 
                 <div className="flex items-center space-x-2">
                   {/* Bunked lecture */}
@@ -393,7 +393,7 @@ export default function AttendanceTracker() {
                   {/* Attended lecture */}
                   <button
                     onClick={() => handleLogAttendance(course, 1, 1)}
-                    className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition font-semibold"
+                    className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-[#10B981]/15 hover:bg-[#10B981]/25 text-[#34D399] border border-[#10B981]/30 transition font-semibold"
                     title="Attended Lecture"
                   >
                     <Plus className="w-3.5 h-3.5" />
@@ -409,29 +409,29 @@ export default function AttendanceTracker() {
       {/* Edit Course Modal */}
       {editingCourse && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-[#1E293B] w-full max-w-md rounded-3xl border border-slate-700 shadow-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-700">
-              <h3 className="font-bold text-[#F8FAFC] text-base">Update Subject Attendance</h3>
-              <button onClick={() => setEditingCourse(null)} className="text-slate-400 hover:text-white">
+          <div className="bg-[#0F1410] w-full max-w-md rounded-3xl border border-[#1C271E] shadow-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
+              <h3 className="font-bold text-[#F0FDF4] text-base">Update Subject Attendance</h3>
+              <button onClick={() => setEditingCourse(null)} className="text-[#86998A] hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleSaveEdit} className="space-y-3 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Subject Name *</label>
+                <label className="text-[#86998A] block mb-1">Subject Name *</label>
                 <input
                   type="text"
                   value={editingCourse.subjectName}
                   onChange={(e) => setEditingCourse({ ...editingCourse, subjectName: e.target.value })}
                   required
-                  className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-[#F8FAFC]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-slate-400 block mb-1">Conducted Lectures</label>
+                  <label className="text-[#86998A] block mb-1">Conducted Lectures</label>
                   <input
                     type="number"
                     min="0"
@@ -439,11 +439,11 @@ export default function AttendanceTracker() {
                     onChange={(e) =>
                       setEditingCourse({ ...editingCourse, totalConducted: Number(e.target.value) })
                     }
-                    className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-[#F8FAFC]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4]"
                   />
                 </div>
                 <div>
-                  <label className="text-slate-400 block mb-1">Attended Lectures</label>
+                  <label className="text-[#86998A] block mb-1">Attended Lectures</label>
                   <input
                     type="number"
                     min="0"
@@ -451,22 +451,22 @@ export default function AttendanceTracker() {
                     onChange={(e) =>
                       setEditingCourse({ ...editingCourse, totalAttended: Number(e.target.value) })
                     }
-                    className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-[#F8FAFC]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4]"
                   />
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-700 flex justify-end space-x-2">
+              <div className="pt-3 border-t border-[#1C271E] flex justify-end space-x-2">
                 <button
                   type="button"
                   onClick={() => setEditingCourse(null)}
-                  className="px-4 py-2 rounded-xl bg-[#0F172A] text-slate-300 hover:text-white border border-slate-700"
+                  className="px-4 py-2 rounded-xl bg-[#080A08] text-[#86998A] hover:text-white border border-[#1C271E]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold shadow-lg"
+                  className="px-5 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold shadow-lg shadow-[#10B981]/20"
                 >
                   Save Changes
                 </button>

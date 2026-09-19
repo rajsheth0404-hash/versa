@@ -94,8 +94,8 @@ export default function FileDropzone({ onFilesSelected, accept = '.pdf,.pptx,.pp
         onClick={() => fileInputRef.current?.click()}
         className={`border-2 border-dashed rounded-3xl p-8 text-center cursor-pointer transition-all duration-200 ${
           isDragOver
-            ? 'border-[#38BDF8] bg-[#38BDF8]/10 scale-[1.01]'
-            : 'border-slate-700 bg-[#1E293B]/60 hover:border-[#38BDF8]/50 hover:bg-[#1E293B]'
+            ? 'border-[#10B981] bg-[#10B981]/10 scale-[1.01]'
+            : 'border-[#1C271E] bg-[#0F1410]/60 hover:border-[#34D399]/50 hover:bg-[#0F1410]'
         }`}
       >
         <input
@@ -108,20 +108,20 @@ export default function FileDropzone({ onFilesSelected, accept = '.pdf,.pptx,.pp
         />
 
         <div className="flex flex-col items-center space-y-3">
-          <div className="w-14 h-14 rounded-2xl bg-[#38BDF8]/15 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shadow-lg shadow-cyan-950/40">
+          <div className="w-14 h-14 rounded-2xl bg-[#10B981]/15 border border-[#10B981]/30 flex items-center justify-center text-[#34D399] shadow-lg shadow-[#10B981]/10">
             <UploadCloud className="w-7 h-7" />
           </div>
           <div>
-            <h4 className="font-bold text-[#F8FAFC] text-sm md:text-base">
+            <h4 className="font-bold text-[#F0FDF4] text-sm md:text-base">
               Drag & Drop 2025 Syllabus Notes, PPTs, or PYQs here
             </h4>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#86998A] mt-1">
               Supports PDF, PPTX, DOCX, ZIP files up to 50MB each
             </p>
           </div>
           <button
             type="button"
-            className="px-4 py-1.5 rounded-xl bg-[#0F172A] hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700"
+            className="px-4 py-1.5 rounded-xl bg-[#080A08] hover:bg-[#151D17] text-[#F0FDF4] text-xs font-semibold border border-[#1C271E]"
           >
             Browse from Computer
           </button>
@@ -131,27 +131,27 @@ export default function FileDropzone({ onFilesSelected, accept = '.pdf,.pptx,.pp
       {/* Selected File List */}
       {fileList.length > 0 && (
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-slate-300">
+          <p className="text-xs font-semibold text-[#86998A]">
             Files Prepared for Ingestion ({fileList.length}):
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {fileList.map((f) => (
               <div
                 key={f.id}
-                className="bg-[#1E293B] p-3 rounded-xl border border-slate-700/80 flex items-center justify-between text-xs"
+                className="bg-[#0F1410] p-3 rounded-xl border border-[#1C271E] flex items-center justify-between text-xs hover:border-[#2B3C2E] transition-all"
               >
                 <div className="flex items-center space-x-2.5 truncate">
-                  <div className="p-2 rounded-lg bg-[#0F172A] text-[#38BDF8] border border-slate-700">
+                  <div className="p-2 rounded-lg bg-[#080A08] text-[#34D399] border border-[#1C271E]">
                     <FileText className="w-4 h-4" />
                   </div>
                   <div className="truncate">
-                    <p className="font-medium text-[#F8FAFC] truncate">{f.name}</p>
-                    <p className="text-[10px] text-slate-400">{formatSize(f.size)}</p>
+                    <p className="font-medium text-[#F0FDF4] truncate">{f.name}</p>
+                    <p className="text-[10px] text-[#86998A]">{formatSize(f.size)}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2 ml-2 flex-shrink-0">
-                  <span className="flex items-center space-x-1 text-[11px] text-emerald-400 font-semibold">
+                  <span className="flex items-center space-x-1 text-[11px] text-[#34D399] font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Ready</span>
                   </span>
@@ -161,7 +161,7 @@ export default function FileDropzone({ onFilesSelected, accept = '.pdf,.pptx,.pp
                       e.stopPropagation();
                       removeFile(f.id);
                     }}
-                    className="p-1 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition"
+                    className="p-1 rounded-lg text-[#86998A] hover:text-rose-400 hover:bg-rose-500/10 transition"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>

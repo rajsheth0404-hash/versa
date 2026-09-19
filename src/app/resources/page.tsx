@@ -238,7 +238,6 @@ export default function ResourcesPage() {
   }, [activeSubject, activeSubjectModules, selectedModuleId]);
 
   // Handle clicking a subject to enter it
-  // Handle clicking a subject to enter it
   const handleSelectSubject = (subjectId: string) => {
     setSelectedSubjectId(subjectId);
     const subjectMods = modules.filter((m) => m.subjectId === subjectId).sort((a, b) => a.moduleNumber - b.moduleNumber);
@@ -345,29 +344,29 @@ export default function ResourcesPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           {/* Breadcrumb trail */}
-          <div className="flex items-center space-x-2 text-xs text-[var(--muted-text)] mb-1">
+          <div className="flex items-center space-x-2 text-xs text-[#86998A] mb-1">
             <button
               onClick={handleBackToSubjects}
-              className="hover:text-[var(--primary-text)] transition flex items-center space-x-1"
+              className="hover:text-[#F0FDF4] transition flex items-center space-x-1"
             >
               <span>Academic Hub</span>
             </button>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-            <span className="text-[var(--primary-text)] font-semibold">Semester {selectedSemester}</span>
+            <span className="text-[#F0FDF4] font-semibold">Semester {selectedSemester}</span>
             {activeSubject && (
               <>
                 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-                <span className="text-[var(--brand-accent)] font-bold truncate max-w-[200px]">
+                <span className="text-[#10B981] font-bold truncate max-w-[200px]">
                   {activeSubject.name}
                 </span>
               </>
             )}
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--primary-text)] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F0FDF4] tracking-tight">
             {activeSubject ? activeSubject.name : 'First Year Notes & Study Materials'}
           </h1>
-          <p className="text-xs text-[var(--muted-text)] mt-0.5">
+          <p className="text-xs text-[#86998A] mt-0.5">
             {activeSubject
               ? `Browse syllabus units module-by-module, lecture notes, formula sheets, and solved PYQs for ${activeSubject.code}.`
               : 'Select a course to explore syllabus modules, lecture notes, formula sheets, and past year question papers.'}
@@ -378,15 +377,15 @@ export default function ResourcesPage() {
         <div className="flex items-center space-x-2 flex-shrink-0">
           <button
             onClick={() => setIsCreditSchemeOpen(true)}
-            className="inline-flex items-center space-x-1.5 px-3.5 py-2.5 rounded-xl bg-[var(--subtle-surface)] text-[var(--primary-text)] border border-[var(--subtle-border)] hover:border-[var(--brand-accent)] text-xs font-semibold shadow-sm transition"
+            className="inline-flex items-center space-x-1.5 px-3.5 py-2.5 rounded-xl bg-[#0F1410] text-[#F0FDF4] border border-[#1C271E] hover:border-[#10B981] text-xs font-semibold shadow-sm transition"
           >
-            <Award className="w-4 h-4 text-[var(--brand-accent)]" />
+            <Award className="w-4 h-4 text-[#10B981]" />
             <span>Credit Scheme</span>
           </button>
 
           <Link
             href="/admin/upload"
-            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-zinc-950 text-xs font-bold shadow-md shadow-amber-950/20 transition"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black text-xs font-bold shadow-md shadow-emerald-950/20 transition"
           >
             <Plus className="w-4 h-4" />
             <span>Upload Notes</span>
@@ -396,7 +395,7 @@ export default function ResourcesPage() {
 
       {/* Year Selector: First Year / Second Year */}
       <div className="flex flex-col items-start justify-start gap-2.5">
-        <div className="flex bg-[var(--subtle-surface)] p-1.5 rounded-2xl border border-[var(--subtle-border)] shadow-sm gap-1">
+        <div className="flex bg-[#0F1410] p-1.5 rounded-2xl border border-[#1C271E] shadow-sm gap-1">
           <button
             onClick={() => {
               setSelectedYear(1);
@@ -406,8 +405,8 @@ export default function ResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 1
-                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
-                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                ? 'bg-[#10B981] text-black shadow-sm font-extrabold'
+                : 'text-[#86998A] hover:text-[#F0FDF4]'
             }`}
           >
             <span>First Year</span>
@@ -421,12 +420,12 @@ export default function ResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 2
-                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
-                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                ? 'bg-[#10B981] text-black shadow-sm font-extrabold'
+                : 'text-[#86998A] hover:text-[#F0FDF4]'
             }`}
           >
             <span>Second Year</span>
-            <span className="text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold amber-badge">
+            <span className="text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30">
               Soon
             </span>
           </button>
@@ -434,7 +433,7 @@ export default function ResourcesPage() {
 
         {/* Nested Semester Selector for Selected Year */}
         {selectedYear === 1 ? (
-          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
+          <div className="flex bg-[#0F1410] p-1 rounded-xl border border-[#1C271E] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(1);
@@ -443,8 +442,8 @@ export default function ResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 1
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 1 Courses (7 Subjects)
@@ -457,15 +456,15 @@ export default function ResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 2
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 2 Courses (5 Subjects)
             </button>
           </div>
         ) : (
-          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
+          <div className="flex bg-[#0F1410] p-1 rounded-xl border border-[#1C271E] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(3);
@@ -474,8 +473,8 @@ export default function ResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 3
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 3 Courses
@@ -488,8 +487,8 @@ export default function ResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 4
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 4 Courses
@@ -500,19 +499,19 @@ export default function ResourcesPage() {
 
       {selectedYear === 2 ? (
         /* Second Year: Notes to be added soon Container */
-        <div className="glass-panel bg-[#1E293B]/60 p-12 sm:p-16 rounded-3xl text-center border border-dashed border-slate-700/80 space-y-5 shadow-2xl max-w-2xl mx-auto my-8 animate-in fade-in">
-          <div className="w-16 h-16 rounded-3xl bg-indigo-500/15 border border-indigo-500/30 text-[#818CF8] flex items-center justify-center mx-auto shadow-inner">
-            <Clock className="w-8 h-8 text-[#38BDF8]" />
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-12 sm:p-16 rounded-3xl text-center border border-dashed border-[#1C271E] space-y-5 shadow-2xl max-w-2xl mx-auto my-8 animate-in fade-in">
+          <div className="w-16 h-16 rounded-3xl bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] flex items-center justify-center mx-auto shadow-inner">
+            <Clock className="w-8 h-8 text-[#34D399]" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[11px] font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[11px] font-mono font-bold uppercase tracking-wider">
               <span>Second Year • Semester {selectedSemester}</span>
             </div>
-            <h3 className="font-extrabold text-[#F8FAFC] text-2xl sm:text-3xl tracking-tight">
+            <h3 className="font-extrabold text-[#F0FDF4] text-2xl sm:text-3xl tracking-tight">
               Notes to be added soon
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#86998A] max-w-md mx-auto leading-relaxed">
               Curated module PPTs, handwritten faculty notes, solved PYQs, and reference books for Second Year are currently being compiled.
             </p>
           </div>
@@ -525,7 +524,7 @@ export default function ResourcesPage() {
                 setSelectedSubjectId(null);
                 setSelectedModuleId('all');
               }}
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs transition shadow-lg shadow-cyan-950/40"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs transition shadow-lg shadow-emerald-950/40"
             >
               <span>Explore First Year Notes</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -536,24 +535,24 @@ export default function ResourcesPage() {
         <>
 
       {/* ========================================================================= */}
-      {/* 📚 LEVEL 1 VIEW: SUBJECT GALLERY (Clean, Minimalist Zinc & Amber)          */}
+      {/* 📚 LEVEL 1 VIEW: SUBJECT GALLERY (Obsidian & Electric Mint)                 */}
       {/* ========================================================================= */}
       {!selectedSubjectId ? (
         <div className="space-y-6 animate-in fade-in duration-300">
           {/* Quick Search */}
-          <div className="relative bg-[var(--surface)] rounded-2xl p-2 border border-[var(--card-border)] shadow-sm max-w-3xl mx-auto flex items-center">
-            <Search className="w-5 h-5 text-[var(--muted-text)] ml-3" />
+          <div className="relative bg-[#0F1410]/80 backdrop-blur-md rounded-2xl p-2 border border-[#1C271E] shadow-sm max-w-3xl mx-auto flex items-center">
+            <Search className="w-5 h-5 text-[#86998A] ml-3" />
             <input
               type="text"
               placeholder="Search across all courses by title, topic, formula, or unit..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-transparent border-none px-4 py-2.5 text-xs text-[var(--primary-text)] placeholder-[var(--muted-text)] focus:outline-none"
+              className="w-full bg-transparent border-none px-4 py-2.5 text-xs text-[#F0FDF4] placeholder-[#627766] focus:outline-none"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-xs text-[var(--muted-text)] hover:text-[var(--primary-text)] mr-2"
+                className="text-xs text-[#86998A] hover:text-[#F0FDF4] mr-2"
               >
                 Clear
               </button>
@@ -561,16 +560,16 @@ export default function ResourcesPage() {
           </div>
 
           <div className="flex items-center justify-between px-1">
-            <h2 className="text-sm font-bold text-[var(--primary-text)] uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-[var(--brand-accent)]"></span>
+            <h2 className="text-sm font-bold text-[#F0FDF4] uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
               <span>Semester {selectedSemester} Subjects Directory</span>
             </h2>
-            <span className="text-xs text-[var(--muted-text)]">
+            <span className="text-xs text-[#86998A]">
               {availableSubjects.length} Core Subjects
             </span>
           </div>
 
-          {/* Subject Cards Grid (Minimalist Zinc & Amber) */}
+          {/* Subject Cards Grid (Obsidian & Electric Mint) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {availableSubjects.map((sub) => {
               const subModules = modules.filter((m) => m.subjectId === sub.id);
@@ -581,23 +580,23 @@ export default function ResourcesPage() {
                 <div
                   key={sub.id}
                   onClick={() => handleSelectSubject(sub.id)}
-                  className="theme-card rounded-3xl p-6 group hover:border-[var(--brand-accent)] transition-all duration-200 flex flex-col justify-between cursor-pointer relative overflow-hidden bg-[var(--card-bg)]"
+                  className="bg-[#0F1410]/80 backdrop-blur-md border border-[#1C271E] hover:border-[#34D399] hover:bg-[#131A14] rounded-3xl p-6 group transition-all duration-200 flex flex-col justify-between cursor-pointer relative overflow-hidden shadow-lg"
                 >
                   <div className="space-y-4">
                     {/* Header Row: Subject Icon, Code & Badges */}
                     <div className="flex items-start justify-between gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform flex-shrink-0 font-black">
-                        <IconComponent className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 rounded-2xl bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] flex items-center justify-center shadow-md group-hover:scale-105 transition-transform flex-shrink-0 font-black">
+                        <IconComponent className="w-6 h-6 text-[#34D399]" />
                       </div>
 
                       <div className="flex items-center space-x-1.5 flex-wrap justify-end">
-                        <span className="px-2.5 py-0.5 rounded-lg bg-[var(--subtle-surface)] text-[11px] font-mono font-bold text-[var(--primary-text)] border border-[var(--subtle-border)]">
+                        <span className="px-2.5 py-0.5 rounded-lg bg-[#151D17] text-[11px] font-mono font-bold text-[#F0FDF4] border border-[#1C271E]">
                           {sub.code}
                         </span>
-                        <span className="px-2 py-0.5 rounded-lg amber-badge text-[10px] font-bold uppercase">
+                        <span className="px-2 py-0.5 rounded-lg bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[10px] font-bold uppercase">
                           {sub.category || 'Core'}
                         </span>
-                        <span className="px-2 py-0.5 rounded-lg bg-[var(--subtle-surface)] text-[var(--primary-text)] border border-[var(--subtle-border)] text-[10px] font-bold">
+                        <span className="px-2 py-0.5 rounded-lg bg-[#151D17] text-[#F0FDF4] border border-[#1C271E] text-[10px] font-bold">
                           {sub.credits} Credits
                         </span>
                       </div>
@@ -605,10 +604,10 @@ export default function ResourcesPage() {
 
                     {/* Title & Description */}
                     <div>
-                      <h3 className="text-lg font-bold text-[var(--primary-text)] group-hover:text-[var(--brand-accent)] transition leading-snug">
+                      <h3 className="text-lg font-bold text-[#F0FDF4] group-hover:text-[#34D399] transition leading-snug">
                         {sub.name}
                       </h3>
-                      <p className="text-xs text-[var(--muted-text)] mt-1.5 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-[#86998A] mt-1.5 line-clamp-2 leading-relaxed">
                         {sub.description}
                       </p>
                     </div>
@@ -619,13 +618,13 @@ export default function ResourcesPage() {
                         {subModules.slice(0, 3).map((m) => (
                           <span
                             key={m.id}
-                            className="text-[10px] px-2 py-0.5 rounded-md bg-[var(--subtle-surface)] text-[var(--muted-text)] border border-[var(--subtle-border)] truncate max-w-[140px]"
+                            className="text-[10px] px-2 py-0.5 rounded-md bg-[#151D17] text-[#86998A] border border-[#1C271E] truncate max-w-[140px]"
                           >
                             M{m.moduleNumber}: {m.title.split(' ')[0]} {m.title.split(' ')[1] || ''}
                           </span>
                         ))}
                         {subModules.length > 3 && (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[var(--subtle-surface)] text-[var(--muted-text)] font-mono">
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#151D17] text-[#86998A] font-mono">
                             +{subModules.length - 3} more
                           </span>
                         )}
@@ -634,20 +633,20 @@ export default function ResourcesPage() {
                   </div>
 
                   {/* Card Action Footer */}
-                  <div className="pt-5 mt-4 border-t border-[var(--card-border)] flex items-center justify-between">
-                    <div className="flex items-center space-x-3 text-[11px] text-[var(--muted-text)] font-medium">
+                  <div className="pt-5 mt-4 border-t border-[#1C271E] flex items-center justify-between">
+                    <div className="flex items-center space-x-3 text-[11px] text-[#86998A] font-medium">
                       <span className="flex items-center space-x-1">
-                        <FolderOpen className="w-3.5 h-3.5 text-[var(--brand-accent)]" />
+                        <FolderOpen className="w-3.5 h-3.5 text-[#10B981]" />
                         <span>{subModules.length} Modules</span>
                       </span>
                       <span>•</span>
                       <span className="flex items-center space-x-1">
-                        <FileText className="w-3.5 h-3.5 text-[var(--brand-accent)]" />
+                        <FileText className="w-3.5 h-3.5 text-[#10B981]" />
                         <span>{subResources.length} Materials</span>
                       </span>
                     </div>
 
-                    <div className="text-xs font-bold text-[var(--brand-accent)] group-hover:translate-x-1 transition-all flex items-center space-x-1">
+                    <div className="text-xs font-bold text-[#34D399] group-hover:translate-x-1 transition-all flex items-center space-x-1">
                       <span>Open Course</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>
@@ -663,12 +662,12 @@ export default function ResourcesPage() {
         /* ========================================================================= */
         <div className="space-y-6 animate-in fade-in duration-300">
           {/* Subject Top Banner Card */}
-          <div className="theme-panel p-6 rounded-3xl shadow-sm relative overflow-hidden bg-[var(--surface)] border border-[var(--card-border)]">
+          <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl shadow-sm relative overflow-hidden border border-[#1C271E]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center space-x-4">
                 <button
                   onClick={handleBackToSubjects}
-                  className="p-3 rounded-2xl bg-[var(--subtle-surface)] hover:bg-[var(--card-border)] text-[var(--muted-text)] hover:text-[var(--primary-text)] transition flex-shrink-0"
+                  className="p-3 rounded-2xl bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] transition flex-shrink-0"
                   title="Back to All Subjects"
                 >
                   <ArrowLeft className="w-5 h-5" />
@@ -676,17 +675,17 @@ export default function ResourcesPage() {
 
                 <div>
                   <div className="flex items-center space-x-2 mb-1">
-                    <span className="px-2 py-0.5 rounded bg-[var(--subtle-surface)] text-[var(--primary-text)] font-mono text-[10px] font-bold border border-[var(--subtle-border)]">
+                    <span className="px-2 py-0.5 rounded bg-[#151D17] text-[#F0FDF4] font-mono text-[10px] font-bold border border-[#1C271E]">
                       {activeSubject?.code}
                     </span>
-                    <span className="px-2 py-0.5 rounded amber-badge text-[10px] font-bold uppercase">
+                    <span className="px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[10px] font-bold uppercase">
                       {activeSubject?.category} Category
                     </span>
-                    <span className="text-[11px] text-[var(--muted-text)]">
+                    <span className="text-[11px] text-[#86998A]">
                       {activeSubject?.credits} Credits ({activeSubject?.theoryCredits}L + {activeSubject?.tutorialCredits}T)
                     </span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--primary-text)] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-extrabold text-[#F0FDF4] tracking-tight">
                     {activeSubject?.name}
                   </h2>
                 </div>
@@ -694,11 +693,11 @@ export default function ResourcesPage() {
 
               {/* Quick Subject Switcher Dropdown */}
               <div className="flex items-center space-x-2">
-                <span className="text-xs text-[var(--muted-text)] hidden sm:inline">Switch Subject:</span>
+                <span className="text-xs text-[#86998A] hidden sm:inline">Switch Subject:</span>
                 <select
                   value={selectedSubjectId}
                   onChange={(e) => handleSelectSubject(e.target.value)}
-                  className="bg-[var(--subtle-surface)] border border-[var(--subtle-border)] rounded-xl px-3 py-2 text-xs text-[var(--primary-text)] focus:outline-none focus:border-[var(--brand-accent)]"
+                  className="bg-[#151D17] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                 >
                   {availableSubjects.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -710,14 +709,14 @@ export default function ResourcesPage() {
             </div>
           </div>
 
-          {/* 🏷️ Module Navigation (Clean, responsive multi-module card layout - No horizontal cutoff) */}
+          {/* 🏷️ Module Navigation */}
           <div className="space-y-3">
             <div className="flex items-center justify-between text-xs px-1">
-              <span className="font-bold text-[var(--primary-text)] uppercase tracking-wider text-[11px] flex items-center space-x-2">
-                <FolderOpen className="w-4 h-4 text-[var(--brand-accent)]" />
+              <span className="font-bold text-[#F0FDF4] uppercase tracking-wider text-[11px] flex items-center space-x-2">
+                <FolderOpen className="w-4 h-4 text-[#10B981]" />
                 <span>Modules & Syllabus Units:</span>
               </span>
-              <span className="text-[var(--muted-text)] text-[11px]">
+              <span className="text-[#86998A] text-[11px]">
                 {activeSubjectModules.length} Modules in Syllabus
               </span>
             </div>
@@ -739,22 +738,22 @@ export default function ResourcesPage() {
                     }}
                     className={`p-3.5 rounded-2xl text-left transition-all duration-200 border flex flex-col justify-between space-y-2.5 group relative shadow-sm ${
                       isSelected
-                        ? 'bg-[var(--subtle-surface)] border-[var(--brand-accent)] ring-2 ring-[var(--brand-accent)]/20 shadow-amber-950/10'
-                        : 'bg-[var(--card-bg)] border-[var(--card-border)] hover:border-[var(--brand-accent)] text-[var(--muted-text)]'
+                        ? 'bg-[#151D17] border-[#10B981] ring-2 ring-[#10B981]/20'
+                        : 'bg-[#0F1410] border-[#1C271E] hover:border-[#34D399] text-[#86998A]'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2">
                       <span
                         className={`font-mono text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-wider ${
                           isSelected
-                            ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm'
-                            : 'bg-[var(--subtle-surface)] text-[var(--muted-text)] group-hover:text-[var(--brand-accent)]'
+                            ? 'bg-[#10B981] text-black shadow-sm'
+                            : 'bg-[#151D17] text-[#86998A] group-hover:text-[#34D399]'
                         }`}
                       >
                         Module {m.moduleNumber}
                       </span>
                       {m.weightageMarks && (
-                        <span className="text-[10px] font-mono amber-badge font-semibold px-1.5 py-0.2 rounded">
+                        <span className="text-[10px] font-mono bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 font-semibold px-1.5 py-0.2 rounded">
                           {m.weightageMarks}M
                         </span>
                       )}
@@ -762,18 +761,18 @@ export default function ResourcesPage() {
 
                     <h4
                       className={`text-xs font-bold leading-snug line-clamp-2 transition ${
-                        isSelected ? 'text-[var(--brand-accent)]' : 'text-[var(--primary-text)] group-hover:text-[var(--brand-accent)]'
+                        isSelected ? 'text-[#34D399]' : 'text-[#F0FDF4] group-hover:text-[#34D399]'
                       }`}
                       title={m.title}
                     >
                       {m.title}
                     </h4>
 
-                    <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-[var(--card-border)] text-[var(--muted-text)]">
+                    <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-[#1C271E] text-[#86998A]">
                       <span>Materials</span>
                       <span
                         className={`font-mono font-bold px-2 py-0.5 rounded-full text-[10px] ${
-                          isSelected ? 'amber-badge' : 'bg-[var(--subtle-surface)] text-[var(--muted-text)]'
+                          isSelected ? 'bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30' : 'bg-[#151D17] text-[#86998A]'
                         }`}
                       >
                         {modCount}
@@ -791,16 +790,16 @@ export default function ResourcesPage() {
                   }}
                   className={`p-3.5 rounded-2xl text-left transition-all duration-200 border flex flex-col justify-between space-y-2.5 group relative shadow-sm ${
                     isGeneralActive
-                      ? 'bg-[var(--subtle-surface)] border-[var(--brand-accent)] ring-2 ring-[var(--brand-accent)]/20'
-                      : 'bg-[var(--card-bg)] border-[var(--card-border)] hover:border-[var(--brand-accent)] text-[var(--muted-text)]'
+                      ? 'bg-[#151D17] border-[#10B981] ring-2 ring-[#10B981]/20'
+                      : 'bg-[#0F1410] border-[#1C271E] hover:border-[#34D399] text-[#86998A]'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span
                       className={`font-mono text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-wider ${
                         isGeneralActive
-                          ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm'
-                          : 'bg-[var(--subtle-surface)] text-[var(--muted-text)] group-hover:text-[var(--brand-accent)]'
+                          ? 'bg-[#10B981] text-black shadow-sm'
+                          : 'bg-[#151D17] text-[#86998A] group-hover:text-[#34D399]'
                       }`}
                     >
                       Course-Wide
@@ -809,17 +808,17 @@ export default function ResourcesPage() {
 
                   <h4
                     className={`text-xs font-bold leading-snug line-clamp-2 transition ${
-                      isGeneralActive ? 'text-[var(--brand-accent)]' : 'text-[var(--primary-text)] group-hover:text-[var(--brand-accent)]'
+                      isGeneralActive ? 'text-[#34D399]' : 'text-[#F0FDF4] group-hover:text-[#34D399]'
                     }`}
                   >
                     General & Reference
                   </h4>
 
-                  <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-[var(--card-border)] text-[var(--muted-text)]">
+                  <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-[#1C271E] text-[#86998A]">
                     <span>Materials</span>
                     <span
                       className={`font-mono font-bold px-2 py-0.5 rounded-full text-[10px] ${
-                        isGeneralActive ? 'amber-badge' : 'bg-[var(--subtle-surface)] text-[var(--muted-text)]'
+                        isGeneralActive ? 'bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30' : 'bg-[#151D17] text-[#86998A]'
                       }`}
                     >
                       {unmappedSubjectResources.length}
@@ -841,15 +840,15 @@ export default function ResourcesPage() {
                   onClick={() => setSelectedType(tab.type)}
                   className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition flex-shrink-0 border ${
                     isSelected
-                      ? 'bg-[var(--brand-accent)] text-zinc-950 border-[var(--brand-accent)] font-bold shadow-sm'
-                      : 'bg-[var(--subtle-surface)] text-[var(--muted-text)] border-[var(--subtle-border)] hover:border-[var(--brand-accent)] hover:text-[var(--primary-text)]'
+                      ? 'bg-[#10B981] text-black border-[#10B981] font-bold shadow-sm'
+                      : 'bg-[#0F1410] text-[#86998A] border-[#1C271E] hover:border-[#34D399] hover:text-[#F0FDF4]'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-zinc-950' : 'text-[var(--brand-accent)]'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-black' : 'text-[#34D399]'}`} />
                   <span>{tab.label}</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                      isSelected ? 'bg-black/20 text-zinc-950 font-bold' : 'bg-[var(--card-border)] text-[var(--muted-text)]'
+                      isSelected ? 'bg-black/20 text-black font-bold' : 'bg-[#151D17] text-[#86998A]'
                     }`}
                   >
                     {tab.count}
@@ -860,15 +859,15 @@ export default function ResourcesPage() {
           </div>
 
           {/* Search Row & Layout Controls */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--muted-text)]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#86998A]">
             <div className="relative w-full sm:w-96">
-              <Search className="w-4 h-4 text-[var(--muted-text)] absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#86998A] absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder={`Search in ${isGeneralActive ? 'Course Reference' : `Mod ${currentModule?.moduleNumber}`}...`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[var(--subtle-surface)] border border-[var(--subtle-border)] rounded-xl pl-9 pr-3 py-1.5 text-xs text-[var(--primary-text)] focus:outline-none focus:border-[var(--brand-accent)]"
+                className="w-full bg-[#0F1410] border border-[#1C271E] rounded-xl pl-9 pr-3 py-1.5 text-xs text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
               />
             </div>
 
@@ -882,24 +881,24 @@ export default function ResourcesPage() {
           {/* ======================================================================= */}
           {/* 🗂️ ACTIVE MODULE / SECTION RESOURCE LIST                                  */}
           {/* ======================================================================= */}
-          <div className="space-y-4 rounded-3xl p-5 sm:p-6 bg-white dark:bg-[#131b2a] border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="space-y-4 rounded-3xl p-5 sm:p-6 bg-[#0F1410]/80 backdrop-blur-md border border-[#1C271E] shadow-sm">
             {/* Active Module / Section Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#1C271E]">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2">
-                  <span className="px-2.5 py-0.5 rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white font-mono text-xs font-bold shadow-sm">
+                  <span className="px-2.5 py-0.5 rounded-lg bg-[#10B981] text-black font-mono text-xs font-bold shadow-sm">
                     {isGeneralActive ? 'Course-Wide' : `Module ${currentModule?.moduleNumber}`}
                   </span>
                   {!isGeneralActive && currentModule?.weightageMarks && (
-                    <span className="px-2 py-0.5 rounded-md bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60 text-[10px] font-bold">
+                    <span className="px-2 py-0.5 rounded-md bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[10px] font-bold">
                       {currentModule.weightageMarks} Marks
                     </span>
                   )}
-                  <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                  <span className="text-xs text-[#86998A] font-mono">
                     ({displayedModuleResources.length} {displayedModuleResources.length === 1 ? 'material' : 'materials'})
                   </span>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">
+                <h3 className="text-base sm:text-lg font-bold text-[#F0FDF4]">
                   {isGeneralActive ? 'General & Course-Wide Reference' : currentModule?.title}
                 </h3>
                 {!isGeneralActive && currentModule?.topics && currentModule.topics.length > 0 && (
@@ -907,7 +906,7 @@ export default function ResourcesPage() {
                     {currentModule.topics.map((t, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
+                        className="text-[10px] px-2 py-0.5 rounded bg-[#151D17] text-[#86998A] border border-[#1C271E]"
                       >
                         {t}
                       </span>
@@ -919,16 +918,16 @@ export default function ResourcesPage() {
 
             {/* Resources List for Active Module */}
             {displayedModuleResources.length === 0 ? (
-              <div className="p-12 text-center text-slate-500 dark:text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl space-y-3">
-                <BookOpen className="w-10 h-10 mx-auto text-slate-400 dark:text-slate-500" />
-                <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm">No {selectedType.replace('_', ' ')} found in this module</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+              <div className="p-12 text-center text-[#86998A] border border-dashed border-[#1C271E] rounded-2xl space-y-3">
+                <BookOpen className="w-10 h-10 mx-auto text-[#627766]" />
+                <h4 className="font-bold text-[#F0FDF4] text-sm">No {selectedType.replace('_', ' ')} found in this module</h4>
+                <p className="text-xs text-[#86998A] max-w-sm mx-auto">
                   There are currently no {selectedType.replace('_', ' ')} uploaded for this module.
                 </p>
                 <div className="pt-2">
                   <Link
                     href="/admin/upload"
-                    className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-sm transition"
+                    className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-sm transition"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Upload to {activeSubject?.code}</span>

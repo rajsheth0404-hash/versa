@@ -23,13 +23,13 @@ export default function MermaidViewer({ code, id = 'mermaid-chart', title }: Mer
       theme: 'dark',
       themeVariables: {
         darkMode: true,
-        background: '#0F172A',
-        primaryColor: '#1E293B',
-        primaryTextColor: '#F8FAFC',
-        primaryBorderColor: '#38BDF8',
-        lineColor: '#38BDF8',
-        secondaryColor: '#818CF8',
-        tertiaryColor: '#0F172A',
+        background: '#080A08',
+        primaryColor: '#0F1410',
+        primaryTextColor: '#F0FDF4',
+        primaryBorderColor: '#10B981',
+        lineColor: '#34D399',
+        secondaryColor: '#A3E635',
+        tertiaryColor: '#080A08',
         fontSize: '14px',
         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
       },
@@ -70,12 +70,12 @@ export default function MermaidViewer({ code, id = 'mermaid-chart', title }: Mer
   };
 
   return (
-    <div className="bg-[#1E293B] rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl">
+    <div className="bg-[#0F1410] rounded-2xl overflow-hidden border border-[#1C271E] shadow-2xl">
       {/* Header Controls */}
-      <div className="px-4 py-3 bg-[#0F172A] border-b border-slate-700/80 flex items-center justify-between">
+      <div className="px-4 py-3 bg-[#080A08] border-b border-[#1C271E] flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
-          <h4 className="text-xs font-semibold text-[#F8FAFC] uppercase tracking-wider">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+          <h4 className="text-xs font-semibold text-[#F0FDF4] uppercase tracking-wider">
             {title || 'Mermaid.js Visual Flowchart'}
           </h4>
         </div>
@@ -83,40 +83,40 @@ export default function MermaidViewer({ code, id = 'mermaid-chart', title }: Mer
         <div className="flex items-center space-x-1.5 text-xs">
           <button
             onClick={() => setZoom((prev) => Math.max(0.6, prev - 0.15))}
-            className="p-1.5 rounded-lg bg-[#1E293B] text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700"
+            className="p-1.5 rounded-lg bg-[#0F1410] text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] border border-[#1C271E]"
             title="Zoom Out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
           </button>
-          <span className="text-[10px] text-[#38BDF8] font-mono w-9 text-center">
+          <span className="text-[10px] text-[#34D399] font-mono w-9 text-center">
             {Math.round(zoom * 100)}%
           </span>
           <button
             onClick={() => setZoom((prev) => Math.min(2.0, prev + 0.15))}
-            className="p-1.5 rounded-lg bg-[#1E293B] text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700"
+            className="p-1.5 rounded-lg bg-[#0F1410] text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] border border-[#1C271E]"
             title="Zoom In"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => setZoom(1)}
-            className="p-1.5 rounded-lg bg-[#1E293B] text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700"
+            className="p-1.5 rounded-lg bg-[#0F1410] text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] border border-[#1C271E]"
             title="Reset Zoom"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
-          <div className="h-4 w-px bg-slate-700 mx-1"></div>
+          <div className="h-4 w-px bg-[#1C271E] mx-1"></div>
           <button
             onClick={handleCopyCode}
-            className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#1E293B] text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700"
+            className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#0F1410] text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] border border-[#1C271E]"
             title="Copy Mermaid Code"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-[#10B981]" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copied ? 'Copied' : 'Code'}</span>
           </button>
           <button
             onClick={handleDownloadSvg}
-            className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 hover:bg-[#38BDF8]/25 font-semibold"
+            className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 hover:bg-[#10B981]/25 font-semibold"
             title="Export SVG"
           >
             <Download className="w-3.5 h-3.5" />
@@ -126,11 +126,11 @@ export default function MermaidViewer({ code, id = 'mermaid-chart', title }: Mer
       </div>
 
       {/* SVG Canvas Area */}
-      <div className="p-6 overflow-auto min-h-[320px] max-h-[550px] flex items-center justify-center bg-[#0F172A]/90">
+      <div className="p-6 overflow-auto min-h-[320px] max-h-[550px] flex items-center justify-center bg-[#080A08]/90">
         {error ? (
           <div className="text-center p-6 text-rose-400 text-xs">
             <p className="font-semibold mb-1">Rendering Exception</p>
-            <p className="text-slate-400 font-mono text-[11px] max-w-md">{error}</p>
+            <p className="text-[#86998A] font-mono text-[11px] max-w-md">{error}</p>
           </div>
         ) : svgContent ? (
           <div
@@ -140,8 +140,8 @@ export default function MermaidViewer({ code, id = 'mermaid-chart', title }: Mer
             className="w-full flex justify-center [&>svg]:max-w-full [&>svg]:h-auto"
           />
         ) : (
-          <div className="flex flex-col items-center space-y-2 text-slate-500">
-            <div className="w-6 h-6 border-2 border-[#38BDF8] border-t-transparent rounded-full animate-spin"></div>
+          <div className="flex flex-col items-center space-y-2 text-[#86998A]">
+            <div className="w-6 h-6 border-2 border-[#10B981] border-t-transparent rounded-full animate-spin"></div>
             <span className="text-xs">Generating interactive diagram...</span>
           </div>
         )}

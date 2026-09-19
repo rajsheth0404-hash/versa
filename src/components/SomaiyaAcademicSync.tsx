@@ -135,7 +135,6 @@ export default function SomaiyaAcademicSync() {
     setSyncSuccess(false);
 
     setTimeout(() => {
-      // Simulate live sync from Somaiya App / MySomaiya
       HubStore.saveAttendanceCourse({
         id: 'att-1',
         userId: 'usr-fy-student-1',
@@ -214,7 +213,7 @@ export default function SomaiyaAcademicSync() {
         particleCount: 60,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#38BDF8', '#818CF8', '#10B981'],
+        colors: ['#10B981', '#34D399', '#A3E635'],
       });
     }, 900);
   };
@@ -222,26 +221,26 @@ export default function SomaiyaAcademicSync() {
   return (
     <div className="space-y-6">
       {/* Account Integration & Portal Sync Banner */}
-      <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 shadow-2xl relative overflow-hidden">
+      <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] shadow-2xl relative overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start space-x-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] flex items-center justify-center text-slate-950 shadow-lg shadow-cyan-950/40 flex-shrink-0">
+            <div className="w-11 h-11 rounded-2xl bg-[#10B981] flex items-center justify-center text-black shadow-lg shadow-emerald-950/40 flex-shrink-0">
               <GraduationCap className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#38BDF8]">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#34D399]">
                   Somaiya Student Account Active
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/30 flex items-center space-x-1">
+                <span className="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] font-mono text-[10px] font-bold border border-[#10B981]/30 flex items-center space-x-1">
                   <ShieldCheck className="w-3 h-3" />
                   <span>@somaiya.edu Authenticated</span>
                 </span>
               </div>
-              <h2 className="text-lg font-bold text-[#F8FAFC] mt-1">
-                Connected Student: <span className="font-mono text-slate-200">{studentEmail}</span>
+              <h2 className="text-lg font-bold text-[#F0FDF4] mt-1">
+                Connected Student: <span className="font-mono text-[#86998A]">{studentEmail}</span>
               </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-[#86998A] mt-0.5">
                 Automatically connects to <strong>Somaiya App</strong>, <strong>Google Classroom</strong>, and <strong>KJSCE LMS</strong> to pull live subject attendance, pending lab experiments, and upcoming tutorial schedules.
               </p>
             </div>
@@ -251,7 +250,7 @@ export default function SomaiyaAcademicSync() {
             <button
               onClick={handleSyncSomaiyaData}
               disabled={isSyncing}
-              className="flex items-center space-x-2 px-5 py-2.5 rounded-2xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-lg shadow-cyan-950/40 transition disabled:opacity-50"
+              className="flex items-center space-x-2 px-5 py-2.5 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-emerald-950/40 transition disabled:opacity-50"
             >
               <RefreshCw className={`w-4 h-4 ${isSyncing ? 'animate-spin' : ''}`} />
               <span>{isSyncing ? 'Fetching from Somaiya App...' : 'Sync Somaiya App & LMS'}</span>
@@ -260,14 +259,14 @@ export default function SomaiyaAcademicSync() {
         </div>
 
         {syncSuccess && (
-          <div className="mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between animate-in fade-in">
+          <div className="mt-4 p-3 rounded-xl bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-xs flex items-center justify-between animate-in fade-in">
             <div className="flex items-center space-x-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <CheckCircle2 className="w-4 h-4 text-[#34D399]" />
               <span>
                 Synced with <strong>MySomaiya SVU App</strong> at {lastSyncedTime}. All 7 subject attendances are up to date!
               </span>
             </div>
-            <span className="text-[10px] text-emerald-400/80 font-mono">Status: 200 OK</span>
+            <span className="text-[10px] text-[#34D399]/80 font-mono">Status: 200 OK</span>
           </div>
         )}
       </div>
@@ -275,15 +274,15 @@ export default function SomaiyaAcademicSync() {
       {/* 2-Column Grid: Google Classroom Pending Experiments + KJSCE LMS Schedule */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Column 1: Google Classroom Pending Experiments */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 space-y-4 shadow-xl">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-700/80">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] space-y-4 shadow-xl">
+          <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
             <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-[#10B981]/20 text-[#34D399] flex items-center justify-center">
                 <Laptop className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-bold text-[#F8FAFC] text-sm">Google Classroom Experiments</h3>
-                <p className="text-[10px] text-slate-400">Pending submissions & lab write-ups</p>
+                <h3 className="font-bold text-[#F0FDF4] text-sm">Google Classroom Experiments</h3>
+                <p className="text-[10px] text-[#86998A]">Pending submissions & lab write-ups</p>
               </div>
             </div>
 
@@ -291,7 +290,7 @@ export default function SomaiyaAcademicSync() {
               href="https://classroom.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-[11px] text-[#38BDF8] hover:underline font-semibold"
+              className="flex items-center space-x-1 text-[11px] text-[#34D399] hover:underline font-semibold"
             >
               <span>Open Classroom</span>
               <ExternalLink className="w-3 h-3" />
@@ -302,19 +301,19 @@ export default function SomaiyaAcademicSync() {
             {pendingExps.map((exp) => (
               <div
                 key={exp.id}
-                className="p-3.5 rounded-2xl bg-[#0F172A] border border-slate-700/70 hover:border-[#38BDF8]/40 transition flex items-start justify-between gap-3 text-xs"
+                className="p-3.5 rounded-2xl bg-[#080A08] border border-[#1C271E] hover:border-[#34D399]/40 transition flex items-start justify-between gap-3 text-xs"
               >
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-[#38BDF8] font-bold border border-slate-700">
+                    <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#151D17] text-[#34D399] font-bold border border-[#1C271E]">
                       {exp.courseCode}
                     </span>
-                    <span className="text-slate-400 text-[11px]">{exp.courseName}</span>
+                    <span className="text-[#86998A] text-[11px]">{exp.courseName}</span>
                   </div>
-                  <h4 className="font-semibold text-[#F8FAFC] text-xs">{exp.title}</h4>
-                  <div className="flex items-center space-x-2 text-[10px] text-slate-400 pt-0.5">
-                    <Clock className="w-3 h-3 text-amber-400" />
-                    <span className={exp.dueDaysRemaining <= 2 ? 'text-amber-300 font-semibold' : 'text-slate-400'}>
+                  <h4 className="font-semibold text-[#F0FDF4] text-xs">{exp.title}</h4>
+                  <div className="flex items-center space-x-2 text-[10px] text-[#86998A] pt-0.5">
+                    <Clock className="w-3 h-3 text-[#F59E0B]" />
+                    <span className={exp.dueDaysRemaining <= 2 ? 'text-[#F59E0B] font-semibold' : 'text-[#86998A]'}>
                       {exp.dueDate}
                     </span>
                   </div>
@@ -324,10 +323,10 @@ export default function SomaiyaAcademicSync() {
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                       exp.status === 'submitted'
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                        ? 'bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/30'
                         : exp.dueDaysRemaining <= 1
                         ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                        : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                        : 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
                     }`}
                   >
                     {exp.status === 'submitted' ? 'Turned In' : 'Pending'}
@@ -336,7 +335,7 @@ export default function SomaiyaAcademicSync() {
                     href={exp.classroomLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[10px] text-slate-400 hover:text-white flex items-center space-x-0.5"
+                    className="text-[10px] text-[#86998A] hover:text-[#F0FDF4] flex items-center space-x-0.5"
                   >
                     <span>Submit</span>
                     <ExternalLink className="w-2.5 h-2.5" />
@@ -348,15 +347,15 @@ export default function SomaiyaAcademicSync() {
         </div>
 
         {/* Column 2: KJSCE LMS Portal Integration */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 space-y-4 shadow-xl">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-700/80">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] space-y-4 shadow-xl">
+          <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
             <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-xl bg-[#818CF8]/20 text-[#818CF8] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-[#10B981]/20 text-[#34D399] flex items-center justify-center">
                 <Link2 className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-bold text-[#F8FAFC] text-sm">KJSCE LMS Timeline & Tutorials</h3>
-                <p className="text-[10px] text-slate-400">Tutorial schedule & quiz drops</p>
+                <h3 className="font-bold text-[#F0FDF4] text-sm">KJSCE LMS Timeline & Tutorials</h3>
+                <p className="text-[10px] text-[#86998A]">Tutorial schedule & quiz drops</p>
               </div>
             </div>
 
@@ -364,7 +363,7 @@ export default function SomaiyaAcademicSync() {
               href="https://lms-kjsce.somaiya.edu/?redirect=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-[11px] text-[#818CF8] hover:underline font-semibold"
+              className="flex items-center space-x-1 text-[11px] text-[#34D399] hover:underline font-semibold"
             >
               <span>lms-kjsce.somaiya.edu</span>
               <ExternalLink className="w-3 h-3" />
@@ -375,32 +374,32 @@ export default function SomaiyaAcademicSync() {
             {lmsSchedule.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 rounded-2xl bg-[#0F172A] border border-slate-700/70 hover:border-[#818CF8]/40 transition flex items-start justify-between gap-3 text-xs"
+                className="p-3.5 rounded-2xl bg-[#080A08] border border-[#1C271E] hover:border-[#34D399]/40 transition flex items-start justify-between gap-3 text-xs"
               >
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-[#818CF8] font-bold border border-slate-700">
+                    <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#151D17] text-[#34D399] font-bold border border-[#1C271E]">
                       {item.courseCode}
                     </span>
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded font-bold uppercase ${
                         item.type === 'tutorial'
-                          ? 'bg-blue-500/20 text-blue-300'
+                          ? 'bg-[#10B981]/20 text-[#34D399]'
                           : item.type === 'quiz'
-                          ? 'bg-purple-500/20 text-purple-300'
-                          : 'bg-amber-500/20 text-amber-300'
+                          ? 'bg-[#A3E635]/20 text-[#A3E635]'
+                          : 'bg-[#F59E0B]/20 text-[#F59E0B]'
                       }`}
                     >
                       {item.type}
                     </span>
-                    <span className="text-slate-400 text-[11px] truncate max-w-[140px]">
+                    <span className="text-[#86998A] text-[11px] truncate max-w-[140px]">
                       {item.courseName}
                     </span>
                   </div>
-                  <h4 className="font-semibold text-[#F8FAFC] text-xs">{item.title}</h4>
-                  <div className="flex items-center space-x-2 text-[10px] text-slate-400 pt-0.5">
-                    <Clock className="w-3 h-3 text-[#818CF8]" />
-                    <span className="text-[#818CF8]">{item.scheduledTime}</span>
+                  <h4 className="font-semibold text-[#F0FDF4] text-xs">{item.title}</h4>
+                  <div className="flex items-center space-x-2 text-[10px] text-[#86998A] pt-0.5">
+                    <Clock className="w-3 h-3 text-[#34D399]" />
+                    <span className="text-[#34D399]">{item.scheduledTime}</span>
                   </div>
                 </div>
 
@@ -408,7 +407,7 @@ export default function SomaiyaAcademicSync() {
                   href={item.lmsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-xl bg-[#1E293B] hover:bg-slate-700 text-slate-200 text-[10px] font-semibold flex items-center space-x-1 flex-shrink-0 border border-slate-700 transition"
+                  className="px-2.5 py-1.5 rounded-xl bg-[#151D17] hover:bg-[#1C271E] text-[#F0FDF4] text-[10px] font-semibold flex items-center space-x-1 flex-shrink-0 border border-[#1C271E] transition"
                 >
                   <span>LMS</span>
                   <ExternalLink className="w-2.5 h-2.5" />

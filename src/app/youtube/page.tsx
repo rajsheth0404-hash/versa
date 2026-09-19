@@ -99,7 +99,7 @@ export default function YouTubeResourcesPage() {
   const [videos, setVideos] = useState<YouTubeResource[]>([]);
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
 
-  // Filters: First Year / Second Year and Semesters 1 to 4  // Filter State
+  // Filters: First Year / Second Year and Semesters 1 to 4
   const [selectedYear, setSelectedYear] = useState<1 | 2>(1);
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | 3 | 4>(1);
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
@@ -329,7 +329,7 @@ export default function YouTubeResourcesPage() {
       customThumbnail: undefined,
     });
 
-    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 }, colors: ['#10B981', '#34D399', '#A3E635'] });
     setIsAddingVideo(false);
     loadData();
   };
@@ -417,12 +417,10 @@ export default function YouTubeResourcesPage() {
   const getEmbedUrl = (item: PlaylistLectureItem | null) => {
     if (!item) return '';
 
-    // If item has a direct playlist ID
     if (item.playlistId && item.playlistId.length >= 5 && !item.playlistId.startsWith('PLm_MSClsnwm')) {
       return `https://www.youtube.com/embed/videoseries?list=${item.playlistId}&autoplay=1&rel=0`;
     }
 
-    // Extract from youtubeUrl if present
     if (item.youtubeUrl) {
       const extracted = extractYouTubeVideoId(item.youtubeUrl);
       if (extracted.playlistId && extracted.playlistId.length >= 5 && !extracted.playlistId.startsWith('PLm_MSClsnwm')) {
@@ -433,12 +431,10 @@ export default function YouTubeResourcesPage() {
       }
     }
 
-    // If item has a specific video ID (11 chars and not a placeholder)
     if (item.videoId && item.videoId.length === 11 && !['1b9iU19bJ8E', 'kYB8IZa55bM', '34dOqQ9kF10', 'E6x7WJ8m5l0', '9_j3i0c7P-s', 'F01VpGZtVbY', 'videoseries'].includes(item.videoId)) {
       return `https://www.youtube.com/embed/${item.videoId}?autoplay=1&rel=0`;
     }
 
-    // Default ultra-reliable syllabus fallback lecture (Pradeep Giri Academy - Matrices)
     return `https://www.youtube.com/embed/wH2uY-n5_sQ?autoplay=1&rel=0`;
   };
 
@@ -447,14 +443,14 @@ export default function YouTubeResourcesPage() {
       {/* Top Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full amber-badge text-xs font-semibold mb-2">
-            <Tv className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-xs font-semibold mb-2">
+            <Tv className="w-3.5 h-3.5 text-[#34D399]" />
             <span>Syllabus-Aligned Video Lectures • Semester {selectedSemester}</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-[var(--primary-text)] tracking-tight">
+          <h1 className="text-3xl font-extrabold text-[#F0FDF4] tracking-tight">
             Video Lectures & Master Playlists
           </h1>
-          <p className="text-xs text-[var(--muted-text)] mt-1">
+          <p className="text-xs text-[#86998A] mt-1">
             Curated YouTube playlists, solved numericals, and step-by-step topic lectures.
           </p>
         </div>
@@ -463,7 +459,7 @@ export default function YouTubeResourcesPage() {
         <div className="flex items-center space-x-2 flex-shrink-0">
           <button
             onClick={() => handleOpenAddModal('module_playlist')}
-            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-zinc-950 text-xs font-bold shadow-md shadow-amber-950/20 transition"
+            className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black text-xs font-bold shadow-md shadow-emerald-950/20 transition"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Module Video / Playlist</span>
@@ -473,7 +469,7 @@ export default function YouTubeResourcesPage() {
 
       {/* Year Selector: First Year / Second Year */}
       <div className="flex flex-col items-start justify-start gap-2.5">
-        <div className="flex bg-[var(--subtle-surface)] p-1.5 rounded-2xl border border-[var(--subtle-border)] shadow-sm gap-1">
+        <div className="flex bg-[#0F1410] p-1.5 rounded-2xl border border-[#1C271E] shadow-sm gap-1">
           <button
             onClick={() => {
               setSelectedYear(1);
@@ -483,8 +479,8 @@ export default function YouTubeResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 1
-                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
-                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                ? 'bg-[#10B981] text-black shadow-sm font-extrabold'
+                : 'text-[#86998A] hover:text-[#F0FDF4]'
             }`}
           >
             <span>First Year</span>
@@ -498,12 +494,12 @@ export default function YouTubeResourcesPage() {
             }}
             className={`px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               selectedYear === 2
-                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-sm font-extrabold'
-                : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                ? 'bg-[#10B981] text-black shadow-sm font-extrabold'
+                : 'text-[#86998A] hover:text-[#F0FDF4]'
             }`}
           >
             <span>Second Year</span>
-            <span className="text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold amber-badge">
+            <span className="text-[9px] px-1.5 py-0.2 rounded font-mono uppercase font-bold bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30">
               Soon
             </span>
           </button>
@@ -511,7 +507,7 @@ export default function YouTubeResourcesPage() {
 
         {/* Nested Semester Selector for Selected Year */}
         {selectedYear === 1 ? (
-          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
+          <div className="flex bg-[#0F1410] p-1 rounded-xl border border-[#1C271E] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(1);
@@ -520,8 +516,8 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 1
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 1 Video Catalog (7 Subjects)
@@ -534,15 +530,15 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 2
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 2 Video Catalog (5 Subjects)
             </button>
           </div>
         ) : (
-          <div className="flex bg-[var(--subtle-surface)] p-1 rounded-xl border border-[var(--subtle-border)] shadow-sm mt-1 animate-in fade-in">
+          <div className="flex bg-[#0F1410] p-1 rounded-xl border border-[#1C271E] shadow-sm mt-1 animate-in fade-in">
             <button
               onClick={() => {
                 setSelectedSemester(3);
@@ -551,8 +547,8 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 3
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 3 Courses
@@ -565,8 +561,8 @@ export default function YouTubeResourcesPage() {
               }}
               className={`px-5 py-1.5 rounded-lg text-xs font-semibold transition ${
                 selectedSemester === 4
-                  ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-sm'
-                  : 'text-[var(--muted-text)] hover:text-[var(--primary-text)]'
+                  ? 'bg-[#10B981] text-black font-bold shadow-sm'
+                  : 'text-[#86998A] hover:text-[#F0FDF4]'
               }`}
             >
               Semester 4 Courses
@@ -577,19 +573,19 @@ export default function YouTubeResourcesPage() {
 
       {selectedYear === 2 ? (
         /* Year 2: Video lectures to be added soon Container */
-        <div className="glass-panel bg-[#1E293B]/60 p-12 sm:p-16 rounded-3xl text-center border border-dashed border-slate-700/80 space-y-5 shadow-2xl max-w-2xl mx-auto my-8 animate-in fade-in">
-          <div className="w-16 h-16 rounded-3xl bg-indigo-500/15 border border-indigo-500/30 text-[#818CF8] flex items-center justify-center mx-auto shadow-inner">
-            <Clock className="w-8 h-8 text-[#38BDF8]" />
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-12 sm:p-16 rounded-3xl text-center border border-dashed border-[#1C271E] space-y-5 shadow-2xl max-w-2xl mx-auto my-8 animate-in fade-in">
+          <div className="w-16 h-16 rounded-3xl bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] flex items-center justify-center mx-auto shadow-inner">
+            <Clock className="w-8 h-8 text-[#34D399]" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[11px] font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[11px] font-mono font-bold uppercase tracking-wider">
               <span>Second Year • Semester {selectedSemester}</span>
             </div>
-            <h3 className="font-extrabold text-[#F8FAFC] text-2xl sm:text-3xl tracking-tight">
+            <h3 className="font-extrabold text-[#F0FDF4] text-2xl sm:text-3xl tracking-tight">
               Notes to be added soon
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#86998A] max-w-md mx-auto leading-relaxed">
               Curated YouTube playlists, solved numericals, and step-by-step topic video lectures for Second Year are currently being compiled.
             </p>
           </div>
@@ -600,7 +596,7 @@ export default function YouTubeResourcesPage() {
                 setSelectedYear(1);
                 setSelectedSemester(1);
               }}
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs transition shadow-lg shadow-cyan-950/40"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs transition shadow-lg shadow-emerald-950/40"
             >
               <span>Explore First Year Lectures</span>
               <Play className="w-3.5 h-3.5 fill-current" />
@@ -611,23 +607,23 @@ export default function YouTubeResourcesPage() {
         <>
 
       {/* Filter Control Center */}
-      <div className="glass-panel bg-[#1E293B]/80 p-6 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+      <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] space-y-4 shadow-xl">
         {/* Search Bar */}
         <div className="relative">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#86998A] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search Applied Maths matrices, BEE Thevenin, C Pointers, Lasers, Channel name, or topic..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900/90 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+            className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
           />
         </div>
 
         {/* Faceted Dropdowns: Subject & Module */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-800/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-[#1C271E]">
           <div>
-            <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
+            <label className="text-[10px] uppercase font-bold text-[#86998A] block mb-1">
               Filter by Subject
             </label>
             <select
@@ -636,7 +632,7 @@ export default function YouTubeResourcesPage() {
                 setSelectedSubject(e.target.value);
                 setSelectedModule('all');
               }}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
             >
               <option value="all">All Subjects in Semester {selectedSemester}</option>
               {availableSubjects.map((s) => (
@@ -649,14 +645,14 @@ export default function YouTubeResourcesPage() {
 
           {/* Module Filter Dropdown */}
           <div>
-            <label className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
+            <label className="text-[10px] uppercase font-bold text-[#86998A] block mb-1">
               Filter by Module / Unit
             </label>
             <select
               value={selectedModule}
               onChange={(e) => setSelectedModule(e.target.value)}
               disabled={selectedSubject === 'all'}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8] disabled:opacity-40"
+              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#34D399] disabled:opacity-40"
             >
               <option value="all">
                 {selectedSubject === 'all' ? 'Select a Subject first' : 'All Modules'}
@@ -672,15 +668,15 @@ export default function YouTubeResourcesPage() {
 
         {/* Module Quick Filter Pills */}
         {selectedSubject !== 'all' && availableFilterModules.length > 0 && (
-          <div className="pt-2 border-t border-slate-800/60">
+          <div className="pt-2 border-t border-[#1C271E]">
             <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
-              <span className="text-[10px] font-bold text-slate-400 uppercase mr-1">Modules:</span>
+              <span className="text-[10px] font-bold text-[#86998A] uppercase mr-1">Modules:</span>
               <button
                 onClick={() => setSelectedModule('all')}
                 className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 ${
                   selectedModule === 'all'
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                    ? 'bg-[#10B981] text-black font-bold shadow-md'
+                    : 'bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E]'
                 }`}
               >
                 All
@@ -693,8 +689,8 @@ export default function YouTubeResourcesPage() {
                     onClick={() => setSelectedModule(isSelected ? 'all' : m.id)}
                     className={`px-3 py-1 rounded-xl text-xs font-semibold transition flex-shrink-0 flex items-center space-x-1.5 border ${
                       isSelected
-                        ? 'bg-[#38BDF8] text-slate-950 border-[#38BDF8] font-bold shadow-md'
-                        : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
+                        ? 'bg-[#10B981] text-black border-[#10B981] font-bold shadow-md'
+                        : 'bg-[#151D17] text-[#86998A] border-[#1C271E] hover:border-[#34D399] hover:text-[#F0FDF4]'
                     }`}
                   >
                     <span className="font-mono text-[10px]">M{m.moduleNumber}</span>
@@ -706,8 +702,6 @@ export default function YouTubeResourcesPage() {
           </div>
         )}
 
-
-
         {(searchQuery || selectedSubject !== 'all' || selectedModule !== 'all' || selectedAuthor !== 'all') && (
           <div className="flex justify-end pt-1">
             <button
@@ -717,7 +711,7 @@ export default function YouTubeResourcesPage() {
                 setSelectedModule('all');
                 setSelectedAuthor('all');
               }}
-              className="text-xs text-[#38BDF8] hover:underline font-semibold"
+              className="text-xs text-[#34D399] hover:underline font-semibold"
             >
               Reset active filters
             </button>
@@ -727,16 +721,16 @@ export default function YouTubeResourcesPage() {
 
       {/* ⚛️ Engineering Physics Dual-Instructor Selector Banner */}
       {selectedSubject === 'sub-phy' && selectedAuthor === 'all' && (
-        <div className="glass-panel bg-gradient-to-r from-cyan-950/40 to-indigo-950/40 border border-[#38BDF8]/40 p-6 rounded-3xl space-y-4 shadow-xl animate-in fade-in">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#10B981]/30 p-6 rounded-3xl space-y-4 shadow-xl animate-in fade-in">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#38BDF8]/20 text-[#38BDF8] font-mono border border-[#38BDF8]/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-mono border border-[#10B981]/30">
                   Dual-Instructor Course
                 </span>
-                <h3 className="text-base font-bold text-[#F8FAFC]">Choose Your Preferred Physics Instructor</h3>
+                <h3 className="text-base font-bold text-[#F0FDF4]">Choose Your Preferred Physics Instructor</h3>
               </div>
-              <p className="text-xs text-slate-300 mt-1">
+              <p className="text-xs text-[#86998A] mt-1">
                 Engineering Physics is available in two complete, high-yield playlist series. Select your favorite instructor:
               </p>
             </div>
@@ -746,23 +740,23 @@ export default function YouTubeResourcesPage() {
             {/* Physics Jessy Card */}
             <div
               onClick={() => setSelectedAuthor('Physics Jessy')}
-              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#38BDF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+              className="p-4 rounded-2xl bg-[#151D17] border border-[#1C271E] hover:border-[#34D399] hover:bg-[#131A14] transition cursor-pointer space-y-3 group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-cyan-500/20 text-[#38BDF8] flex items-center justify-center font-bold">
+                  <div className="w-9 h-9 rounded-xl bg-[#10B981]/20 text-[#34D399] flex items-center justify-center font-bold">
                     PJ
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm group-hover:text-[#38BDF8] transition">Physics Jessy</h4>
-                    <p className="text-[11px] text-slate-400">7 Playlists • Complete Module 1 to 4 Series</p>
+                    <h4 className="font-bold text-[#F0FDF4] text-sm group-hover:text-[#34D399] transition">Physics Jessy</h4>
+                    <p className="text-[11px] text-[#86998A]">7 Playlists • Complete Module 1 to 4 Series</p>
                   </div>
                 </div>
-                <button className="px-3 py-1.5 rounded-xl bg-[#38BDF8] text-slate-950 text-xs font-bold shadow group-hover:scale-105 transition">
+                <button className="px-3 py-1.5 rounded-xl bg-[#10B981] text-black text-xs font-bold shadow group-hover:scale-105 transition">
                   Watch Series
                 </button>
               </div>
-              <p className="text-[11px] text-slate-400 leading-snug">
+              <p className="text-[11px] text-[#86998A] leading-snug">
                 Covers Thin Film Interference, Diffraction, Lasers, Optical Fibers, Quantum Mechanics, Semiconductors &amp; Electrodynamics.
               </p>
             </div>
@@ -770,23 +764,23 @@ export default function YouTubeResourcesPage() {
             {/* Engineering Physics by Sanjiv Card */}
             <div
               onClick={() => setSelectedAuthor('Engineering Physics by Sanjiv')}
-              className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-[#818CF8] hover:bg-slate-900 transition cursor-pointer space-y-3 group"
+              className="p-4 rounded-2xl bg-[#151D17] border border-[#1C271E] hover:border-[#34D399] hover:bg-[#131A14] transition cursor-pointer space-y-3 group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-[#818CF8] flex items-center justify-center font-bold">
+                  <div className="w-9 h-9 rounded-xl bg-[#10B981]/20 text-[#34D399] flex items-center justify-center font-bold">
                     ES
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm group-hover:text-[#818CF8] transition">Engineering Physics by Sanjiv</h4>
-                    <p className="text-[11px] text-slate-400">7 Playlists • Dr. Sanjiv Lecture Series</p>
+                    <h4 className="font-bold text-[#F0FDF4] text-sm group-hover:text-[#34D399] transition">Engineering Physics by Sanjiv</h4>
+                    <p className="text-[11px] text-[#86998A]">7 Playlists • Dr. Sanjiv Lecture Series</p>
                   </div>
                 </div>
-                <button className="px-3 py-1.5 rounded-xl bg-[#818CF8] text-slate-950 text-xs font-bold shadow group-hover:scale-105 transition">
+                <button className="px-3 py-1.5 rounded-xl bg-[#10B981] text-black text-xs font-bold shadow group-hover:scale-105 transition">
                   Watch Series
                 </button>
               </div>
-              <p className="text-[11px] text-slate-400 leading-snug">
+              <p className="text-[11px] text-[#86998A] leading-snug">
                 Step-by-step solved derivations on Diffraction, Interference, Laser, Fiber Optics, Quantum, Semiconductors &amp; Maxwell Laws.
               </p>
             </div>
@@ -796,25 +790,25 @@ export default function YouTubeResourcesPage() {
 
       {/* 📘 Biology for Engineers Subject Notice Banner */}
       {selectedSubject === 'sub-bio' && (
-        <div className="glass-panel bg-emerald-950/30 border border-emerald-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#10B981]/30 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
           <div className="flex items-start space-x-3.5">
-            <div className="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 flex-shrink-0">
+            <div className="p-3 rounded-2xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#34D399] flex-shrink-0">
               <BookOpen className="w-6 h-6" />
             </div>
             <div className="space-y-1.5 flex-1">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-mono border border-[#10B981]/30">
                   316U06C106
                 </span>
-                <h3 className="text-base font-bold text-[#F8FAFC]">Biology for Engineers</h3>
+                <h3 className="text-base font-bold text-[#F0FDF4]">Biology for Engineers</h3>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-xs text-[#86998A] leading-relaxed max-w-2xl">
                 There is no official YouTube video playlist needed for Biology for Engineers. Please refer to the Notes &amp; Materials section for complete faculty notes.
               </p>
               <div className="pt-2">
                 <Link
                   href="/resources?subject=sub-bio"
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow-lg shadow-emerald-950/40"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs transition shadow-lg shadow-emerald-950/40"
                 >
                   <BookOpen className="w-4 h-4" />
                   <span>Refer to Notes &amp; Materials Section</span>
@@ -827,25 +821,25 @@ export default function YouTubeResourcesPage() {
 
       {/* 🌿 Environmental Science (EVS) Subject Notice Banner */}
       {selectedSubject === 'sub-evs' && (
-        <div className="glass-panel bg-emerald-950/30 border border-emerald-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#10B981]/30 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
           <div className="flex items-start space-x-3.5">
-            <div className="p-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 flex-shrink-0">
+            <div className="p-3 rounded-2xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#34D399] flex-shrink-0">
               <BookOpen className="w-6 h-6" />
             </div>
             <div className="space-y-1.5 flex-1">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-mono border border-[#10B981]/30">
                   316U06C204 • HSS
                 </span>
-                <h3 className="text-base font-bold text-[#F8FAFC]">Environmental Science (EVS)</h3>
+                <h3 className="text-base font-bold text-[#F0FDF4]">Environmental Science (EVS)</h3>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-xs text-[#86998A] leading-relaxed max-w-2xl">
                 There is no need to watch YouTube video lectures for Environmental Science. The curriculum is theory &amp; reading-focused — please follow the lecture notes, presentations, and syllabus materials directly.
               </p>
               <div className="pt-2">
                 <Link
                   href="/resources?subject=sub-evs"
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow-lg shadow-emerald-950/40"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs transition shadow-lg shadow-emerald-950/40"
                 >
                   <BookOpen className="w-4 h-4" />
                   <span>Refer to EVS Notes &amp; Materials Section</span>
@@ -858,25 +852,25 @@ export default function YouTubeResourcesPage() {
 
       {/* 🔬 Applied Science for Computer & Allied Programs (ASCT) Subject Notice Banner */}
       {selectedSubject === 'sub-ascap' && (
-        <div className="glass-panel bg-cyan-950/30 border border-cyan-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#10B981]/30 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
           <div className="flex items-start space-x-3.5">
-            <div className="p-3 rounded-2xl bg-cyan-500/20 border border-cyan-500/30 text-[#38BDF8] flex-shrink-0">
+            <div className="p-3 rounded-2xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#34D399] flex-shrink-0">
               <BookOpen className="w-6 h-6" />
             </div>
             <div className="space-y-1.5 flex-1">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-mono border border-[#10B981]/30">
                   316U06E211 • BS
                 </span>
-                <h3 className="text-base font-bold text-[#F8FAFC]">Applied Science for Computer &amp; Allied Programs (ASCT)</h3>
+                <h3 className="text-base font-bold text-[#F0FDF4]">Applied Science for Computer &amp; Allied Programs (ASCT)</h3>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-xs text-[#86998A] leading-relaxed max-w-2xl">
                 There is no need to watch YouTube video playlists for ASCT. Just follow the Academic Resources, reference notes, and textbook question banks directly.
               </p>
               <div className="pt-2">
                 <Link
                   href="/resources?subject=sub-ascap"
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs transition shadow-lg shadow-cyan-950/40"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs transition shadow-lg shadow-emerald-950/40"
                 >
                   <BookOpen className="w-4 h-4" />
                   <span>Follow ASCT Resources &amp; Notes</span>
@@ -887,34 +881,34 @@ export default function YouTubeResourcesPage() {
         </div>
       )}
 
-      {/* Video Grid (Thumbnail-Free, Badge-First Layout) */}
+      {/* Video Grid (Obsidian & Electric Mint Layout) */}
       {filteredVideos.length === 0 ? (
         selectedSubject === 'sub-bio' || selectedSubject === 'sub-evs' || selectedSubject === 'sub-ascap' ? null : selectedSubject === 'sub-spm' && selectedModule !== 'all' ? (
-          <div className="glass-panel bg-[#1E293B]/70 p-12 rounded-3xl text-center border border-indigo-500/30 space-y-4 shadow-xl">
-            <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mx-auto">
+          <div className="bg-[#0F1410]/80 backdrop-blur-md p-12 rounded-3xl text-center border border-[#10B981]/30 space-y-4 shadow-xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/30 flex items-center justify-center mx-auto">
               <Sparkles className="w-7 h-7" />
             </div>
             <div className="space-y-1.5 max-w-md mx-auto">
-              <h3 className="font-bold text-[#F8FAFC] text-base">Structured Programming Methodology (C++)</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h3 className="font-bold text-[#F0FDF4] text-base">Structured Programming Methodology (C++)</h3>
+              <p className="text-xs text-[#86998A] leading-relaxed">
                 For this module section, refer to the <strong>Notes</strong> section or stream the <strong>Entire Course Playlist</strong> covering all modules.
               </p>
             </div>
             <div className="flex items-center justify-center gap-2.5 flex-wrap">
               <Link
                 href="/resources?subject=sub-spm"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-xs transition"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#151D17] hover:bg-[#131A14] text-[#F0FDF4] border border-[#1C271E] font-semibold text-xs transition"
               >
-                <BookOpen className="w-4 h-4 text-indigo-400" />
+                <BookOpen className="w-4 h-4 text-[#34D399]" />
                 <span>Refer to SPM Notes Section</span>
               </Link>
             </div>
           </div>
         ) : (
-          <div className="glass-panel bg-[#1E293B]/60 p-16 rounded-3xl text-center text-slate-400 border border-slate-800 space-y-3">
-            <Tv className="w-12 h-12 mx-auto text-slate-500" />
-            <h3 className="font-bold text-[#F8FAFC] text-base">No video resources found</h3>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          <div className="bg-[#0F1410]/80 backdrop-blur-md p-16 rounded-3xl text-center text-[#86998A] border border-[#1C271E] space-y-3">
+            <Tv className="w-12 h-12 mx-auto text-[#627766]" />
+            <h3 className="font-bold text-[#F0FDF4] text-base">No video resources found</h3>
+            <p className="text-xs text-[#86998A] max-w-sm mx-auto">
               Click &ldquo;+ Add Module Video / Playlist&rdquo; to add YouTube lectures.
             </p>
           </div>
@@ -928,41 +922,41 @@ export default function YouTubeResourcesPage() {
             return (
               <div
                 key={video.id}
-                className="glass-card rounded-3xl p-5 border border-slate-755 flex flex-col justify-between group hover:border-[#38BDF8]/60 hover:shadow-2xl hover:shadow-cyan-950/20 transition-all duration-300 relative bg-gradient-to-b from-[#1E293B]/90 to-slate-950/90"
+                className="bg-[#0F1410]/80 backdrop-blur-md rounded-3xl p-5 border border-[#1C271E] flex flex-col justify-between group hover:border-[#34D399] hover:bg-[#131A14] hover:shadow-2xl transition-all duration-300 relative"
               >
                 <div className="space-y-3">
                   {/* Card Top Header: Play Icon Badge, Badges */}
                   <div className="flex items-start justify-between gap-3">
                     <div
                       onClick={() => handleStartWatching(video)}
-                      className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-105 cursor-pointer transition-transform flex-shrink-0 font-black"
+                      className="w-11 h-11 rounded-2xl bg-[#10B981] text-black flex items-center justify-center shadow-lg group-hover:scale-105 cursor-pointer transition-transform flex-shrink-0 font-black"
                       title="Play Lecture"
                     >
                       <Play className="w-5 h-5 fill-current ml-0.5" />
                     </div>
 
                     <div className="flex items-center space-x-1.5 flex-wrap justify-end">
-                      <span className="px-2 py-0.5 rounded-lg bg-black/60 text-[10px] font-mono font-bold text-slate-200 border border-slate-700/60">
+                      <span className="px-2 py-0.5 rounded-lg bg-[#151D17] text-[10px] font-mono font-bold text-[#F0FDF4] border border-[#1C271E]">
                         {sub?.code || 'Course'}
                       </span>
                       {mod ? (
-                        <span className="px-2 py-0.5 rounded-lg bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 text-[10px] font-mono font-bold">
+                        <span className="px-2 py-0.5 rounded-lg bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-[10px] font-mono font-bold">
                           Mod {mod.moduleNumber}
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 text-[10px] font-bold">
+                        <span className="px-2 py-0.5 rounded-lg bg-[#A3E635]/15 text-[#A3E635] border border-[#A3E635]/30 text-[10px] font-bold">
                           Full Course
                         </span>
                       )}
-                      <span className="px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300 text-[10px] font-semibold flex items-center space-x-1">
+                      <span className="px-2 py-0.5 rounded-lg bg-[#151D17] text-[#86998A] border border-[#1C271E] text-[10px] font-semibold flex items-center space-x-1">
                         {video.isPlaylist ? (
                           <>
-                            <ListVideo className="w-3 h-3 text-[#38BDF8]" />
+                            <ListVideo className="w-3 h-3 text-[#34D399]" />
                             <span>Playlist</span>
                           </>
                         ) : (
                           <>
-                            <Clock className="w-3 h-3 text-slate-400" />
+                            <Clock className="w-3 h-3 text-[#86998A]" />
                             <span>{video.duration || 'Video'}</span>
                           </>
                         )}
@@ -974,20 +968,20 @@ export default function YouTubeResourcesPage() {
                   <div>
                     <h3
                       onClick={() => handleStartWatching(video)}
-                      className="font-bold text-[#F8FAFC] text-sm leading-snug line-clamp-2 cursor-pointer hover:text-[#38BDF8] transition"
+                      className="font-bold text-[#F0FDF4] text-sm leading-snug line-clamp-2 cursor-pointer hover:text-[#34D399] transition"
                     >
                       {video.title}
                     </h3>
                     {video.description && (
-                      <p className="text-[11px] text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
+                      <p className="text-[11px] text-[#86998A] mt-1.5 line-clamp-2 leading-relaxed">
                         {video.description}
                       </p>
                     )}
                   </div>
 
                   {/* Channel info */}
-                  <div className="flex items-center space-x-1.5 text-xs text-slate-400 pt-0.5">
-                    <User className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <div className="flex items-center space-x-1.5 text-xs text-[#86998A] pt-0.5">
+                    <User className="w-3.5 h-3.5 text-[#10B981]" />
                     <span className="truncate font-medium">{video.channelName}</span>
                   </div>
 
@@ -997,7 +991,7 @@ export default function YouTubeResourcesPage() {
                       {video.tags.slice(0, 3).map((tag, idx) => (
                         <span
                           key={idx}
-                          className="text-[10px] px-2 py-0.5 rounded-md bg-slate-800/70 text-slate-400 border border-slate-700/40 font-mono"
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-[#151D17] text-[#86998A] border border-[#1C271E] font-mono"
                         >
                           #{tag}
                         </span>
@@ -1007,10 +1001,10 @@ export default function YouTubeResourcesPage() {
                 </div>
 
                 {/* Card Footer Actions */}
-                <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                <div className="pt-4 mt-4 border-t border-[#1C271E] flex items-center justify-between gap-2">
                   <button
                     onClick={() => handleStartWatching(video)}
-                    className="flex-1 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-md shadow-cyan-950/40 transition flex items-center justify-center space-x-1.5"
+                    className="flex-1 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-md shadow-emerald-950/40 transition flex items-center justify-center space-x-1.5"
                   >
                     <Play className="w-3.5 h-3.5 fill-current" />
                     <span>{video.isPlaylist ? 'Play Playlist' : 'Watch Lecture'}</span>
@@ -1018,7 +1012,7 @@ export default function YouTubeResourcesPage() {
 
                   <button
                     onClick={() => setEditingVideo(video)}
-                    className="p-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+                    className="p-2 rounded-xl bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E] transition"
                     title="Edit Video Information"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
@@ -1026,7 +1020,7 @@ export default function YouTubeResourcesPage() {
 
                   <button
                     onClick={() => handleDeleteVideo(video.id)}
-                    className="p-2 rounded-xl bg-slate-800/90 hover:bg-rose-500/20 hover:text-rose-400 text-slate-400 border border-slate-700 transition"
+                    className="p-2 rounded-xl bg-[#151D17] hover:bg-rose-500/20 hover:text-rose-400 text-[#86998A] border border-[#1C271E] transition"
                     title="Delete Video"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -1040,27 +1034,27 @@ export default function YouTubeResourcesPage() {
 
       {/* 💡 Structured Programming Methodology (C++) Section Placed BELOW Playlist */}
       {selectedSubject === 'sub-spm' && (
-        <div className="glass-panel bg-indigo-950/30 border border-indigo-500/40 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#10B981]/30 p-6 rounded-3xl space-y-3 shadow-xl animate-in fade-in">
           <div className="flex items-start space-x-3.5">
-            <div className="p-3 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 flex-shrink-0">
+            <div className="p-3 rounded-2xl bg-[#10B981]/20 border border-[#10B981]/30 text-[#34D399] flex-shrink-0">
               <Sparkles className="w-6 h-6" />
             </div>
             <div className="space-y-1.5 flex-1">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#10B981]/20 text-[#34D399] font-mono border border-[#10B981]/30">
                   316U06C107
                 </span>
-                <h3 className="text-base font-bold text-[#F8FAFC]">Structured Programming Methodology (C++)</h3>
+                <h3 className="text-base font-bold text-[#F0FDF4]">Structured Programming Methodology (C++)</h3>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-xs text-[#86998A] leading-relaxed max-w-2xl">
                 For each module section (Algorithms, Branching & Loops, Arrays & Strings, Functions & Pointers), please refer to the <strong>Notes</strong> section or stream the <strong>Entire Course Playlist</strong> in the video player.
               </p>
               <div className="pt-2">
                 <Link
                   href="/resources?subject=sub-spm"
-                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-xs transition"
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#151D17] hover:bg-[#131A14] text-[#F0FDF4] border border-[#1C271E] font-semibold text-xs transition"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+                  <BookOpen className="w-3.5 h-3.5 text-[#34D399]" />
                   <span>Refer to Notes Section</span>
                 </Link>
               </div>
@@ -1074,25 +1068,25 @@ export default function YouTubeResourcesPage() {
       {/* 🎬 In-App Video Player Modal with Full Playlist Section */}
       {activeVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in">
-          <div className="glass-panel bg-[#1E293B] w-full max-w-6xl rounded-3xl border border-slate-700 overflow-hidden shadow-2xl flex flex-col max-h-[92vh] animate-in zoom-in-95">
+          <div className="bg-[#0F1410] w-full max-w-6xl rounded-3xl border border-[#1C271E] overflow-hidden shadow-2xl flex flex-col max-h-[92vh] animate-in zoom-in-95">
             {/* Player Header */}
-            <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/90">
+            <div className="p-4 border-b border-[#1C271E] flex items-center justify-between bg-[#080A08]">
               <div className="flex items-center space-x-3 truncate">
-                <div className="w-8 h-8 rounded-lg bg-[#38BDF8] text-slate-950 flex items-center justify-center flex-shrink-0 font-bold">
-                  <Tv className="w-4 h-4 text-slate-950" />
+                <div className="w-8 h-8 rounded-lg bg-[#10B981] text-black flex items-center justify-center flex-shrink-0 font-bold">
+                  <Tv className="w-4 h-4 text-black" />
                 </div>
                 <div className="truncate">
                   <div className="flex items-center space-x-2">
-                    <h3 className="font-bold text-[#F8FAFC] text-sm truncate">
+                    <h3 className="font-bold text-[#F0FDF4] text-sm truncate">
                       {currentPlayingItem?.title || activeVideo.title}
                     </h3>
                     {currentPlayingItem?.isPlaylist && (
-                      <span className="px-2 py-0.5 rounded-full bg-[#818CF8]/20 text-[#818CF8] border border-[#818CF8]/40 text-[10px] font-bold">
+                      <span className="px-2 py-0.5 rounded-full bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/40 text-[10px] font-bold">
                         Playlist Series
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-slate-400 truncate">
+                  <p className="text-xs text-[#86998A] truncate">
                     {currentPlayingItem?.channelName || activeVideo.channelName} • Lecture {selectedPlaylistItemIndex + 1} of {activePlaylistVideos.length}
                   </p>
                 </div>
@@ -1108,14 +1102,14 @@ export default function YouTubeResourcesPage() {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs flex items-center space-x-1 transition"
+                  className="p-2 rounded-xl bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] text-xs flex items-center space-x-1 transition"
                   title="Open in YouTube"
                 >
-                  <ExternalLink className="w-4 h-4 text-[#38BDF8]" />
+                  <ExternalLink className="w-4 h-4 text-[#34D399]" />
                 </a>
                 <button
                   onClick={() => setActiveVideo(null)}
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                  className="p-2 rounded-xl bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] transition"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1139,18 +1133,18 @@ export default function YouTubeResourcesPage() {
                 </div>
 
                 {/* Video Navigation Bar under iframe */}
-                <div className="p-3 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300 gap-2 flex-wrap">
+                <div className="p-3 bg-[#080A08] border-t border-[#1C271E] flex items-center justify-between text-xs text-[#86998A] gap-2 flex-wrap">
                   <button
                     onClick={handlePrevPlaylistItem}
                     disabled={selectedPlaylistItemIndex === 0}
-                    className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none transition flex items-center space-x-1 text-slate-200 font-semibold"
+                    className="px-3 py-1.5 rounded-xl bg-[#151D17] hover:bg-[#1C271E] disabled:opacity-30 disabled:pointer-events-none transition flex items-center space-x-1 text-[#F0FDF4] font-semibold"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                     <span>Previous</span>
                   </button>
 
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono text-[11px] text-slate-400">
+                    <span className="font-mono text-[11px] text-[#86998A]">
                       Lesson {selectedPlaylistItemIndex + 1} / {activePlaylistVideos.length}
                     </span>
                     <a
@@ -1173,7 +1167,7 @@ export default function YouTubeResourcesPage() {
                   <button
                     onClick={handleNextPlaylistItem}
                     disabled={selectedPlaylistItemIndex === activePlaylistVideos.length - 1}
-                    className="px-3 py-1.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] disabled:opacity-30 disabled:pointer-events-none transition flex items-center space-x-1 text-slate-950 font-bold shadow-md"
+                    className="px-3 py-1.5 rounded-xl bg-[#10B981] hover:bg-[#059669] disabled:opacity-30 disabled:pointer-events-none transition flex items-center space-x-1 text-black font-bold shadow-md"
                   >
                     <span>Next Lesson</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -1182,27 +1176,27 @@ export default function YouTubeResourcesPage() {
               </div>
 
               {/* Right Column (5 cols on lg): Dedicated Playlist Directory */}
-              <div className="lg:col-span-5 flex flex-col justify-between bg-[#1E293B]/95 border-t lg:border-t-0 lg:border-l border-slate-800 max-h-[550px]">
+              <div className="lg:col-span-5 flex flex-col justify-between bg-[#0F1410] border-t lg:border-t-0 lg:border-l border-[#1C271E] max-h-[550px]">
                 {/* Playlist Header */}
-                <div className="p-3 border-b border-slate-800 bg-slate-950/60 flex items-center justify-between">
-                  <div className="flex items-center space-x-2 text-xs font-bold text-[#F8FAFC]">
-                    <div className="p-1.5 rounded-lg bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/20">
+                <div className="p-3 border-b border-[#1C271E] bg-[#080A08] flex items-center justify-between">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-[#F0FDF4]">
+                    <div className="p-1.5 rounded-lg bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30">
                       <ListVideo className="w-4 h-4" />
                     </div>
                     <span>Module Playlist Directory</span>
                   </div>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-900 border border-slate-800 text-[#38BDF8] font-bold">
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-[#151D17] border border-[#1C271E] text-[#34D399] font-bold">
                     {activePlaylistVideos.length} {activePlaylistVideos.length === 1 ? 'Lecture' : 'Lectures'}
                   </span>
                 </div>
 
                 {/* SPM Note in Player Modal */}
                 {activeVideo?.subjectId === 'sub-spm' && (
-                  <div className="m-3 p-2.5 rounded-xl bg-indigo-950/50 border border-indigo-500/30 text-[11px] text-indigo-300 flex items-start space-x-2">
-                    <Info className="w-3.5 h-3.5 text-indigo-400 flex-shrink-0 mt-0.5" />
+                  <div className="m-3 p-2.5 rounded-xl bg-[#10B981]/10 border border-[#10B981]/30 text-[11px] text-[#34D399] flex items-start space-x-2">
+                    <Info className="w-3.5 h-3.5 text-[#34D399] flex-shrink-0 mt-0.5" />
                     <span>
                       For module-wise handwritten notes, refer to the{' '}
-                      <Link href="/resources?subject=sub-spm" target="_blank" className="text-[#38BDF8] underline font-bold">
+                      <Link href="/resources?subject=sub-spm" target="_blank" className="text-[#34D399] underline font-bold">
                         Notes section
                       </Link>{' '}
                       or watch the entire playlist below.
@@ -1211,10 +1205,10 @@ export default function YouTubeResourcesPage() {
                 )}
 
                 {/* Complete Playlist Videos List */}
-                <div className="flex-1 overflow-y-auto p-3 space-y-2 divide-y divide-slate-800/40">
-                  <div className="flex items-center justify-between pb-1 text-[11px] text-slate-400 font-semibold px-1">
+                <div className="flex-1 overflow-y-auto p-3 space-y-2 divide-y divide-[#1C271E]">
+                  <div className="flex items-center justify-between pb-1 text-[11px] text-[#86998A] font-semibold px-1">
                     <span>Click any lesson to switch:</span>
-                    <span className="text-slate-500 font-mono text-[10px]">
+                    <span className="text-[#627766] font-mono text-[10px]">
                       Module order 1 → 5
                     </span>
                   </div>
@@ -1234,8 +1228,8 @@ export default function YouTubeResourcesPage() {
                           onClick={() => handleSelectPlaylistItem(idx)}
                           className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                             isPlaying
-                              ? 'bg-[#38BDF8]/15 border-[#38BDF8]/80 shadow-lg shadow-cyan-950/30'
-                              : 'bg-slate-950/40 border-slate-800/80 hover:bg-slate-800/60 hover:border-slate-700'
+                              ? 'bg-[#10B981]/15 border-[#10B981] shadow-lg shadow-emerald-950/30'
+                              : 'bg-[#080A08] border-[#1C271E] hover:bg-[#151D17] hover:border-[#34D399]'
                           }`}
                         >
                           <div className="flex items-center space-x-3 min-w-0 flex-1">
@@ -1243,8 +1237,8 @@ export default function YouTubeResourcesPage() {
                             <div
                               className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 ${
                                 isPlaying
-                                  ? 'bg-[#38BDF8] text-slate-950 font-black animate-pulse'
-                                  : 'bg-slate-800 text-slate-400'
+                                  ? 'bg-[#10B981] text-black font-black animate-pulse'
+                                  : 'bg-[#151D17] text-[#86998A]'
                               }`}
                             >
                               {isPlaying ? (
@@ -1257,23 +1251,23 @@ export default function YouTubeResourcesPage() {
                             <div className="min-w-0 flex-1">
                               <div className="flex items-center space-x-1.5 mb-0.5">
                                 {item.moduleTitle && (
-                                  <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 bg-slate-800 text-[#38BDF8] rounded">
+                                  <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 bg-[#151D17] text-[#34D399] rounded">
                                     {item.moduleTitle.split(':')[0]}
                                   </span>
                                 )}
-                                <span className="text-[10px] text-slate-400 truncate">
+                                <span className="text-[10px] text-[#86998A] truncate">
                                   {item.channelName}
                                 </span>
                               </div>
                               <h4
                                 className={`text-xs font-semibold leading-snug line-clamp-2 ${
-                                  isPlaying ? 'text-[#38BDF8] font-bold' : 'text-slate-300'
+                                  isPlaying ? 'text-[#34D399] font-bold' : 'text-[#F0FDF4]'
                                 }`}
                               >
                                 {item.title}
                               </h4>
                               {isPlaying && (
-                                <span className="text-[10px] text-[#38BDF8] font-bold uppercase tracking-wider block mt-0.5">
+                                <span className="text-[10px] text-[#34D399] font-bold uppercase tracking-wider block mt-0.5">
                                   ▶ Now Playing
                                 </span>
                               )}
@@ -1281,7 +1275,7 @@ export default function YouTubeResourcesPage() {
                           </div>
 
                           <div className="flex items-center space-x-1.5 flex-shrink-0">
-                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-400 font-mono">
+                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#151D17] text-[#86998A] font-mono">
                               {item.duration}
                             </span>
                             <a
@@ -1289,10 +1283,10 @@ export default function YouTubeResourcesPage() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                              className="p-1 rounded-md text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] transition"
                               title="Open this in YouTube"
                             >
-                              <ExternalLink className="w-3.5 h-3.5 text-[#38BDF8]" />
+                              <ExternalLink className="w-3.5 h-3.5 text-[#34D399]" />
                             </a>
                           </div>
                         </div>
@@ -1302,12 +1296,12 @@ export default function YouTubeResourcesPage() {
                 </div>
 
                 {/* Playlist Sidebar Footer */}
-                <div className="p-3 border-t border-slate-800 bg-slate-950/40 text-[11px] text-slate-400 flex items-center justify-between">
+                <div className="p-3 border-t border-[#1C271E] bg-[#080A08] text-[11px] text-[#86998A] flex items-center justify-between">
                   <span className="flex items-center space-x-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
                     <span>Ad-Free Clean Stream</span>
                   </span>
-                  <span className="text-slate-500 font-mono text-[10px]">Somaiya Academic Player</span>
+                  <span className="text-[#627766] font-mono text-[10px]">Somaiya Academic Player</span>
                 </div>
               </div>
             </div>
@@ -1318,20 +1312,20 @@ export default function YouTubeResourcesPage() {
       {/* ➕ Add Video / Playlist Modal */}
       {isAddingVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-panel bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-slate-700 max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-[#0F1410] p-6 sm:p-8 rounded-3xl border border-[#1C271E] max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
+            <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
               <div className="flex items-center space-x-2">
-                <Tv className="w-5 h-5 text-[#38BDF8]" />
-                <h3 className="font-bold text-[#F8FAFC] text-base">Add YouTube Video Resource</h3>
+                <Tv className="w-5 h-5 text-[#34D399]" />
+                <h3 className="font-bold text-[#F0FDF4] text-base">Add YouTube Video Resource</h3>
               </div>
-              <button onClick={() => setIsAddingVideo(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setIsAddingVideo(false)} className="text-[#86998A] hover:text-[#F0FDF4]">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Target Type Selector Buttons */}
             <div>
-              <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
+              <label className="text-[11px] font-bold text-[#86998A] uppercase tracking-wider block mb-1.5">
                 Choose Upload Target Type
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -1340,11 +1334,11 @@ export default function YouTubeResourcesPage() {
                   onClick={() => setUploadKind('subject_master')}
                   className={`p-2.5 rounded-xl border text-center text-xs font-bold transition flex flex-col items-center space-y-1 ${
                     uploadKind === 'subject_master'
-                      ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300 shadow-md'
-                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-[#10B981]/20 border-[#10B981] text-[#34D399] shadow-md'
+                      : 'bg-[#080A08] border-[#1C271E] text-[#86998A] hover:text-[#F0FDF4]'
                   }`}
                 >
-                  <ListVideo className="w-4 h-4 text-[#818CF8]" />
+                  <ListVideo className="w-4 h-4 text-[#34D399]" />
                   <span className="text-[11px]">Subject Playlist</span>
                 </button>
 
@@ -1353,11 +1347,11 @@ export default function YouTubeResourcesPage() {
                   onClick={() => setUploadKind('module_playlist')}
                   className={`p-2.5 rounded-xl border text-center text-xs font-bold transition flex flex-col items-center space-y-1 ${
                     uploadKind === 'module_playlist'
-                      ? 'bg-[#38BDF8]/20 border-[#38BDF8] text-[#38BDF8] shadow-md'
-                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-[#10B981]/20 border-[#10B981] text-[#34D399] shadow-md'
+                      : 'bg-[#080A08] border-[#1C271E] text-[#86998A] hover:text-[#F0FDF4]'
                   }`}
                 >
-                  <Layers className="w-4 h-4 text-[#38BDF8]" />
+                  <Layers className="w-4 h-4 text-[#34D399]" />
                   <span className="text-[11px]">Module Playlist</span>
                 </button>
 
@@ -1366,11 +1360,11 @@ export default function YouTubeResourcesPage() {
                   onClick={() => setUploadKind('module_video')}
                   className={`p-2.5 rounded-xl border text-center text-xs font-bold transition flex flex-col items-center space-y-1 ${
                     uploadKind === 'module_video'
-                      ? 'bg-sky-500/20 border-sky-500 text-sky-300 shadow-md'
-                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-[#10B981]/20 border-[#10B981] text-[#34D399] shadow-md'
+                      : 'bg-[#080A08] border-[#1C271E] text-[#86998A] hover:text-[#F0FDF4]'
                   }`}
                 >
-                  <Video className="w-4 h-4" />
+                  <Video className="w-4 h-4 text-[#34D399]" />
                   <span className="text-[11px]">Single Video</span>
                 </button>
               </div>
@@ -1379,7 +1373,7 @@ export default function YouTubeResourcesPage() {
             <form onSubmit={handleAddVideo} className="space-y-3 text-xs">
               {/* Subject Selector */}
               <div>
-                <label className="text-slate-400 block mb-1">Select Course Subject *</label>
+                <label className="text-[#86998A] block mb-1">Select Course Subject *</label>
                 <select
                   value={inputSubjectId}
                   onChange={(e) => {
@@ -1387,7 +1381,7 @@ export default function YouTubeResourcesPage() {
                     setInputModuleId('');
                   }}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                 >
                   {availableSubjects.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -1400,14 +1394,14 @@ export default function YouTubeResourcesPage() {
               {/* Module Selector (Only for module video / playlist) */}
               {uploadKind !== 'subject_master' && (
                 <div>
-                  <label className="text-slate-400 block mb-1">
+                  <label className="text-[#86998A] block mb-1">
                     Select Syllabus Module *
                   </label>
                   <select
                     value={inputModuleId}
                     onChange={(e) => setInputModuleId(e.target.value)}
                     required
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   >
                     <option value="">-- Choose Module --</option>
                     {availableModulesForInput.map((m) => (
@@ -1421,7 +1415,7 @@ export default function YouTubeResourcesPage() {
 
               {/* YouTube URL */}
               <div>
-                <label className="text-slate-400 block mb-1">
+                <label className="text-[#86998A] block mb-1">
                   YouTube Video / Playlist URL *
                 </label>
                 <input
@@ -1430,70 +1424,70 @@ export default function YouTubeResourcesPage() {
                   value={inputUrl}
                   onChange={(e) => setInputUrl(e.target.value)}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
                 />
               </div>
 
               {/* Video/Playlist Title */}
               <div>
-                <label className="text-slate-400 block mb-1">Lecture / Playlist Title *</label>
+                <label className="text-[#86998A] block mb-1">Lecture / Playlist Title *</label>
                 <input
                   type="text"
                   placeholder="e.g. Module 1: Complete Matrices & Normal Form"
                   value={inputTitle}
                   onChange={(e) => setInputTitle(e.target.value)}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
                 />
               </div>
 
               {/* Channel Name & Duration */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-400 block mb-1">Channel / Educator</label>
+                  <label className="text-[#86998A] block mb-1">Channel / Educator</label>
                   <input
                     type="text"
                     placeholder="e.g. Gate Smashers, Tikles Academy"
                     value={inputChannel}
                     onChange={(e) => setInputChannel(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
                   />
                 </div>
                 <div>
-                  <label className="text-slate-400 block mb-1">Duration / Videos Count</label>
+                  <label className="text-[#86998A] block mb-1">Duration / Videos Count</label>
                   <input
                     type="text"
                     placeholder="e.g. 14 Videos or 35:20"
                     value={inputDuration}
                     onChange={(e) => setInputDuration(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
                   />
                 </div>
               </div>
 
               {/* Tags */}
               <div>
-                <label className="text-slate-400 block mb-1">Topic Tags (Comma-separated)</label>
+                <label className="text-[#86998A] block mb-1">Topic Tags (Comma-separated)</label>
                 <input
                   type="text"
                   value={inputTags}
                   onChange={(e) => setInputTags(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] placeholder-[#627766] focus:outline-none focus:border-[#34D399]"
                 />
               </div>
 
               {/* Modal Buttons */}
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end space-x-2">
+              <div className="pt-3 border-t border-[#1C271E] flex items-center justify-end space-x-2">
                 <button
                   type="button"
                   onClick={() => setIsAddingVideo(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-xl bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold shadow-lg shadow-cyan-950/40"
+                  className="px-5 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold shadow-lg shadow-emerald-950/40"
                 >
                   Publish Video Resource
                 </button>
@@ -1506,20 +1500,20 @@ export default function YouTubeResourcesPage() {
       {/* ✏️ Edit Video Modal */}
       {editingVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-panel bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-slate-700 max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-[#0F1410] p-6 sm:p-8 rounded-3xl border border-[#1C271E] max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
+            <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
               <div className="flex items-center space-x-2">
-                <Edit2 className="w-5 h-5 text-[#38BDF8]" />
-                <h3 className="font-bold text-[#F8FAFC] text-base">Edit Video Details</h3>
+                <Edit2 className="w-5 h-5 text-[#34D399]" />
+                <h3 className="font-bold text-[#F0FDF4] text-base">Edit Video Details</h3>
               </div>
-              <button onClick={() => setEditingVideo(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setEditingVideo(null)} className="text-[#86998A] hover:text-[#F0FDF4]">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleSaveEditVideo} className="space-y-3 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Title *</label>
+                <label className="text-[#86998A] block mb-1">Title *</label>
                 <input
                   type="text"
                   value={editingVideo.title}
@@ -1527,12 +1521,12 @@ export default function YouTubeResourcesPage() {
                     setEditingVideo({ ...editingVideo, title: e.target.value })
                   }
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">YouTube URL *</label>
+                <label className="text-[#86998A] block mb-1">YouTube URL *</label>
                 <input
                   type="url"
                   value={editingVideo.youtubeUrl}
@@ -1540,40 +1534,40 @@ export default function YouTubeResourcesPage() {
                     setEditingVideo({ ...editingVideo, youtubeUrl: e.target.value })
                   }
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-400 block mb-1">Channel Name</label>
+                  <label className="text-[#86998A] block mb-1">Channel Name</label>
                   <input
                     type="text"
                     value={editingVideo.channelName}
                     onChange={(e) =>
                       setEditingVideo({ ...editingVideo, channelName: e.target.value })
                     }
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   />
                 </div>
                 <div>
-                  <label className="text-slate-400 block mb-1">Duration / Videos Count</label>
+                  <label className="text-[#86998A] block mb-1">Duration / Videos Count</label>
                   <input
                     type="text"
                     value={editingVideo.duration || ''}
                     onChange={(e) =>
                       setEditingVideo({ ...editingVideo, duration: e.target.value })
                     }
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   />
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+              <div className="pt-3 border-t border-[#1C271E] flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => handleDeleteVideo(editingVideo.id)}
-                  className="px-3 py-2 rounded-xl bg-red-500/20 text-red-400 hover:bg-red-500/30 text-xs font-semibold flex items-center space-x-1"
+                  className="px-3 py-2 rounded-xl bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 text-xs font-semibold flex items-center space-x-1"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>Delete</span>
@@ -1583,13 +1577,13 @@ export default function YouTubeResourcesPage() {
                   <button
                     type="button"
                     onClick={() => setEditingVideo(null)}
-                    className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+                    className="px-4 py-2 rounded-xl bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold shadow-lg"
+                    className="px-5 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold shadow-lg"
                   >
                     Save Changes
                   </button>
@@ -1602,4 +1596,3 @@ export default function YouTubeResourcesPage() {
     </div>
   );
 }
-

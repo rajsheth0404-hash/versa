@@ -17,10 +17,10 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
   return (
     <div className="space-y-3">
       {/* Action Toolbar */}
-      <div className="flex items-center justify-between p-3 rounded-2xl bg-[#1E293B] border border-slate-700/80 text-xs">
+      <div className="flex items-center justify-between p-3 rounded-2xl bg-[#080A08] border border-[#1C271E] text-xs">
         <div className="flex items-center space-x-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
-          <span className="font-semibold text-[#F8FAFC]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span className="font-semibold text-[#F0FDF4]">
             Official R-2025 PDF Document Snapshot (Page {semester === 1 ? '8' : '9'})
           </span>
         </div>
@@ -28,32 +28,32 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
         <div className="flex items-center space-x-1.5">
           <button
             onClick={handleZoomOut}
-            className="p-1.5 rounded-lg bg-[#0F172A] text-slate-300 hover:text-white border border-slate-700 transition"
+            className="p-1.5 rounded-lg bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E] transition"
             title="Zoom Out"
           >
             <ZoomOut className="w-3.5 h-3.5" />
           </button>
-          <span className="px-2 py-0.5 rounded bg-[#0F172A] font-mono text-[11px] text-[#38BDF8] border border-slate-700">
+          <span className="px-2 py-0.5 rounded bg-[#151D17] font-mono text-[11px] text-[#34D399] border border-[#1C271E]">
             {Math.round(zoomLevel * 100)}%
           </span>
           <button
             onClick={handleZoomIn}
-            className="p-1.5 rounded-lg bg-[#0F172A] text-slate-300 hover:text-white border border-slate-700 transition"
+            className="p-1.5 rounded-lg bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E] transition"
             title="Zoom In"
           >
             <ZoomIn className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={handleResetZoom}
-            className="px-2.5 py-1 rounded-lg bg-[#0F172A] text-slate-300 hover:text-white text-[10px] font-semibold border border-slate-700 transition"
+            className="px-2.5 py-1 rounded-lg bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4] text-[10px] font-semibold border border-[#1C271E] transition"
           >
             Reset
           </button>
         </div>
       </div>
 
-      {/* Official PDF Document Card Snapshot */}
-      <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-[#0F172A] p-2 flex justify-center shadow-2xl">
+      {/* Official PDF Document Card Snapshot (kept clean white canvas so document tables are crisp & readable) */}
+      <div className="overflow-x-auto rounded-2xl border border-[#1C271E] bg-[#080A08] p-2 flex justify-center shadow-2xl">
         <div
           style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'top center' }}
           className="transition-transform duration-200 w-full max-w-[780px] bg-white text-slate-900 p-8 sm:p-10 rounded-xl shadow-2xl font-serif text-[11px] leading-relaxed my-2"
@@ -68,7 +68,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
             <h2 className="font-extrabold text-base text-slate-900 pt-1 tracking-tight">
               FY B Tech (Common to All) — SVU R-2025 Version 3.0
             </h2>
-            <h3 className="font-bold text-sm text-[#0284C7] uppercase tracking-wider">
+            <h3 className="font-bold text-sm text-[#059669] uppercase tracking-wider">
               {semester === 1 ? 'SEM I' : 'SEM II'} Teaching and Credit Scheme
             </h3>
           </div>
@@ -199,7 +199,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1.5 font-mono">15 – 10 – 2</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">27</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">15 – 5 – 2</td>
-                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">22</td>
+                        <td className="p-1.5 font-mono text-sm font-black text-[#059669]">22</td>
                       </tr>
                     </>
                   ) : (
@@ -290,7 +290,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1.5 font-mono">14 – 8 – 2</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">24+1#</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">14 – 4 – 2</td>
-                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">20</td>
+                        <td className="p-1.5 font-mono text-sm font-black text-[#059669]">20</td>
                       </tr>
                     </>
                   )}
@@ -409,7 +409,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1.5 font-mono">150</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">50</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">250</td>
-                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">875</td>
+                        <td className="p-1.5 font-mono text-sm font-black text-[#059669]">875</td>
                       </tr>
                     </>
                   ) : (
@@ -466,9 +466,9 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                       </tr>
                       <tr className="bg-slate-50/60">
                         <td className="border-r border-slate-800 p-1 font-mono font-bold">316U06T201</td>
-                        <td className="border-r border-slate-800 p-1 text-left pl-2">Presentation and Communication Skills</td>
+                        <td className="border-r border-slate-800 p-1 font-semibold">HSS</td>
+                        <td className="border-r border-slate-800 p-1 text-left pl-2 font-semibold">Presentation and Communication Skills</td>
                         <td className="border-r border-slate-800 p-1 font-mono">50</td>
-                        <td className="border-r border-slate-800 p-1 font-mono">--</td>
                         <td className="border-r border-slate-800 p-1 font-mono">--</td>
                         <td className="border-r border-slate-800 p-1 font-mono">--</td>
                         <td className="border-r border-slate-800 p-1 font-mono">--</td>
@@ -481,7 +481,7 @@ export default function OfficialSchemeSnapshot({ semester }: OfficialSchemeSnaps
                         <td className="border-r border-slate-800 p-1.5 font-mono">90</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">100</td>
                         <td className="border-r border-slate-800 p-1.5 font-mono">200</td>
-                        <td className="p-1.5 font-mono text-sm font-black text-[#0284C7]">825</td>
+                        <td className="p-1.5 font-mono text-sm font-black text-[#059669]">825</td>
                       </tr>
                     </>
                   )}

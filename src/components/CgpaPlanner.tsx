@@ -139,7 +139,7 @@ export default function CgpaPlanner() {
         particleCount: 100,
         spread: 80,
         origin: { y: 0.6 },
-        colors: ['#38BDF8', '#818CF8', '#10B981'],
+        colors: ['#10B981', '#34D399', '#A3E635', '#F59E0B'],
       });
     }
   };
@@ -149,67 +149,67 @@ export default function CgpaPlanner() {
       {/* Top Banner Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Semester SGPA */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               Semester {activeSem} SGPA
             </span>
-            <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] flex items-center justify-center text-slate-950 font-bold text-xs">
+            <span className="w-8 h-8 rounded-xl bg-[#10B981] flex items-center justify-center text-black font-bold text-xs">
               Sem {activeSem}
             </span>
           </div>
 
           <div className="my-3">
             <div className="flex items-baseline space-x-2">
-              <span className="text-4xl font-extrabold text-[#38BDF8] tracking-tight">
+              <span className="text-4xl font-extrabold text-[#34D399] tracking-tight">
                 {currentSgpa.toFixed(2)}
               </span>
-              <span className="text-xs text-slate-400 font-medium">/ 10.00 Scale</span>
+              <span className="text-xs text-[#86998A] font-medium">/ 10.00 Scale</span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#86998A] mt-1">
               Total Credits: {totalSemesterCredits} • Points: {totalWeightedPoints}
             </p>
           </div>
 
-          <div className="flex items-center space-x-1.5 text-xs text-slate-400 pt-2 border-t border-slate-700/60">
-            <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
+          <div className="flex items-center space-x-1.5 text-xs text-[#86998A] pt-2 border-t border-[#1C271E]">
+            <Sparkles className="w-3.5 h-3.5 text-[#34D399]" />
             <span>KJSCE SVU 2025 Standard</span>
           </div>
         </div>
 
         {/* Target Cumulative CGPA */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               First Year Cumulative CGPA
             </span>
-            <span className="w-8 h-8 rounded-xl bg-indigo-500/20 text-[#818CF8] flex items-center justify-center font-bold text-xs">
+            <span className="w-8 h-8 rounded-xl bg-[#A3E635]/15 text-[#A3E635] border border-[#A3E635]/30 flex items-center justify-center font-bold text-xs">
               FY
             </span>
           </div>
 
           <div className="my-3">
             <div className="flex items-baseline space-x-2">
-              <span className="text-4xl font-extrabold text-[#818CF8] tracking-tight">
+              <span className="text-4xl font-extrabold text-[#A3E635] tracking-tight">
                 {cumulativeCgpa.toFixed(2)}
               </span>
-              <span className="text-xs text-slate-400 font-medium">/ 10.00</span>
+              <span className="text-xs text-[#86998A] font-medium">/ 10.00</span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-[#86998A] mt-1">
               Across Sem 1 & Sem 2 ({totalOverallCredits} Credits)
             </p>
           </div>
 
-          <div className="flex items-center space-x-1.5 text-xs text-slate-400 pt-2 border-t border-slate-700/60">
-            <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="flex items-center space-x-1.5 text-xs text-[#86998A] pt-2 border-t border-[#1C271E]">
+            <TrendingUp className="w-3.5 h-3.5 text-[#10B981]" />
             <span>First Class with Distinction (Target: 8.5+)</span>
           </div>
         </div>
 
         {/* Semester Selector & Quick Save */}
-        <div className="bg-[#1E293B] p-6 rounded-3xl border border-slate-700/80 flex flex-col justify-between shadow-xl">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 rounded-3xl border border-[#1C271E] flex flex-col justify-between shadow-xl hover:border-[#2B3C2E] transition-all">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#86998A]">
               First Year Semester
             </span>
             <div className="flex gap-2 mt-2">
@@ -217,8 +217,8 @@ export default function CgpaPlanner() {
                 onClick={() => handleSemesterSwitch(1)}
                 className={`flex-1 py-2 rounded-xl text-xs font-semibold transition ${
                   activeSem === 1
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md shadow-cyan-950/40'
-                    : 'bg-[#0F172A] text-slate-400 hover:text-white border border-slate-700'
+                    ? 'bg-[#10B981] text-black font-bold shadow-md shadow-[#10B981]/20'
+                    : 'bg-[#080A08] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E]'
                 }`}
               >
                 Semester 1
@@ -227,8 +227,8 @@ export default function CgpaPlanner() {
                 onClick={() => handleSemesterSwitch(2)}
                 className={`flex-1 py-2 rounded-xl text-xs font-semibold transition ${
                   activeSem === 2
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md shadow-cyan-950/40'
-                    : 'bg-[#0F172A] text-slate-400 hover:text-white border border-slate-700'
+                    ? 'bg-[#10B981] text-black font-bold shadow-md shadow-[#10B981]/20'
+                    : 'bg-[#080A08] text-[#86998A] hover:text-[#F0FDF4] border border-[#1C271E]'
                 }`}
               >
                 Semester 2
@@ -238,29 +238,29 @@ export default function CgpaPlanner() {
 
           <button
             onClick={saveCurrentSemester}
-            className="w-full mt-3 flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold shadow-lg shadow-emerald-950/40 transition"
+            className="w-full mt-3 flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black text-xs font-bold shadow-lg shadow-[#10B981]/20 transition"
           >
-            {savedSuccess ? <Check className="w-4 h-4" /> : <Award className="w-4 h-4" />}
+            {savedSuccess ? <Check className="w-4 h-4 text-black" /> : <Award className="w-4 h-4 text-black" />}
             <span>{savedSuccess ? 'Saved to Profile!' : `Save Sem ${activeSem} SGPA`}</span>
           </button>
         </div>
       </div>
 
       {/* Grade Points Reference Table & Course Breakdown */}
-      <div className="bg-[#1E293B] rounded-3xl border border-slate-700/80 overflow-hidden shadow-2xl">
-        <div className="p-6 bg-[#0F172A] border-b border-slate-700/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="bg-[#0F1410]/80 backdrop-blur-md rounded-3xl border border-[#1C271E] overflow-hidden shadow-2xl">
+        <div className="p-6 bg-[#080A08]/80 border-b border-[#1C271E] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-[#F8FAFC] text-base">
+            <h3 className="font-bold text-[#F0FDF4] text-base">
               Semester {activeSem} Course Grade Point Allocation
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#86998A] mt-0.5">
               Select expected grades to calculate precise SGPA based on official SVU 2025 revision scheme.
             </p>
           </div>
 
           <button
             onClick={addCourseRow}
-            className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 hover:bg-[#38BDF8]/25 text-xs font-bold transition"
+            className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 hover:bg-[#10B981]/25 text-xs font-bold transition"
           >
             <Plus className="w-4 h-4" />
             <span>Add Course</span>
@@ -270,7 +270,7 @@ export default function CgpaPlanner() {
         {/* Courses Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0F172A]/90 text-slate-400 font-semibold border-b border-slate-700/80">
+            <thead className="bg-[#080A08]/90 text-[#86998A] font-semibold border-b border-[#1C271E]">
               <tr>
                 <th className="p-4 pl-6">Course Name</th>
                 <th className="p-4">Code</th>
@@ -281,21 +281,21 @@ export default function CgpaPlanner() {
                 <th className="p-4 pr-6 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-700/60 text-slate-200">
+            <tbody className="divide-y divide-[#1C271E] text-[#86998A]">
               {courses.map((course, idx) => (
-                <tr key={idx} className="hover:bg-slate-800/40 transition">
+                <tr key={idx} className="hover:bg-[#151D17]/60 transition">
                   <td className="p-4 pl-6">
                     <div className="flex items-center space-x-2">
                       <input
                         type="text"
                         value={course.courseName}
                         onChange={(e) => handleCourseNameChange(idx, e.target.value)}
-                        className="bg-[#0F172A] border border-slate-700 rounded-lg px-2.5 py-1 text-[#F8FAFC] font-medium w-full focus:outline-none focus:border-[#38BDF8]"
+                        className="bg-[#080A08] border border-[#1C271E] rounded-lg px-2.5 py-1 text-[#F0FDF4] font-medium w-full focus:outline-none focus:border-[#10B981]"
                         placeholder="Subject Name"
                       />
                     </div>
                   </td>
-                  <td className="p-4 text-slate-400 font-mono text-[11px]">
+                  <td className="p-4 text-[#86998A] font-mono text-[11px]">
                     <input
                       type="text"
                       value={course.courseCode}
@@ -304,7 +304,7 @@ export default function CgpaPlanner() {
                         next[idx].courseCode = e.target.value;
                         setCourses(next);
                       }}
-                      className="bg-[#0F172A] border border-slate-700 rounded-lg px-2 py-1 text-slate-300 font-mono w-24 focus:outline-none focus:border-[#38BDF8]"
+                      className="bg-[#080A08] border border-[#1C271E] rounded-lg px-2 py-1 text-[#F0FDF4] font-mono w-24 focus:outline-none focus:border-[#10B981]"
                       placeholder="CODE"
                     />
                   </td>
@@ -312,7 +312,7 @@ export default function CgpaPlanner() {
                     <select
                       value={course.credits}
                       onChange={(e) => handleCreditsChange(idx, Number(e.target.value))}
-                      className="bg-[#0F172A] border border-slate-700 rounded-lg px-2.5 py-1 text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+                      className="bg-[#080A08] border border-[#1C271E] rounded-lg px-2.5 py-1 text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
                     >
                       {[1, 2, 3, 4, 5].map((c) => (
                         <option key={c} value={c}>
@@ -325,7 +325,7 @@ export default function CgpaPlanner() {
                     <select
                       value={course.grade}
                       onChange={(e) => handleGradeChange(idx, e.target.value as CourseGrade['grade'])}
-                      className="bg-[#0F172A] border border-slate-700 rounded-lg px-3 py-1 font-bold text-[#38BDF8] focus:outline-none focus:border-[#38BDF8]"
+                      className="bg-[#080A08] border border-[#1C271E] rounded-lg px-3 py-1 font-bold text-[#A3E635] focus:outline-none focus:border-[#10B981]"
                     >
                       {Object.keys(SOMAIYA_GRADE_SCALE).map((g) => (
                         <option key={g} value={g}>
@@ -334,14 +334,14 @@ export default function CgpaPlanner() {
                       ))}
                     </select>
                   </td>
-                  <td className="p-4 font-mono font-semibold text-slate-300">{course.gradePoints}</td>
-                  <td className="p-4 font-mono font-bold text-emerald-400">
+                  <td className="p-4 font-mono font-semibold text-[#F0FDF4]">{course.gradePoints}</td>
+                  <td className="p-4 font-mono font-bold text-[#34D399]">
                     {course.credits * course.gradePoints}
                   </td>
                   <td className="p-4 pr-6 text-right">
                     <button
                       onClick={() => removeCourseRow(idx)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition"
+                      className="p-1.5 rounded-lg text-[#86998A] hover:text-rose-400 hover:bg-rose-950/30 transition"
                       title="Remove Row"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -354,22 +354,22 @@ export default function CgpaPlanner() {
         </div>
 
         {/* Table Footer Summary */}
-        <div className="p-6 bg-slate-900/60 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center space-x-4 text-slate-400">
+        <div className="p-6 bg-[#080A08]/60 border-t border-[#1C271E] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div className="flex items-center space-x-4 text-[#86998A]">
             <span>
-              Total Credits: <strong className="text-slate-200">{totalSemesterCredits}</strong>
+              Total Credits: <strong className="text-[#F0FDF4]">{totalSemesterCredits}</strong>
             </span>
             <span>•</span>
             <span>
-              Weighted Points: <strong className="text-slate-200">{totalWeightedPoints}</strong>
+              Weighted Points: <strong className="text-[#F0FDF4]">{totalWeightedPoints}</strong>
             </span>
             <span>•</span>
             <span>
-              Calculated SGPA: <strong className="text-amber-400 font-bold">{currentSgpa.toFixed(2)}</strong>
+              Calculated SGPA: <strong className="text-[#A3E635] font-bold">{currentSgpa.toFixed(2)}</strong>
             </span>
           </div>
 
-          <div className="text-slate-400 text-[11px]">
+          <div className="text-[#86998A] text-[11px]">
             Formula: <code>SGPA = Σ(Credits × GradePoints) / Σ(Credits)</code>
           </div>
         </div>

@@ -142,14 +142,21 @@ export default function ResourceCard({
 
   const availableModulesForEdit = modules.filter((m) => m.subjectId === editSubjectId);
 
+  const isDriveLink = Boolean(
+    activeResource.filePath &&
+    (activeResource.filePath.startsWith('http://') ||
+     activeResource.filePath.startsWith('https://') ||
+     activeResource.filePath.includes('drive.google.com'))
+  );
+
   const typeConfig: Record<string, { label: string; icon: any; color: string; bg: string }> = {
-    notes: { label: 'Notes', icon: FileText, color: 'text-[#38BDF8]', bg: 'bg-[#38BDF8]/10 border-[#38BDF8]/30' },
-    ppt: { label: 'Notes', icon: FileText, color: 'text-[#38BDF8]', bg: 'bg-[#38BDF8]/10 border-[#38BDF8]/30' },
-    practice_ques: { label: 'Practice Ques', icon: FileCheck, color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/30' },
-    pyq: { label: 'PYQs', icon: FileCheck, color: 'text-[#818CF8]', bg: 'bg-[#818CF8]/10 border-[#818CF8]/30' },
-    formula_sheet: { label: 'Formula Sheet', icon: FileCode, color: 'text-amber-400', bg: 'bg-amber-500/10 border-amber-500/30' },
-    pdf: { label: 'Reference Book', icon: BookOpen, color: 'text-purple-400', bg: 'bg-purple-500/10 border-purple-500/30' },
-    syllabus: { label: 'Syllabus', icon: Layers, color: 'text-sky-400', bg: 'bg-sky-500/10 border-sky-500/30' },
+    notes: { label: 'Notes', icon: FileText, color: 'text-[#34D399]', bg: 'bg-[#34D399]/10 border-[#34D399]/30' },
+    ppt: { label: 'Notes', icon: FileText, color: 'text-[#34D399]', bg: 'bg-[#34D399]/10 border-[#34D399]/30' },
+    practice_ques: { label: 'Practice Ques', icon: FileCheck, color: 'text-[#A3E635]', bg: 'bg-[#A3E635]/10 border-[#A3E635]/30' },
+    pyq: { label: 'PYQs', icon: FileCheck, color: 'text-[#F59E0B]', bg: 'bg-[#F59E0B]/10 border-[#F59E0B]/30' },
+    formula_sheet: { label: 'Formula Sheet', icon: FileCode, color: 'text-[#10B981]', bg: 'bg-[#10B981]/10 border-[#10B981]/30' },
+    pdf: { label: 'Reference Book', icon: BookOpen, color: 'text-emerald-300', bg: 'bg-emerald-500/10 border-emerald-500/30' },
+    syllabus: { label: 'Syllabus', icon: Layers, color: 'text-[#34D399]', bg: 'bg-[#34D399]/10 border-[#34D399]/30' },
   };
 
   const currentType = typeConfig[activeResource.type] || typeConfig.notes;
@@ -211,10 +218,10 @@ export default function ResourceCard({
   return (
     <>
       {/* ============================================================ */}
-      {/* HIGH-CONTRAST RESOURCE CARD                                   */}
+      {/* OBSIDIAN & ELECTRIC MINT CARD CONTAINER                      */}
       {/* ============================================================ */}
-      <div className="rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 bg-[#111827] border border-[#1F293D] hover:border-[#38BDF8]/60 hover:bg-[#161F30] transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group relative shadow-md">
-        {/* Left: Icon + Pure White Title + Metadata */}
+      <div className="bg-[#0F1410]/80 backdrop-blur-md border border-[#1C271E] hover:border-[#2B3C2E] hover:bg-[#131A14] transition-all rounded-xl p-4 sm:p-5 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 group relative">
+        {/* Left: Icon + Luminescent Off-White Title + Metadata */}
         <div className="flex items-center space-x-3.5 min-w-0 flex-1">
           <div
             className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0 border ${currentType.bg} ${currentType.color} shadow-sm group-hover:scale-105 transition-transform`}
@@ -224,17 +231,17 @@ export default function ResourceCard({
 
           <div className="min-w-0 flex-1 space-y-0.5">
             <div className="flex items-center space-x-2">
-              <h4 className="font-bold text-white text-xs sm:text-sm leading-snug group-hover:text-[#38BDF8] transition truncate">
+              <h4 className="font-bold text-[#F0FDF4] text-xs sm:text-sm leading-snug group-hover:text-[#34D399] transition truncate">
                 {resource.title}
               </h4>
             </div>
 
-            <div className="flex items-center space-x-2 text-[10px] sm:text-[11px] text-slate-400 flex-wrap">
+            <div className="flex items-center space-x-2 text-[10px] sm:text-[11px] text-[#86998A] flex-wrap">
               <span className={`font-semibold ${currentType.color}`}>{currentType.label}</span>
               {resource.examType && (
                 <>
                   <span>•</span>
-                  <span className="px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-bold uppercase text-[9px] border border-indigo-500/30">
+                  <span className="px-1.5 py-0.2 rounded bg-[#F59E0B]/15 text-[#FCD34D] font-bold uppercase text-[9px] border border-[#F59E0B]/30">
                     {resource.examType === 'mid_sem' ? 'Mid Sem' : resource.examType === 'end_sem' ? 'End Sem' : 'In Sem'}
                   </span>
                 </>
@@ -242,33 +249,48 @@ export default function ResourceCard({
               {resource.examYear && (
                 <>
                   <span>•</span>
-                  <span className="text-slate-300 font-mono font-medium">{resource.examYear}</span>
+                  <span className="text-[#F0FDF4] font-mono font-medium">{resource.examYear}</span>
                 </>
               )}
               <span>•</span>
-              <span className="font-mono text-slate-400">{formatFileSize(resource.fileSizeBytes)}</span>
+              <span className="font-mono text-[#86998A]">{formatFileSize(resource.fileSizeBytes)}</span>
               {resource.tags && resource.tags.length > 0 && (
                 <>
                   <span className="hidden sm:inline">•</span>
-                  <span className="hidden sm:inline text-[#818CF8] font-mono">#{resource.tags[0]}</span>
+                  <span className="hidden sm:inline text-[#34D399] font-mono">#{resource.tags[0]}</span>
                 </>
               )}
             </div>
           </div>
         </div>
 
-        {/* Right: Look, Download & Admin Actions */}
+        {/* Right: Electric Lime Drive Link, Look, Download & Admin Actions */}
         <div className="flex items-center space-x-2 flex-shrink-0 self-end sm:self-center">
+          {/* High-Contrast Electric Lime Drive Notes Button */}
+          {isDriveLink && (
+            <a
+              href={activeResource.filePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#A3E635] bg-[#A3E635]/10 border border-[#A3E635]/25 hover:bg-[#A3E635]/20 hover:border-[#A3E635]/50 transition-all shadow-[0_0_12px_rgba(163,230,53,0.08)] hover:shadow-[0_0_16px_rgba(163,230,53,0.2)] shrink-0"
+              title="Open original resource on Google Drive"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-[#A3E635]" />
+              <span>Open Drive Notes</span>
+            </a>
+          )}
+
           {/* Look / Preview Button */}
           <button
             onClick={() => {
               setActiveResource(resource);
               setIsPreviewOpen(true);
             }}
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-[#1E293B] hover:bg-[#334155] text-slate-200 hover:text-white border border-[#334155] text-xs font-semibold shadow-sm transition"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-[#151D17] hover:bg-[#1C271E] text-[#F0FDF4] border border-[#1C271E] hover:border-[#34D399]/40 text-xs font-semibold shadow-sm transition"
             title="Look / Preview Resource"
           >
-            <Eye className="w-3.5 h-3.5 text-[#38BDF8]" />
+            <Eye className="w-3.5 h-3.5 text-[#34D399]" />
             <span>Look</span>
           </button>
 
@@ -276,17 +298,17 @@ export default function ResourceCard({
           <button
             onClick={handleDownload}
             disabled={isDownloading}
-            className={`inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow-md bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 disabled:opacity-50`}
+            className={`inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition shadow-md bg-[#10B981] hover:bg-[#059669] text-black disabled:opacity-50`}
             title="Download PDF Notes"
           >
             {isDownloading ? (
               <>
-                <div className="w-3.5 h-3.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
                 <span>Downloading...</span>
               </>
             ) : downloadSuccess ? (
               <>
-                <CheckCircle2 className="w-3.5 h-3.5 text-slate-950" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
                 <span>Downloaded!</span>
               </>
             ) : (
@@ -298,17 +320,17 @@ export default function ResourceCard({
           </button>
 
           {/* Quick Edit & Delete Actions */}
-          <div className="flex items-center space-x-1 border-l border-[#1F293D] pl-2">
+          <div className="flex items-center space-x-1 border-l border-[#1C271E] pl-2">
             <button
               onClick={() => setIsEditOpen(true)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-[#38BDF8] hover:bg-[#1E293B] transition"
+              className="p-1.5 rounded-lg text-[#86998A] hover:text-[#34D399] hover:bg-[#151D17] transition"
               title="Edit Resource"
             >
               <Edit2 className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={handleDeleteResource}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-[#1E293B] transition"
+              className="p-1.5 rounded-lg text-[#86998A] hover:text-rose-400 hover:bg-[#151D17] transition"
               title="Delete Resource"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -319,13 +341,13 @@ export default function ResourceCard({
 
       {/* Edit Modal (Admin Only) */}
       {isEditOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="bg-[#111827] w-full max-w-lg rounded-3xl border border-[#1F293D] p-6 space-y-5 shadow-2xl animate-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-[#1F293D]">
-              <h3 className="font-bold text-white text-base">Edit Resource</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-150">
+          <div className="bg-[#0F1410] w-full max-w-lg rounded-3xl border border-[#1C271E] p-6 space-y-5 shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between pb-3 border-b border-[#1C271E]">
+              <h3 className="font-bold text-[#F0FDF4] text-base">Edit Resource</h3>
               <button
                 onClick={() => setIsEditOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#1E293B] transition"
+                className="p-1.5 rounded-lg text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] transition"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -333,23 +355,23 @@ export default function ResourceCard({
 
             <form onSubmit={handleSaveEdit} className="space-y-4 text-xs">
               <div className="space-y-1.5">
-                <label className="text-slate-300 font-semibold">Title</label>
+                <label className="text-[#86998A] font-semibold">Title</label>
                 <input
                   type="text"
                   value={editTitle}
                   onChange={(e) => setEditTitle(e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#090D16] border border-[#1F293D] text-white focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#080A08] border border-[#1C271E] text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5">
-                  <label className="text-slate-300 font-semibold">Type</label>
+                  <label className="text-[#86998A] font-semibold">Type</label>
                   <select
                     value={editType}
                     onChange={(e) => setEditType(e.target.value as any)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#090D16] border border-[#1F293D] text-white focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#080A08] border border-[#1C271E] text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   >
                     <option value="notes">Notes</option>
                     <option value="ppt">Notes (PPT)</option>
@@ -362,26 +384,26 @@ export default function ResourceCard({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-slate-300 font-semibold">Tags (comma separated)</label>
+                  <label className="text-[#86998A] font-semibold">Tags (comma separated)</label>
                   <input
                     type="text"
                     value={editTags}
                     onChange={(e) => setEditTags(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#090D16] border border-[#1F293D] text-white focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#080A08] border border-[#1C271E] text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   />
                 </div>
               </div>
 
               {subjects.length > 0 && (
                 <div className="space-y-1.5">
-                  <label className="text-slate-300 font-semibold">Subject</label>
+                  <label className="text-[#86998A] font-semibold">Subject</label>
                   <select
                     value={editSubjectId}
                     onChange={(e) => {
                       setEditSubjectId(e.target.value);
                       setEditModuleId('');
                     }}
-                    className="w-full px-3 py-2 rounded-xl bg-[#090D16] border border-[#1F293D] text-white focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#080A08] border border-[#1C271E] text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   >
                     {subjects.map((sub) => (
                       <option key={sub.id} value={sub.id}>
@@ -394,11 +416,11 @@ export default function ResourceCard({
 
               {availableModulesForEdit.length > 0 && (
                 <div className="space-y-1.5">
-                  <label className="text-slate-300 font-semibold">Module (Optional)</label>
+                  <label className="text-[#86998A] font-semibold">Module (Optional)</label>
                   <select
                     value={editModuleId}
                     onChange={(e) => setEditModuleId(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#090D16] border border-[#1F293D] text-white focus:outline-none focus:border-[#38BDF8]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#080A08] border border-[#1C271E] text-[#F0FDF4] focus:outline-none focus:border-[#34D399]"
                   >
                     <option value="">General Course Material</option>
                     {availableModulesForEdit.map((m) => (
@@ -410,20 +432,20 @@ export default function ResourceCard({
                 </div>
               )}
 
-              <div className="flex items-center justify-between pt-4 border-t border-[#1F293D]">
-                <span className="text-[11px] text-slate-500 font-mono">ID: {resource.id.slice(0, 8)}...</span>
+              <div className="flex items-center justify-between pt-4 border-t border-[#1C271E]">
+                <span className="text-[11px] text-[#86998A] font-mono">ID: {resource.id.slice(0, 8)}...</span>
 
                 <div className="flex space-x-2">
                   <button
                     type="button"
                     onClick={() => setIsEditOpen(false)}
-                    className="px-4 py-2 rounded-xl bg-[#1E293B] text-slate-300 hover:text-white"
+                    className="px-4 py-2 rounded-xl bg-[#151D17] text-[#86998A] hover:text-[#F0FDF4]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold shadow-lg shadow-cyan-950/40"
+                    className="px-5 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold shadow-lg"
                   >
                     Save Changes
                   </button>
@@ -436,25 +458,25 @@ export default function ResourceCard({
 
       {/* Live In-Website PDF & Document Viewer Modal */}
       {isPreviewOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#0B0F17] border border-[#1F293D] w-full max-w-6xl h-[92vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-[#080A08] border border-[#1C271E] w-full max-w-6xl h-[92vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-200">
             {/* Viewer Header */}
-            <div className="px-3 py-2.5 sm:px-6 sm:py-3.5 bg-[#0B0F17] border-b border-[#1F293D] flex items-center justify-between gap-2 sm:gap-4 shrink-0">
-              {/* Left: Info with 100% Bright White Title */}
+            <div className="px-3 py-2.5 sm:px-6 sm:py-3.5 bg-[#0F1410] border-b border-[#1C271E] flex items-center justify-between gap-2 sm:gap-4 shrink-0">
+              {/* Left: Info with Luminescent Off-White Title */}
               <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0 flex-1">
                 <div className={`p-1.5 sm:p-2 rounded-xl border shrink-0 ${currentType.bg} ${currentType.color}`}>
                   <TypeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-extrabold text-white text-xs sm:text-base truncate">{activeResource.title}</h3>
-                  <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-400">
-                    <span className="text-[#38BDF8] uppercase font-semibold">{currentType.label}</span>
+                  <h3 className="font-extrabold text-[#F0FDF4] text-xs sm:text-base truncate">{activeResource.title}</h3>
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-[#86998A]">
+                    <span className="text-[#34D399] uppercase font-semibold">{currentType.label}</span>
                     <span>•</span>
                     <span>{formatFileSize(activeResource.fileSizeBytes)}</span>
                     {activeResource.tags && activeResource.tags.length > 0 && (
                       <>
                         <span className="hidden sm:inline">•</span>
-                        <span className="hidden sm:inline text-slate-400 truncate max-w-[180px]">{activeResource.tags.join(', ')}</span>
+                        <span className="hidden sm:inline text-[#86998A] truncate max-w-[180px]">{activeResource.tags.join(', ')}</span>
                       </>
                     )}
                   </div>
@@ -463,27 +485,27 @@ export default function ResourceCard({
 
               {/* Center: Next / Previous Document Navigation */}
               {resourceList.length > 1 && (
-                <div className="flex items-center space-x-1 sm:space-x-1.5 bg-[#111827] border border-[#1F293D] px-1.5 py-1 rounded-xl shrink-0">
+                <div className="flex items-center space-x-1 sm:space-x-1.5 bg-[#080A08] border border-[#1C271E] px-1.5 py-1 rounded-xl shrink-0">
                   <button
                     onClick={goToPrev}
                     disabled={!hasPrev}
-                    className="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#1E293B] hover:bg-[#334155] text-slate-200 hover:text-white disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold border border-[#334155] transition"
+                    className="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold border border-[#1C271E] transition"
                     title="Previous document (← Left Arrow)"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                     <span className="hidden md:inline">Prev</span>
                   </button>
 
-                  <div className="px-2 py-0.5 rounded-md bg-[#090D16] text-[10px] sm:text-[11px] font-mono font-bold text-slate-200 border border-[#1F293D]">
-                    <span className="text-[#38BDF8]">{safeIndex + 1}</span>
-                    <span className="text-slate-500 mx-1">/</span>
+                  <div className="px-2 py-0.5 rounded-md bg-[#0F1410] text-[10px] sm:text-[11px] font-mono font-bold text-[#F0FDF4] border border-[#1C271E]">
+                    <span className="text-[#34D399]">{safeIndex + 1}</span>
+                    <span className="text-[#86998A] mx-1">/</span>
                     <span>{resourceList.length}</span>
                   </div>
 
                   <button
                     onClick={goToNext}
                     disabled={!hasNext}
-                    className="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#1E293B] hover:bg-[#334155] text-slate-200 hover:text-white disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold border border-[#334155] transition"
+                    className="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#151D17] hover:bg-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold border border-[#1C271E] transition"
                     title="Next document (→ Right Arrow)"
                   >
                     <span className="hidden md:inline">Next</span>
@@ -494,15 +516,26 @@ export default function ResourceCard({
 
               {/* Right: Header Controls */}
               <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-                {pdfPreviewUrl && (
+                {isDriveLink ? (
+                  <a
+                    href={activeResource.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#A3E635] bg-[#A3E635]/10 border border-[#A3E635]/25 hover:bg-[#A3E635]/20 hover:border-[#A3E635]/50 transition-all shadow-[0_0_12px_rgba(163,230,53,0.08)]"
+                    title="Open in Google Drive / New Tab"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-[#A3E635]" />
+                    <span className="hidden sm:inline">Open Drive Notes</span>
+                  </a>
+                ) : pdfPreviewUrl && (
                   <a
                     href={pdfPreviewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1E293B] hover:bg-[#334155] text-slate-200 hover:text-white border border-[#334155] transition text-xs font-semibold"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151D17] hover:bg-[#1C271E] text-[#F0FDF4] border border-[#1C271E] transition text-xs font-semibold"
                     title="Open document in New Tab"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-[#38BDF8]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#34D399]" />
                     <span className="hidden sm:inline">Open in New Tab</span>
                   </a>
                 )}
@@ -510,7 +543,7 @@ export default function ResourceCard({
                 <button
                   onClick={handleDownload}
                   disabled={isDownloading}
-                  className={`flex items-center space-x-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl text-slate-950 text-xs font-bold shadow-lg transition bg-[#38BDF8] hover:bg-[#0EA5E9] disabled:opacity-50`}
+                  className={`flex items-center space-x-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl text-black text-xs font-bold shadow-lg transition bg-[#10B981] hover:bg-[#059669] disabled:opacity-50`}
                 >
                   {isDownloading ? (
                     <>
@@ -532,7 +565,7 @@ export default function ResourceCard({
 
                 <button
                   onClick={() => setIsPreviewOpen(false)}
-                  className="p-1 sm:p-2 rounded-xl text-slate-400 hover:text-white hover:bg-[#1E293B] border border-transparent hover:border-[#1F293D] transition"
+                  className="p-1 sm:p-2 rounded-xl text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17] border border-transparent hover:border-[#1C271E] transition"
                   title="Close PDF viewer (Esc)"
                 >
                   <X className="w-5 h-5" />
@@ -540,16 +573,16 @@ export default function ResourceCard({
               </div>
             </div>
 
-            {/* Viewer Body / Embedded PDF View - White Background for Crystal Clear Document Rendering */}
+            {/* Viewer Body - White Background for Crystal Clear Document Rendering */}
             <div className="flex-1 w-full h-full relative bg-white flex flex-col items-center justify-center overflow-hidden">
               {isLoadingPreview ? (
-                <div className="flex flex-col items-center justify-center space-y-4 text-center p-6 bg-[#0B0F17] w-full h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8]">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center p-6 bg-[#080A08] w-full h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 border border-[#10B981]/30 flex items-center justify-center text-[#34D399]">
                     <Loader2 className="w-7 h-7 animate-spin" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-200 text-sm">Loading Document in Website Viewer...</h4>
-                    <p className="text-slate-400 text-xs mt-1">Preparing full document layout & vector pages</p>
+                    <h4 className="font-semibold text-[#F0FDF4] text-sm">Loading Document in Website Viewer...</h4>
+                    <p className="text-[#86998A] text-xs mt-1">Preparing full document layout & vector pages</p>
                   </div>
                 </div>
               ) : pdfPreviewUrl ? (
@@ -559,19 +592,19 @@ export default function ResourceCard({
                   className="w-full h-full border-0 bg-white"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center space-y-4 text-center p-6 bg-[#0B0F17] w-full h-full">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center p-6 bg-[#080A08] w-full h-full">
                   <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
                     <FileText className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-200 text-sm">Unable to render preview</h4>
-                    <p className="text-slate-400 text-xs mt-1 max-w-sm">
+                    <h4 className="font-semibold text-[#F0FDF4] text-sm">Unable to render preview</h4>
+                    <p className="text-[#86998A] text-xs mt-1 max-w-sm">
                       You can still download the complete resource directly to view it on your device.
                     </p>
                   </div>
                   <button
                     onClick={handleDownload}
-                    className="px-4 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 text-xs font-bold shadow-lg"
+                    className="px-4 py-2 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black text-xs font-bold shadow-lg"
                   >
                     Download File
                   </button>
