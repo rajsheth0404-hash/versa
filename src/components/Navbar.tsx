@@ -102,25 +102,25 @@ export default function Navbar() {
       {/* ======================================================== */}
       {/* DESKTOP: FIXED LEFT SIDEBAR NAVIGATION (Stacked Vertically) */}
       {/* ======================================================== */}
-      <aside className="hidden md:flex flex-col justify-between fixed top-0 left-0 h-screen w-64 bg-[var(--sidebar-bg)] backdrop-blur-xl border-r border-[var(--sidebar-border)] p-5 z-40 shadow-sm transition-colors">
+      <aside className="hidden md:flex flex-col justify-between fixed top-0 left-0 h-screen w-64 bg-white dark:bg-[#0b0f17] backdrop-blur-xl border-r border-slate-200 dark:border-slate-800 p-5 z-40 shadow-sm transition-colors">
         <div className="space-y-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center space-x-3 group px-1">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#F59E0B] via-[#D97706] to-[#B45309] flex items-center justify-center shadow-md shadow-amber-950/20 group-hover:scale-105 transition-transform text-white font-black">
-              <GraduationCap className="w-6 h-6 text-zinc-950" />
+            <div className="w-10 h-10 rounded-2xl bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center shadow-md text-white font-black group-hover:scale-105 transition-transform">
+              <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-extrabold text-xl tracking-tight text-[var(--primary-text)]">Versa</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-md amber-badge font-bold">FY</span>
+                <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-slate-100">Versa</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-bold border border-sky-200 dark:border-sky-800/60">FY</span>
               </div>
-              <p className="text-[11px] text-[var(--muted-text)] font-medium">Computer Engineering</p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Computer Engineering</p>
             </div>
           </Link>
 
           {/* Section Header with Quick Edit Action */}
           <div className="flex items-center justify-between px-2 pt-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted-text)]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Academic Hub
             </span>
             <button
@@ -128,7 +128,7 @@ export default function Navbar() {
                 setTempNames(tabNames);
                 setIsEditingTabs(true);
               }}
-              className="p-1 rounded-md text-[var(--muted-text)] hover:text-[var(--brand-accent)] hover:bg-[var(--subtle-surface)] transition"
+              className="p-1 rounded-md text-slate-400 hover:text-indigo-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               title="Edit Tab Names"
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -148,20 +148,20 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
                     isActive
-                      ? 'bg-[var(--brand-accent)] text-zinc-950 font-bold shadow-md shadow-amber-950/20'
-                      : 'text-[var(--muted-text)] hover:text-[var(--primary-text)] hover:bg-[var(--subtle-surface)] border border-transparent'
+                      ? 'bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white font-bold shadow-sm'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-[#131b2a] border border-transparent'
                   }`}
                 >
                   <div className="flex items-center space-x-3">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-zinc-950' : 'text-[var(--muted-text)] group-hover:text-[var(--brand-accent)]'}`} />
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-sky-400'}`} />
                     <span>{displayName}</span>
                   </div>
                   {link.badge && (
                     <span
                       className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
                         isActive
-                          ? 'bg-black/20 text-zinc-950 font-extrabold'
-                          : 'amber-badge'
+                          ? 'bg-black/20 text-white font-extrabold'
+                          : 'bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60'
                       }`}
                     >
                       {link.badge}
@@ -174,39 +174,39 @@ export default function Navbar() {
         </div>
 
         {/* Bottom Sidebar Section: Theme Toggle, Admin Studio, Quick Role Pill */}
-        <div className="pt-4 border-t border-[var(--card-border)] space-y-3">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
           {/* Admin Studio Link */}
           <Link
             href="/admin"
             className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold tracking-wide uppercase transition-all ${
               pathname.startsWith('/admin')
-                ? 'bg-[var(--brand-accent)] text-zinc-950 shadow-md shadow-amber-950/20'
-                : 'bg-[var(--subtle-surface)] text-[var(--muted-text)] hover:text-[var(--primary-text)] border border-[var(--subtle-border)] hover:border-[var(--brand-accent)]'
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'bg-slate-50 dark:bg-[#131b2a] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-sky-500'
             }`}
           >
             <div className="flex items-center space-x-2.5">
-              <ShieldCheck className={`w-4 h-4 ${pathname.startsWith('/admin') ? 'text-zinc-950' : 'text-[var(--brand-accent)]'}`} />
+              <ShieldCheck className={`w-4 h-4 ${pathname.startsWith('/admin') ? 'text-white' : 'text-indigo-600 dark:text-sky-400'}`} />
               <span>Admin Studio</span>
             </div>
-            <span className="text-[9px] px-1.5 py-0.2 rounded amber-badge">Staff</span>
+            <span className="text-[9px] px-1.5 py-0.2 rounded bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60">Staff</span>
           </Link>
 
           {/* Role Switcher Pill & Theme Toggle */}
           <div className="flex items-center justify-between gap-2 pt-1">
             <button
               onClick={toggleRole}
-              className="flex-1 flex items-center justify-between px-3 py-2 rounded-xl bg-[var(--subtle-surface)] border border-[var(--subtle-border)] hover:border-[var(--brand-accent)] transition text-left group"
+              className="flex-1 flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#131b2a] border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-sky-500 transition text-left group"
               title="Click to switch role between Student and Admin"
             >
               <div className="flex items-center space-x-2 min-w-0">
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#F59E0B] to-[#D97706] flex items-center justify-center text-[10px] font-extrabold text-zinc-950 flex-shrink-0">
+                <div className="w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-[10px] font-extrabold flex-shrink-0">
                   {user?.role === 'admin' ? 'AD' : 'ST'}
                 </div>
                 <div className="truncate">
-                  <p className="font-bold text-[var(--primary-text)] text-xs truncate capitalize leading-tight group-hover:text-[var(--brand-accent)]">
+                  <p className="font-bold text-slate-900 dark:text-slate-100 text-xs truncate capitalize leading-tight group-hover:text-indigo-600 dark:group-hover:text-sky-400">
                     {user?.role === 'admin' ? 'Admin Mode' : 'Student Mode'}
                   </p>
-                  <p className="text-[9px] text-[var(--muted-text)] truncate leading-tight">Click to switch</p>
+                  <p className="text-[9px] text-slate-500 dark:text-slate-400 truncate leading-tight">Click to switch</p>
                 </div>
               </div>
             </button>
@@ -219,27 +219,27 @@ export default function Navbar() {
       {/* ======================================================== */}
       {/* MOBILE: TOP BAR HEADER & MOBILE DRAWER */}
       {/* ======================================================== */}
-      <header className="md:hidden sticky top-0 z-50 bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--card-border)]">
+      <header className="md:hidden sticky top-0 z-50 bg-white/95 dark:bg-[#0b0f17]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
         <div className="px-4 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center text-zinc-950 font-black">
-              <GraduationCap className="w-5 h-5 text-zinc-950" />
+            <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black">
+              <GraduationCap className="w-5 h-5 text-white" />
             </div>
-            <span className="font-extrabold text-lg text-[var(--primary-text)]">Versa</span>
+            <span className="font-extrabold text-lg text-slate-900 dark:text-slate-100">Versa</span>
           </Link>
 
           <div className="flex items-center space-x-2">
             <ThemeToggle />
             <button
               onClick={() => setIsEditingTabs(true)}
-              className="p-1.5 rounded-lg text-[var(--muted-text)] hover:text-[var(--primary-text)]"
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
               title="Edit Tab Names"
             >
               <Edit2 className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg text-[var(--muted-text)] hover:text-[var(--primary-text)]"
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -248,11 +248,11 @@ export default function Navbar() {
 
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
-          <div className="bg-[#1E293B] border-b border-slate-800 px-4 pt-2 pb-6 space-y-3 animate-in slide-in-from-top-2">
-            <div className="space-y-1">
+          <div className="p-4 bg-white dark:bg-[#0b0f17] border-b border-slate-200 dark:border-slate-800 space-y-3 animate-in slide-in-from-top-2 duration-150">
+            <nav className="flex flex-col space-y-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
-                const isActive = pathname.startsWith(link.href);
+                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 const displayName = tabNames[link.href] || DEFAULT_TAB_NAMES[link.href] || 'Tab';
 
                 return (
@@ -262,126 +262,113 @@ export default function Navbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold ${
                       isActive
-                        ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                        ? 'bg-indigo-600 text-white font-bold'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#131b2a]'
                     }`}
                   >
-                    <div className="flex items-center space-x-2.5">
+                    <div className="flex items-center space-x-3">
                       <Icon className="w-4 h-4" />
                       <span>{displayName}</span>
                     </div>
                     {link.badge && (
-                      <span
-                        className={`text-[9px] px-2 py-0.5 rounded font-bold uppercase ${
-                          link.badge === 'Soon'
-                            ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
-                            : 'bg-slate-800 text-[#38BDF8]'
-                        }`}
-                      >
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60 font-bold uppercase">
                         {link.badge}
                       </span>
                     )}
                   </Link>
                 );
               })}
-            </div>
 
-            <div className="pt-3 border-t border-slate-800 space-y-2">
               <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-[#38BDF8] text-slate-950 text-xs font-bold shadow-lg shadow-cyan-950/40"
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase ${
+                  pathname.startsWith('/admin')
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-slate-50 dark:bg-[#131b2a] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
+                }`}
               >
-                <ShieldCheck className="w-4 h-4" />
-                <span>Enter Admin Studio</span>
+                <div className="flex items-center space-x-2.5">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Admin Studio</span>
+                </div>
+                <span className="text-[9px] px-1.5 py-0.2 rounded bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/60">Staff</span>
               </Link>
-            </div>
+            </nav>
+
+            <button
+              onClick={() => {
+                toggleRole();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-[#131b2a] border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200"
+            >
+              <span>Current Role: {user?.role === 'admin' ? 'Admin Mode' : 'Student Mode'}</span>
+              <span className="text-[10px] text-indigo-600 dark:text-sky-400 font-bold">Switch</span>
+            </button>
           </div>
         )}
       </header>
 
       {/* Edit Tab Names Modal */}
       {isEditingTabs && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-panel bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-slate-700 max-w-md w-full space-y-4 shadow-2xl animate-in zoom-in-95">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-[#131b2a] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 w-full max-w-md space-y-5 shadow-2xl animate-in zoom-in-95 duration-150">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center space-x-2">
-                <Edit2 className="w-4 h-4 text-[#38BDF8]" />
-                <h3 className="font-bold text-[#F8FAFC] text-base">Edit Navigation Tab Names</h3>
+                <Edit2 className="w-4 h-4 text-indigo-600 dark:text-sky-400" />
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-sm">Customize Navigation Tabs</h3>
               </div>
-              <button onClick={() => setIsEditingTabs(false)} className="text-slate-400 hover:text-white">
+              <button
+                onClick={() => setIsEditingTabs(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSaveTabEdit} className="space-y-3 text-xs">
-              <div>
-                <label className="text-slate-400 block mb-1 font-medium">Notes & Resources Tab</label>
-                <input
-                  type="text"
-                  value={tempNames['/resources'] || ''}
-                  onChange={(e) => setTempNames({ ...tempNames, '/resources': e.target.value })}
-                  required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
-                />
-              </div>
+            <form onSubmit={handleSaveTabEdit} className="space-y-3.5 text-xs">
+              {navLinks.map((link) => (
+                <div key={link.href} className="space-y-1">
+                  <label className="text-slate-600 dark:text-slate-400 font-semibold">{link.href}</label>
+                  <input
+                    type="text"
+                    value={tempNames[link.href] || ''}
+                    onChange={(e) =>
+                      setTempNames({
+                        ...tempNames,
+                        [link.href]: e.target.value,
+                      })
+                    }
+                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
+                    placeholder={DEFAULT_TAB_NAMES[link.href]}
+                  />
+                </div>
+              ))}
 
-              <div>
-                <label className="text-slate-400 block mb-1 font-medium">Video Lectures Tab</label>
-                <input
-                  type="text"
-                  value={tempNames['/youtube'] || ''}
-                  onChange={(e) => setTempNames({ ...tempNames, '/youtube': e.target.value })}
-                  required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
-                />
-              </div>
-
-              <div>
-                <label className="text-slate-400 block mb-1 font-medium">SGPA Calculator Tab</label>
-                <input
-                  type="text"
-                  value={tempNames['/calculator'] || ''}
-                  onChange={(e) => setTempNames({ ...tempNames, '/calculator': e.target.value })}
-                  required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
-                />
-              </div>
-
-              <div>
-                <label className="text-slate-400 block mb-1 font-medium">Upload Notes Tab</label>
-                <input
-                  type="text"
-                  value={tempNames['/admin/upload'] || ''}
-                  onChange={(e) => setTempNames({ ...tempNames, '/admin/upload': e.target.value })}
-                  required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
-                />
-              </div>
-
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+              <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={handleResetTabs}
-                  className="flex items-center space-x-1 text-slate-400 hover:text-white text-[11px]"
+                  className="inline-flex items-center space-x-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs font-semibold"
                 >
-                  <RotateCcw className="w-3 h-3" />
-                  <span>Restore Defaults</span>
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Defaults</span>
                 </button>
 
-                <div className="flex space-x-2">
+                <div className="flex items-center space-x-2">
                   <button
                     type="button"
                     onClick={() => setIsEditingTabs(false)}
-                    className="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold shadow-lg shadow-cyan-950/40"
+                    className="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-sm"
                   >
-                    Save Tab Names
+                    Save Changes
                   </button>
                 </div>
               </div>

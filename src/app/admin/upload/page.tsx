@@ -102,29 +102,27 @@ export default function AdminUploadPage() {
 
   const handleCreateNewTagPreset = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newTagInput.trim()) return;
-    if (!customTagPresets.includes(newTagInput.trim())) {
+    if (newTagInput.trim() && !customTagPresets.includes(newTagInput.trim())) {
       setCustomTagPresets([...customTagPresets, newTagInput.trim()]);
+      setNewTagInput('');
     }
-    handleAddTagPreset(newTagInput.trim());
-    setNewTagInput('');
   };
 
   const handlePublish = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedSubjectId || !resourceTitle) return;
+    if (!selectedSubjectId) {
+      alert('Please select a target subject.');
+      return;
+    }
 
     setIsPublishing(true);
 
-    const tagsArray = tagsInput
-      .split(',')
-      .map((t) => t.trim())
-      .filter(Boolean);
-
     try {
+      const tagsArray = tagsInput.split(',').map((t) => t.trim()).filter(Boolean);
+
       if (uploadMode === 'drive') {
         if (!driveLinkInput.trim()) {
-          alert('Please enter a valid Google Drive or document link.');
+          alert('Please enter a valid Google Drive link.');
           setIsPublishing(false);
           return;
         }
@@ -132,11 +130,11 @@ export default function AdminUploadPage() {
         HubStore.addResource({
           subjectId: selectedSubjectId,
           moduleId: selectedModuleId || undefined,
-          title: resourceTitle,
+          title: resourceTitle || 'Google Drive Study Document',
           type: resourceType,
           filePath: driveLinkInput.trim(),
-          fileName: `${resourceTitle.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`,
-          fileSizeBytes: 2500000,
+          fileName: 'Google Drive Document',
+          fileSizeBytes: 2400000,
           fileMime: 'application/pdf',
           academicYear: academicYear,
           scheme: 'REV_2025',
@@ -205,35 +203,35 @@ export default function AdminUploadPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl bg-[#0F172A]">
+    <div className="space-y-8 max-w-4xl">
       {/* Header */}
       <div>
         <div className="flex items-center space-x-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#38BDF8]">
+          <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-sky-400 animate-pulse"></span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-sky-400">
             Admin Academic Repository Ingestion
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight mt-1">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mt-1">
           Upload & Manage First Year Resources
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           Upload lecture notes, PPTs, formula sheets, or PYQs for Semester 1 and Semester 2 courses.
         </p>
       </div>
 
       {/* Success Notification */}
       {publishedCount !== null && (
-        <div className="glass-panel bg-[#1E293B] p-4 rounded-2xl border border-emerald-500/50 text-emerald-300 flex items-center justify-between animate-in fade-in">
+        <div className="bg-emerald-50 dark:bg-emerald-950/60 p-4 rounded-2xl border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 flex items-center justify-between animate-in fade-in">
           <div className="flex items-center space-x-2 text-xs">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>
               Successfully published <strong>{publishedCount}</strong> academic resource(s) to the live repository!
             </span>
           </div>
           <button
             onClick={() => setPublishedCount(null)}
-            className="text-xs text-emerald-400 font-bold hover:underline"
+            className="text-xs text-emerald-600 dark:text-emerald-400 font-bold hover:underline"
           >
             Dismiss
           </button>
@@ -241,23 +239,23 @@ export default function AdminUploadPage() {
       )}
 
       {/* Main Ingestion Form */}
-      <form onSubmit={handlePublish} className="glass-panel bg-[#1E293B]/85 p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6 shadow-2xl">
+      <form onSubmit={handlePublish} className="bg-white dark:bg-[#131b2a] p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm">
         {/* Step 1: Semester & Subject Targeting */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-5 h-5 rounded-full bg-[#38BDF8] text-slate-950 font-bold flex items-center justify-center text-[10px]">1</span>
+            <h3 className="text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-5 h-5 rounded-full bg-indigo-600 dark:bg-sky-500 text-white dark:text-slate-950 font-bold flex items-center justify-center text-[10px]">1</span>
               <span>Select Semester & Course Target</span>
             </h3>
 
-            <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <div className="flex bg-slate-100 dark:bg-[#0b0f17] p-1 rounded-xl border border-slate-200 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => handleSemesterChange(1)}
                 className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
                   selectedSemester === 1
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-indigo-600 dark:bg-indigo-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Semester 1
@@ -267,8 +265,8 @@ export default function AdminUploadPage() {
                 onClick={() => handleSemesterChange(2)}
                 className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
                   selectedSemester === 2
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-indigo-600 dark:bg-indigo-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Semester 2
@@ -279,7 +277,7 @@ export default function AdminUploadPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Subject Picker */}
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Target Subject *</label>
+              <label className="text-[11px] text-slate-600 dark:text-slate-400 block mb-1 font-medium">Target Subject *</label>
               <select
                 value={selectedSubjectId}
                 onChange={(e) => {
@@ -287,7 +285,7 @@ export default function AdminUploadPage() {
                   setSelectedModuleId('');
                 }}
                 required
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
               >
                 {availableSubjects.length === 0 ? (
                   <option value="">No subjects in Sem {selectedSemester}</option>
@@ -303,11 +301,11 @@ export default function AdminUploadPage() {
 
             {/* Module Picker */}
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1 font-medium">Module / Unit (Optional)</label>
+              <label className="text-[11px] text-slate-600 dark:text-slate-400 block mb-1 font-medium">Module / Unit (Optional)</label>
               <select
                 value={selectedModuleId}
                 onChange={(e) => setSelectedModuleId(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
               >
                 <option value="">General Subject Topics</option>
                 {availableModules.map((m) => (
@@ -321,10 +319,10 @@ export default function AdminUploadPage() {
         </div>
 
         {/* Step 2: Resource Classification & Metadata */}
-        <div className="space-y-3 pt-4 border-t border-slate-800">
+        <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-5 h-5 rounded-full bg-[#38BDF8] text-slate-950 font-bold flex items-center justify-center text-[10px]">2</span>
+            <h3 className="text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-5 h-5 rounded-full bg-indigo-600 dark:bg-sky-500 text-white dark:text-slate-950 font-bold flex items-center justify-center text-[10px]">2</span>
               <span>Resource Classification & Metadata</span>
             </h3>
 
@@ -332,10 +330,10 @@ export default function AdminUploadPage() {
             <button
               type="button"
               onClick={() => setIsEditMetadataOpen(true)}
-              className="flex items-center space-x-1.5 px-3 py-1 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-[11px] font-semibold transition"
+              className="flex items-center space-x-1.5 px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 text-[11px] font-semibold transition"
               title="Edit Metadata & Tag Presets"
             >
-              <Edit2 className="w-3 h-3 text-[#38BDF8]" />
+              <Edit2 className="w-3 h-3 text-indigo-600 dark:text-sky-400" />
               <span>Edit Metadata & Presets</span>
             </button>
           </div>
@@ -343,11 +341,11 @@ export default function AdminUploadPage() {
           {/* Resource Type Selector */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
             {[
-              { type: 'notes', label: 'Notes', icon: FileText, color: 'text-[#38BDF8]' },
-              { type: 'practice_ques', label: 'Practice Ques', icon: FileCheck, color: 'text-emerald-400' },
-              { type: 'pyq', label: 'PYQs', icon: FileCheck, color: 'text-[#818CF8]' },
-              { type: 'formula_sheet', label: 'Formula Sheet', icon: FileCode, color: 'text-amber-400' },
-              { type: 'pdf', label: 'Reference Book', icon: Layers, color: 'text-purple-400' },
+              { type: 'notes', label: 'Notes', icon: FileText, color: 'text-sky-600 dark:text-sky-400' },
+              { type: 'practice_ques', label: 'Practice Ques', icon: FileCheck, color: 'text-emerald-600 dark:text-emerald-400' },
+              { type: 'pyq', label: 'PYQs', icon: FileCheck, color: 'text-indigo-600 dark:text-indigo-400' },
+              { type: 'formula_sheet', label: 'Formula Sheet', icon: FileCode, color: 'text-amber-600 dark:text-amber-400' },
+              { type: 'pdf', label: 'Reference Book', icon: Layers, color: 'text-purple-600 dark:text-purple-400' },
             ].map((t) => {
               const Icon = t.icon;
               const isSelected = resourceType === t.type;
@@ -358,8 +356,8 @@ export default function AdminUploadPage() {
                   onClick={() => setResourceType(t.type as ResourceType)}
                   className={`p-3 rounded-2xl border text-center transition flex flex-col items-center space-y-1.5 ${
                     isSelected
-                      ? 'bg-[#38BDF8]/20 border-[#38BDF8] text-[#38BDF8] shadow-lg shadow-cyan-950/40'
-                      : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-sky-50 dark:bg-sky-950/60 border-sky-400 text-sky-700 dark:text-sky-300 shadow-sm'
+                      : 'bg-slate-50 dark:bg-[#0b0f17] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <Icon className={`w-5 h-5 ${t.color}`} />
@@ -372,25 +370,25 @@ export default function AdminUploadPage() {
           {/* Display Title and Search Tags */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Display Title *</label>
+              <label className="text-[11px] text-slate-600 dark:text-slate-400 block mb-1">Display Title *</label>
               <input
                 type="text"
                 placeholder="e.g. Applied Maths 1 Complex Numbers Complete Notes"
                 value={resourceTitle}
                 onChange={(e) => setResourceTitle(e.target.value)}
                 required
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
               />
             </div>
 
             <div>
-              <label className="text-[11px] text-slate-400 block mb-1">Search Tags (Comma-separated)</label>
+              <label className="text-[11px] text-slate-600 dark:text-slate-400 block mb-1">Search Tags (Comma-separated)</label>
               <input
                 type="text"
                 placeholder="e.g. Sem1, Maths1, DeMoivre, InSem"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                className="w-full bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
               />
             </div>
           </div>
@@ -403,7 +401,7 @@ export default function AdminUploadPage() {
                 key={tag}
                 type="button"
                 onClick={() => handleAddTagPreset(tag)}
-                className="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-[#38BDF8]/30 text-slate-300 hover:text-white border border-slate-700/80 text-[10px] transition"
+                className="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-sky-950/60 text-slate-700 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-300 border border-slate-200 dark:border-slate-700 text-[10px] transition"
               >
                 + {tag}
               </button>
@@ -412,22 +410,22 @@ export default function AdminUploadPage() {
         </div>
 
         {/* Step 3: Ingestion Source (Google Drive / File) */}
-        <div className="space-y-4 pt-4 border-t border-slate-800">
+        <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <h3 className="text-xs font-bold text-[#F8FAFC] uppercase tracking-wider flex items-center space-x-2">
-              <span className="w-5 h-5 rounded-full bg-[#38BDF8] text-slate-950 font-bold flex items-center justify-center text-[10px]">3</span>
+            <h3 className="text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider flex items-center space-x-2">
+              <span className="w-5 h-5 rounded-full bg-indigo-600 dark:bg-sky-500 text-white dark:text-slate-950 font-bold flex items-center justify-center text-[10px]">3</span>
               <span>Source: Google Drive Link or File Upload</span>
             </h3>
 
             {/* Mode Switcher Tabs */}
-            <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <div className="flex bg-slate-100 dark:bg-[#0b0f17] p-1 rounded-xl border border-slate-200 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setUploadMode('drive')}
                 className={`flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition ${
                   uploadMode === 'drive'
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-indigo-600 dark:bg-indigo-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <Link2 className="w-3.5 h-3.5" />
@@ -438,8 +436,8 @@ export default function AdminUploadPage() {
                 onClick={() => setUploadMode('file')}
                 className={`flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition ${
                   uploadMode === 'file'
-                    ? 'bg-[#38BDF8] text-slate-950 font-bold shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-indigo-600 dark:bg-indigo-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <UploadCloud className="w-3.5 h-3.5" />
@@ -449,9 +447,9 @@ export default function AdminUploadPage() {
           </div>
 
           {uploadMode === 'drive' ? (
-            <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-3">
+            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 space-y-3">
               <div>
-                <label className="text-xs font-semibold text-slate-200 block mb-1">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Google Drive / Cloud Share Link *
                 </label>
                 <input
@@ -459,18 +457,18 @@ export default function AdminUploadPage() {
                   placeholder="https://drive.google.com/file/d/.../view?usp=sharing"
                   value={driveLinkInput}
                   onChange={(e) => setDriveLinkInput(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 focus:border-[#38BDF8] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition"
+                  className="w-full bg-white dark:bg-[#131b2a] border border-slate-200 dark:border-slate-800 focus:border-sky-500 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none transition"
                 />
               </div>
 
-              <div className="flex items-start space-x-2 text-[11px] text-slate-400 bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
-                <ExternalLink className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-2 text-[11px] text-slate-500 dark:text-slate-400 bg-white dark:bg-[#131b2a] p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                <ExternalLink className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-slate-300">How to share from Google Drive:</p>
-                  <p className="text-slate-400 mt-0.5">
+                  <p className="font-semibold text-slate-700 dark:text-slate-300">How to share from Google Drive:</p>
+                  <p className="text-slate-500 dark:text-slate-400 mt-0.5">
                     1. Right-click the PDF/PPT in Drive ➔ Click <strong>Share</strong> ➔ Set access to <strong>&ldquo;Anyone with the link can view&rdquo;</strong>.
                   </p>
-                  <p className="text-slate-400 mt-0.5">
+                  <p className="text-slate-500 dark:text-slate-400 mt-0.5">
                     2. Copy the link and paste it above. Versa will automatically stream in-app previews and high-speed downloads for all students!
                   </p>
                 </div>
@@ -482,17 +480,17 @@ export default function AdminUploadPage() {
         </div>
 
         {/* Submit */}
-        <div className="pt-4 border-t border-slate-800 flex justify-end">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
           <button
             type="submit"
             disabled={isPublishing || (uploadMode === 'drive' ? !driveLinkInput.trim() : selectedFiles.length === 0)}
-            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-xl shadow-cyan-950/50 transition disabled:opacity-40"
+            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-sm transition disabled:opacity-40"
           >
             {isPublishing ? (
-              <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             ) : (
               <>
-                <UploadCloud className="w-4 h-4 text-slate-950" />
+                <UploadCloud className="w-4 h-4 text-white" />
                 <span>
                   {uploadMode === 'drive'
                     ? 'Publish Google Drive Resource'
@@ -506,42 +504,42 @@ export default function AdminUploadPage() {
 
       {/* Edit Metadata Modal */}
       {isEditMetadataOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-panel bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-slate-700 max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white dark:bg-[#131b2a] p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 max-w-lg w-full space-y-4 shadow-2xl animate-in zoom-in-95">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center space-x-2">
-                <Settings2 className="w-4 h-4 text-[#38BDF8]" />
-                <h3 className="font-bold text-[#F8FAFC] text-base">Edit Resource Metadata & Presets</h3>
+                <Settings2 className="w-4 h-4 text-indigo-600 dark:text-sky-400" />
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base">Edit Resource Metadata & Presets</h3>
               </div>
-              <button onClick={() => setIsEditMetadataOpen(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setIsEditMetadataOpen(false)} className="text-slate-400 hover:text-slate-700 dark:hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-4 text-xs">
               <div>
-                <label className="text-slate-400 block mb-1">Academic Year</label>
+                <label className="text-slate-600 dark:text-slate-400 block mb-1">Academic Year</label>
                 <input
                   type="text"
                   value={academicYear}
                   onChange={(e) => setAcademicYear(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 font-mono focus:outline-none focus:border-[#38BDF8]"
+                  className="w-full bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-slate-900 dark:text-slate-100 font-mono focus:outline-none focus:border-sky-500"
                 />
               </div>
 
               <div>
-                <label className="text-slate-400 block mb-1">Custom Tag Presets</label>
+                <label className="text-slate-600 dark:text-slate-400 block mb-1">Custom Tag Presets</label>
                 <div className="flex flex-wrap gap-1.5 mb-2">
                   {customTagPresets.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 flex items-center space-x-1.5 border border-slate-700"
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center space-x-1.5 border border-slate-200 dark:border-slate-700"
                     >
                       <span>{tag}</span>
                       <button
                         type="button"
                         onClick={() => setCustomTagPresets(customTagPresets.filter((t) => t !== tag))}
-                        className="text-slate-500 hover:text-rose-400"
+                        className="text-slate-400 hover:text-rose-500"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -555,11 +553,11 @@ export default function AdminUploadPage() {
                     placeholder="Add new preset tag..."
                     value={newTagInput}
                     onChange={(e) => setNewTagInput(e.target.value)}
-                    className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-slate-200 focus:outline-none focus:border-[#38BDF8]"
+                    className="flex-1 bg-slate-50 dark:bg-[#0b0f17] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-sky-500"
                   />
                   <button
                     type="submit"
-                    className="px-3 py-1.5 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs"
+                    className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs"
                   >
                     Add Tag
                   </button>
@@ -567,11 +565,11 @@ export default function AdminUploadPage() {
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex justify-end">
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-end">
               <button
                 type="button"
                 onClick={() => setIsEditMetadataOpen(false)}
-                className="px-5 py-2 rounded-xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-lg"
+                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-sm"
               >
                 Save Metadata Changes
               </button>
