@@ -5,19 +5,15 @@ import { useRouter } from 'next/navigation';
 import {
   GraduationCap,
   AlertOctagon,
-  CheckCircle2,
   ArrowRight,
-  Sparkles,
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
-import { UserProfile } from '@/lib/types';
 import { signInWithSomaiyaGoogle } from '@/lib/firebase-services';
 import { isFirebaseConfigured } from '@/lib/firebase';
 
 export default function LoginPage() {
   const router = useRouter();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [welcomeUser, setWelcomeUser] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGoogleFirebaseSignIn = async () => {
@@ -29,10 +25,7 @@ export default function LoginPage() {
       setIsLoading(false);
       if (res.success && res.user) {
         HubStore.setCurrentUser(res.user);
-        setWelcomeUser(res.user);
-        setTimeout(() => {
-          router.push('/resources');
-        }, 2000);
+        router.push('/resources');
       } else {
         setErrorMsg(res.error || 'Google Sign-in failed. Please try again.');
       }
@@ -106,66 +99,8 @@ export default function LoginPage() {
           </button>
         </div>
       </div>
-
-      {/* ======================================================== */}
-      {/* POP-UP: WELCOME MODAL ON SUCCESSFUL LOGIN                 */}
-      {/* ======================================================== */}
-      {welcomeUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#0F1410] border border-[#10B981]/40 rounded-3xl p-7 sm:p-8 w-full max-w-sm text-center shadow-2xl shadow-[#10B981]/20 space-y-5 animate-in zoom-in-95 duration-200 relative overflow-hidden">
-            {/* Ambient Neon Glow */}
-            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-44 h-44 bg-[#10B981]/25 rounded-full blur-3xl pointer-events-none" />
-
-            {/* Avatar Profile Ring */}
-            <div className="relative mx-auto w-20 h-20">
-              {welcomeUser.avatarUrl ? (
-                <img
-                  src={welcomeUser.avatarUrl}
-                  alt={welcomeUser.fullName}
-                  className="w-20 h-20 rounded-2xl object-cover border-2 border-[#10B981] shadow-xl shadow-[#10B981]/30 mx-auto"
-                />
-              ) : (
-                <div className="w-20 h-20 rounded-2xl bg-[#10B981] flex items-center justify-center text-2xl font-black text-black shadow-xl shadow-[#10B981]/30 mx-auto">
-                  {welcomeUser.fullName.slice(0, 2).toUpperCase()}
-                </div>
-              )}
-              <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-[#10B981] text-black flex items-center justify-center shadow-md border-2 border-[#0F1410]">
-                <CheckCircle2 className="w-4 h-4 text-black" />
-              </div>
-            </div>
-
-            {/* Welcome Text */}
-            <div className="space-y-1.5 relative z-10">
-              <div className="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-[10px] font-bold uppercase tracking-wider">
-                <Sparkles className="w-3 h-3 text-[#34D399]" />
-                <span>Verified Somaiya Account</span>
-              </div>
-              <h3 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight">
-                Welcome, {welcomeUser.fullName}!
-              </h3>
-              <p className="text-xs text-[#86998A] font-mono break-all">
-                {welcomeUser.email}
-              </p>
-            </div>
-
-            {/* Redirecting bar & Action Button */}
-            <div className="space-y-3 pt-1 relative z-10">
-              <div className="w-full bg-[#1C271E] h-1.5 rounded-full overflow-hidden">
-                <div className="bg-gradient-to-r from-[#10B981] to-[#34D399] h-full w-full animate-[pulse_1.5s_ease-in-out_infinite] rounded-full" />
-              </div>
-
-              <button
-                onClick={() => router.push('/resources')}
-                className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-xl bg-[#10B981] hover:bg-[#059669] active:scale-[0.99] text-black font-bold text-xs shadow-lg shadow-[#10B981]/25 transition cursor-pointer"
-              >
-                <span>Continue to Study Portal</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
+
 
