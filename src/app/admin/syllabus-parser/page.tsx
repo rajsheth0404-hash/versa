@@ -92,7 +92,7 @@ export default function AdminSyllabusParserPage() {
       particleCount: 90,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#38BDF8', '#818CF8', '#10B981'],
+      colors: ['#10B981', '#34D399', '#A3E635', '#F59E0B'],
     });
 
     setTimeout(() => {
@@ -105,29 +105,29 @@ export default function AdminSyllabusParserPage() {
       {/* Header */}
       <div>
         <div className="flex items-center space-x-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#34D399]">
             Gemini Flash AI Syllabus Parser
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F0FDF4] tracking-tight mt-1">
           AI Syllabus Auto-Parser (First Year Sem 1 & 2)
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#86998A] mt-1">
           Paste any First Year Somaiya syllabus text or outline. Gemini will parse modules, topics, weightage marks, and practicals with 1-click automated ingestion.
         </p>
       </div>
 
       {/* Input Form */}
-      <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-4 shadow-2xl">
+      <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#1C271E] space-y-4 shadow-2xl">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+          <label className="text-xs font-bold text-[#F0FDF4] uppercase tracking-wider">
             Raw First Year Syllabus Document Text
           </label>
           <button
             type="button"
             onClick={() => setSyllabusText(SAMPLE_FY_SYLLABUS)}
-            className="text-[11px] text-indigo-400 hover:underline font-semibold"
+            className="text-[11px] text-[#34D399] hover:underline font-semibold"
           >
             Load Sample First Year 2025 Syllabus
           </button>
@@ -138,7 +138,7 @@ export default function AdminSyllabusParserPage() {
           value={syllabusText}
           onChange={(e) => setSyllabusText(e.target.value)}
           placeholder="Paste course name, module breakdown, and lab experiments here..."
-          className="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 text-xs font-mono text-slate-200 focus:outline-none focus:border-indigo-500 leading-relaxed"
+          className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl p-4 text-xs font-mono text-[#F0FDF4] focus:outline-none focus:border-[#10B981] leading-relaxed"
         />
 
         {errorMsg && (
@@ -151,12 +151,12 @@ export default function AdminSyllabusParserPage() {
           <button
             onClick={handleParseSyllabus}
             disabled={isParsing || !syllabusText.trim()}
-            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-xl shadow-indigo-950/50 transition disabled:opacity-40"
+            className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition disabled:opacity-40"
           >
             {isParsing ? (
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
             ) : (
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 text-black" />
             )}
             <span>{isParsing ? 'Decomposing Syllabus with Gemini...' : 'Decompose with Gemini Flash'}</span>
           </button>
@@ -165,16 +165,16 @@ export default function AdminSyllabusParserPage() {
 
       {/* Parsed Structure Preview */}
       {parsedResult && (
-        <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/40 space-y-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#10B981]/30 space-y-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#1C271E]">
             <div>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-bold uppercase">
+              <span className="text-[10px] px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] font-bold uppercase border border-[#10B981]/30">
                 First Year Analysis Complete
               </span>
-              <h3 className="text-xl font-bold text-white mt-1">
+              <h3 className="text-xl font-bold text-[#F0FDF4] mt-1">
                 {parsedResult.subjectCode}: {parsedResult.subjectName}
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#86998A]">
                 Semester {parsedResult.semester || 1} • Credits: {parsedResult.credits} • Scheme: {parsedResult.scheme}
               </p>
             </div>
@@ -182,37 +182,37 @@ export default function AdminSyllabusParserPage() {
             <button
               onClick={handleAutoIngest}
               disabled={importSuccess}
-              className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xl shadow-emerald-950/50 transition"
+              className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition"
             >
-              {importSuccess ? <CheckCircle2 className="w-4 h-4" /> : <Layers className="w-4 h-4" />}
+              {importSuccess ? <CheckCircle2 className="w-4 h-4 text-black" /> : <Layers className="w-4 h-4 text-black" />}
               <span>{importSuccess ? 'Ingested! Redirecting...' : '1-Click Auto-Ingest into Curriculum'}</span>
             </button>
           </div>
 
           {/* Modules List */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
-              <BookOpen className="w-4 h-4 text-purple-400" />
+            <h4 className="text-xs font-bold text-[#F0FDF4] uppercase tracking-wider flex items-center space-x-2">
+              <BookOpen className="w-4 h-4 text-[#34D399]" />
               <span>Extracted Modules ({parsedResult.modules.length})</span>
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {parsedResult.modules.map((m, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+                <div key={idx} className="p-4 rounded-xl bg-[#080A08] border border-[#1C271E] space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-purple-400">
+                    <span className="text-[10px] font-bold text-[#34D399]">
                       Module {m.moduleNumber}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">
+                    <span className="text-[10px] text-[#86998A] font-mono">
                       {m.weightageMarks} Marks
                     </span>
                   </div>
-                  <h5 className="font-bold text-slate-100 text-xs">{m.title}</h5>
-                  <p className="text-[11px] text-slate-400 line-clamp-2">{m.description}</p>
+                  <h5 className="font-bold text-[#F0FDF4] text-xs">{m.title}</h5>
+                  <p className="text-[11px] text-[#86998A] line-clamp-2">{m.description}</p>
                   {m.topics && m.topics.length > 0 && (
                     <div className="flex flex-wrap gap-1 pt-1">
                       {m.topics.slice(0, 3).map((t, tIdx) => (
-                        <span key={tIdx} className="text-[9px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-400">
+                        <span key={tIdx} className="text-[9px] px-1.5 py-0.5 rounded bg-[#0F1410] text-[#86998A] border border-[#1C271E]">
                           {t}
                         </span>
                       ))}
@@ -227,3 +227,4 @@ export default function AdminSyllabusParserPage() {
     </div>
   );
 }
+

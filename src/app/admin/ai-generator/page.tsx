@@ -119,7 +119,7 @@ export default function AdminAiGeneratorPage() {
       particleCount: 80,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#6366F1', '#38BDF8', '#D4AF37'],
+      colors: ['#10B981', '#34D399', '#A3E635', '#F59E0B'],
     });
 
     setTimeout(() => {
@@ -135,28 +135,28 @@ export default function AdminAiGeneratorPage() {
       {/* Header */}
       <div>
         <div className="flex items-center space-x-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#38BDF8] animate-pulse"></span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#38BDF8]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#34D399]">
             Gemini Flash AI Synthesis Studio
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight mt-1">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F0FDF4] tracking-tight mt-1">
           Synthesize Flashcards & Mermaid.js Flowcharts
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#86998A] mt-1">
           Select any course module to generate high-yield active recall flashcards and interactive architectural diagrams.
         </p>
       </div>
 
       {/* Synthesis Form */}
-      <form onSubmit={handleGenerate} className="bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-slate-700/80 space-y-6 shadow-2xl">
+      <form onSubmit={handleGenerate} className="bg-[#0F1410]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#1C271E] space-y-6 shadow-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="text-[11px] text-slate-400 block mb-1">Target Subject *</label>
+            <label className="text-[11px] text-[#86998A] block mb-1">Target Subject *</label>
             <select
               value={selectedSubjectId}
               onChange={(e) => handleSubjectChange(e.target.value)}
-              className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
             >
               {subjects.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -167,11 +167,11 @@ export default function AdminAiGeneratorPage() {
           </div>
 
           <div>
-            <label className="text-[11px] text-slate-400 block mb-1">Module / Unit (Optional)</label>
+            <label className="text-[11px] text-[#86998A] block mb-1">Module / Unit (Optional)</label>
             <select
               value={selectedModuleId}
               onChange={(e) => setSelectedModuleId(e.target.value)}
-              className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-3 py-2 text-xs text-[#F8FAFC] focus:outline-none focus:border-[#38BDF8]"
+              className="w-full bg-[#080A08] border border-[#1C271E] rounded-xl px-3 py-2 text-xs text-[#F0FDF4] focus:outline-none focus:border-[#10B981]"
             >
               <option value="">General Subject Topics</option>
               {modules.map((m) => (
@@ -185,8 +185,8 @@ export default function AdminAiGeneratorPage() {
 
         {/* Generation Type Radio Buttons */}
         <div>
-          <label className="text-[11px] text-slate-400 block mb-2 font-medium">Generation Objective</label>
-          <div className="grid grid-cols-3 gap-3">
+          <label className="text-[11px] text-[#86998A] block mb-2 font-medium">Generation Objective</label>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
               { id: 'both', label: 'Complete Study Pack (Both)', icon: Zap, desc: 'Flashcards + Mermaid Flowchart' },
               { id: 'flashcards', label: 'Flashcards Only', icon: Layers, desc: '5 Active Recall Exam Cards' },
@@ -199,16 +199,16 @@ export default function AdminAiGeneratorPage() {
                   key={opt.id}
                   type="button"
                   onClick={() => setGenerationType(opt.id as any)}
-                  className={`p-3.5 rounded-2xl border text-left transition flex flex-col justify-between ${
+                  className={`p-3.5 rounded-xl border text-left transition flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-[#38BDF8]/15 border-[#38BDF8]/50 text-[#F8FAFC] shadow-lg shadow-cyan-950/40'
-                      : 'bg-[#0F172A] border-slate-700 text-slate-400 hover:text-white'
+                      ? 'bg-[#10B981]/15 border-[#10B981]/50 text-[#F0FDF4] shadow-lg shadow-[#10B981]/10'
+                      : 'bg-[#080A08] border-[#1C271E] text-[#86998A] hover:text-[#F0FDF4] hover:bg-[#151D17]'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 mb-2 ${isSelected ? 'text-[#38BDF8]' : 'text-slate-500'}`} />
+                  <Icon className={`w-4 h-4 mb-2 ${isSelected ? 'text-[#34D399]' : 'text-[#86998A]'}`} />
                   <div>
-                    <p className="font-semibold text-xs text-[#F8FAFC]">{opt.label}</p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">{opt.desc}</p>
+                    <p className="font-semibold text-xs text-[#F0FDF4]">{opt.label}</p>
+                    <p className="text-[10px] text-[#86998A] mt-0.5">{opt.desc}</p>
                   </div>
                 </button>
               );
@@ -216,16 +216,16 @@ export default function AdminAiGeneratorPage() {
           </div>
         </div>
 
-        <div className="pt-2 border-t border-slate-700/80 flex justify-end">
+        <div className="pt-2 border-t border-[#1C271E] flex justify-end">
           <button
             type="submit"
             disabled={isGenerating}
-            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-[#38BDF8] hover:bg-[#0EA5E9] text-slate-950 font-bold text-xs shadow-xl shadow-cyan-950/40 transition disabled:opacity-40"
+            className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition disabled:opacity-40"
           >
             {isGenerating ? (
-              <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
             ) : (
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 text-black" />
             )}
             <span>{isGenerating ? 'Synthesizing with Gemini Flash...' : 'Synthesize Study Pack'}</span>
           </button>
@@ -234,16 +234,16 @@ export default function AdminAiGeneratorPage() {
 
       {/* Generated Artifacts Preview */}
       {(generatedFlashcards.length > 0 || generatedDiagram) && (
-        <div className="bg-[#1E293B] p-6 sm:p-8 rounded-3xl border border-[#38BDF8]/30 space-y-6 shadow-2xl animate-in fade-in">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-700/80">
+        <div className="bg-[#0F1410]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#10B981]/30 space-y-6 shadow-2xl animate-in fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#1C271E]">
             <div>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#38BDF8]/15 text-[#38BDF8] font-bold uppercase border border-[#38BDF8]/30">
+              <span className="text-[10px] px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] font-bold uppercase border border-[#10B981]/30">
                 AI Synthesis Complete
               </span>
-              <h3 className="text-xl font-bold text-[#F8FAFC] mt-1">
+              <h3 className="text-xl font-bold text-[#F0FDF4] mt-1">
                 Generated Pack: {currentSubject?.name.split('(')[0]}
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#86998A]">
                 {generatedFlashcards.length} Flashcards • {generatedDiagram ? '1 Mermaid Flowchart' : '0 Diagrams'}
               </p>
             </div>
@@ -251,9 +251,9 @@ export default function AdminAiGeneratorPage() {
             <button
               onClick={handleSaveToRepository}
               disabled={savedSuccess}
-              className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-xl shadow-emerald-950/50 transition"
+              className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition"
             >
-              {savedSuccess ? <CheckCircle2 className="w-4 h-4" /> : <BookOpen className="w-4 h-4" />}
+              {savedSuccess ? <CheckCircle2 className="w-4 h-4 text-black" /> : <BookOpen className="w-4 h-4 text-black" />}
               <span>{savedSuccess ? 'Saved! Redirecting...' : 'Save to Student Hub Repository'}</span>
             </button>
           </div>
@@ -261,19 +261,19 @@ export default function AdminAiGeneratorPage() {
           {/* Flashcards Preview */}
           {generatedFlashcards.length > 0 && (
             <div className="space-y-3">
-              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
-                <Layers className="w-4 h-4 text-[#818CF8]" />
+              <h4 className="text-xs font-bold text-[#F0FDF4] uppercase tracking-wider flex items-center space-x-2">
+                <Layers className="w-4 h-4 text-[#34D399]" />
                 <span>Generated Flashcards ({generatedFlashcards.length})</span>
               </h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {generatedFlashcards.map((c, idx) => (
-                  <div key={idx} className="p-4 rounded-2xl bg-[#0F172A] border border-slate-700/80 space-y-2">
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#818CF8]/15 text-[#818CF8] font-bold border border-[#818CF8]/30">
+                  <div key={idx} className="p-4 rounded-xl bg-[#080A08] border border-[#1C271E] space-y-2">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#10B981]/15 text-[#34D399] font-bold border border-[#10B981]/30">
                       Q#{idx + 1} ({c.difficulty.toUpperCase()})
                     </span>
-                    <p className="font-semibold text-xs text-[#F8FAFC]">{c.front}</p>
-                    <p className="text-[11px] text-slate-300 bg-[#1E293B] p-2.5 rounded-xl border border-slate-700/80 leading-relaxed">
+                    <p className="font-semibold text-xs text-[#F0FDF4]">{c.front}</p>
+                    <p className="text-[11px] text-[#86998A] bg-[#0F1410] p-2.5 rounded-lg border border-[#1C271E] leading-relaxed">
                       {c.back}
                     </p>
                   </div>
@@ -284,13 +284,13 @@ export default function AdminAiGeneratorPage() {
 
           {/* Diagram Preview */}
           {generatedDiagram && (
-            <div className="space-y-3 pt-4 border-t border-slate-700/80">
-              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
-                <Network className="w-4 h-4 text-[#38BDF8]" />
+            <div className="space-y-3 pt-4 border-t border-[#1C271E]">
+              <h4 className="text-xs font-bold text-[#F0FDF4] uppercase tracking-wider flex items-center space-x-2">
+                <Network className="w-4 h-4 text-[#34D399]" />
                 <span>Interactive Mermaid.js Diagram</span>
               </h4>
 
-              <p className="text-xs text-slate-400">{generatedDiagram.explanation}</p>
+              <p className="text-xs text-[#86998A]">{generatedDiagram.explanation}</p>
               <MermaidViewer code={generatedDiagram.mermaidCode} title={generatedDiagram.title} />
             </div>
           )}
@@ -299,3 +299,4 @@ export default function AdminAiGeneratorPage() {
     </div>
   );
 }
+
