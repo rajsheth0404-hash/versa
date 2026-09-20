@@ -445,7 +445,7 @@ export default function YouTubeResourcesPage() {
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#10B981]/15 text-[#34D399] border border-[#10B981]/30 text-xs font-semibold mb-2">
             <Tv className="w-3.5 h-3.5 text-[#34D399]" />
-            <span>Syllabus-Aligned Video Lectures • Semester {selectedSemester}</span>
+            <span>Video Lectures • Semester {selectedSemester}</span>
           </div>
           <h1 className="text-3xl font-extrabold text-[#F0FDF4] tracking-tight">
             Video Lectures & Master Playlists

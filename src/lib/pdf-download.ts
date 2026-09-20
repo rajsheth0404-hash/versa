@@ -18,7 +18,7 @@ export function generateAcademicPdfBlob(
   const typeLabel = (resource.type || 'notes').toUpperCase();
   const year = resource.academicYear || '2025-2026';
   const scheme = resource.scheme || 'REV_2025';
-  const tagsStr = (resource.tags && resource.tags.length > 0) ? resource.tags.join(', ') : 'Syllabus Aligned, First Year';
+  const tagsStr = (resource.tags && resource.tags.length > 0) ? resource.tags.join(', ') : 'Engineering, First Year';
 
   // Sanitize text for standard PDF string (escape parentheses and backslashes)
   const sanitize = (str: string) => {

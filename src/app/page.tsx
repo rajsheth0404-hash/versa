@@ -88,7 +88,7 @@ export default function HomePage() {
           Versa
         </h1>
         <p className="text-sm sm:text-base text-[#86998A] max-w-xl mx-auto">
-          Computer Engineering Academic Portal • Syllabus-Aligned Study Hub
+          Computer Engineering Academic Portal
         </p>
       </div>
 
