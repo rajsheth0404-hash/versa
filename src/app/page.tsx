@@ -78,10 +78,6 @@ export default function HomePage() {
     <div className="min-h-[88vh] flex flex-col justify-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8 relative">
       {/* Header Brand */}
       <div className="text-center space-y-3">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-xs font-bold uppercase tracking-wider">
-          <GraduationCap className="w-4 h-4 text-[#34D399]" />
-          <span>Somaiya Vidyavihar University</span>
-        </div>
         <h1 className="text-4xl sm:text-6xl font-extrabold text-[#F0FDF4] tracking-tight">
           Versa
         </h1>
