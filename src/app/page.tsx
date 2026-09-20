@@ -98,7 +98,7 @@ export default function HomePage() {
               color: 'text-[#34D399]',
             })
           }
-          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-[#10B981] rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer"
+          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-[#10B981] rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer min-h-[190px]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#10B981]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#10B981]/20 transition-all" />
 
@@ -108,21 +108,13 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-[#34D399] transition">
-                  Notes
-                </h2>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/30 uppercase">
-                  Sem 1 & 2
-                </span>
-              </div>
-              <p className="text-xs text-[#86998A] mt-2 leading-relaxed">
-                Subject PPTs, handwritten theory, question banks, PYQs & formula sheets.
-              </p>
+              <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-[#34D399] transition">
+                Notes
+              </h2>
             </div>
           </div>
 
-          <div className="pt-6 mt-4 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-[#34D399] group-hover:translate-x-0.5 transition-transform">
+          <div className="pt-4 mt-2 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-[#34D399] group-hover:translate-x-0.5 transition-transform">
             <span>{!user ? 'Sign In to Access' : 'Explore Notes & PDFs'}</span>
             <ArrowRight className="w-4 h-4" />
           </div>
@@ -138,7 +130,7 @@ export default function HomePage() {
               color: 'text-red-400',
             })
           }
-          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-red-500/50 rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer"
+          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-red-500/50 rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer min-h-[190px]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-red-500/20 transition-all" />
 
@@ -148,21 +140,13 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-red-400 transition">
-                  YT
-                </h2>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-red-500/20 text-red-400 border border-red-500/30 uppercase">
-                  Playlists
-                </span>
-              </div>
-              <p className="text-xs text-[#86998A] mt-2 leading-relaxed">
-                Handpicked video lectures and crash courses mapped unit-by-unit to syllabus.
-              </p>
+              <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-red-400 transition">
+                YT
+              </h2>
             </div>
           </div>
 
-          <div className="pt-6 mt-4 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-red-400 group-hover:translate-x-0.5 transition-transform">
+          <div className="pt-4 mt-2 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-red-400 group-hover:translate-x-0.5 transition-transform">
             <span>{!user ? 'Sign In to Access' : 'Watch Video Lectures'}</span>
             <ArrowRight className="w-4 h-4" />
           </div>
@@ -178,7 +162,7 @@ export default function HomePage() {
               color: 'text-[#34D399]',
             })
           }
-          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-[#34D399] rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer"
+          className="group bg-[#0F1410]/90 hover:bg-[#131A14] border border-[#1C271E] hover:border-[#34D399] rounded-3xl p-7 flex flex-col justify-between shadow-xl transition-all duration-200 hover:-translate-y-1 relative overflow-hidden backdrop-blur-md cursor-pointer min-h-[190px]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#34D399]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#34D399]/20 transition-all" />
 
@@ -188,21 +172,13 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-[#34D399] transition">
-                  SGPA
-                </h2>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/30 uppercase">
-                  Calculator
-                </span>
-              </div>
-              <p className="text-xs text-[#86998A] mt-2 leading-relaxed">
-                Semester GPA and credit breakdown based on Somaiya grading scales.
-              </p>
+              <h2 className="text-2xl font-extrabold text-[#F0FDF4] tracking-tight group-hover:text-[#34D399] transition">
+                SGPA
+              </h2>
             </div>
           </div>
 
-          <div className="pt-6 mt-4 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-[#34D399] group-hover:translate-x-0.5 transition-transform">
+          <div className="pt-4 mt-2 border-t border-[#1C271E] flex items-center justify-between text-xs font-bold text-[#34D399] group-hover:translate-x-0.5 transition-transform">
             <span>{!user ? 'Sign In to Access' : 'Calculate SGPA'}</span>
             <ArrowRight className="w-4 h-4" />
           </div>
