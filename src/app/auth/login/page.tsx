@@ -43,9 +43,6 @@ export default function LoginPage() {
           <div className="w-16 h-16 rounded-2xl bg-[#10B981] mx-auto flex items-center justify-center text-black shadow-xl shadow-[#10B981]/20 mb-3">
             <GraduationCap className="w-9 h-9 text-black" />
           </div>
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-[11px] font-bold uppercase tracking-wider">
-            <span>Institutional Login</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#F0FDF4] tracking-tight">
             Versa Study Portal
           </h2>

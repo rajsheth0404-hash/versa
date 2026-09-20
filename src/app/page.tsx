@@ -330,10 +330,6 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-2xl bg-[#10B981]/15 border border-[#10B981]/30 flex items-center justify-center text-[#34D399] mx-auto shadow-lg shadow-[#10B981]/20">
                 <Lock className="w-7 h-7" />
               </div>
-              <div className="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-[#10B981]/15 border border-[#10B981]/30 text-[#34D399] text-[10px] font-bold uppercase tracking-wider">
-                <Sparkles className="w-3 h-3" />
-                <span>Institutional Gate</span>
-              </div>
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#F0FDF4] tracking-tight">
                 Sign in to open {authPromptTab.name.split(' ')[0]}
               </h3>
