@@ -8,15 +8,15 @@ import {
   Tv,
   Calculator,
   ArrowRight,
-  GraduationCap,
   Sparkles,
   LogIn,
+  LogOut,
   X,
   Lock,
 } from 'lucide-react';
 import { HubStore } from '@/lib/store';
 import { UserProfile } from '@/lib/types';
-import { signInWithSomaiyaGoogle } from '@/lib/firebase-services';
+import { signInWithSomaiyaGoogle, signOutFirebaseUser } from '@/lib/firebase-services';
 import { isFirebaseConfigured } from '@/lib/firebase';
 
 interface TargetTab {
@@ -72,6 +72,12 @@ export default function HomePage() {
     } else {
       setLoginError(res.error || 'Google Sign-in failed. Please try again with your @somaiya.edu account.');
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOutFirebaseUser();
+    HubStore.setCurrentUser(null);
+    setUser(null);
   };
 
   return (
@@ -220,13 +226,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center space-x-3 w-full sm:w-auto">
-              <Link
-                href="/resources"
-                className="flex-1 sm:flex-initial flex items-center justify-center space-x-2 px-6 py-3 rounded-2xl bg-[#10B981] hover:bg-[#059669] text-black font-bold text-xs shadow-lg shadow-[#10B981]/20 transition"
+              <button
+                onClick={handleSignOut}
+                className="flex-1 sm:flex-initial flex items-center justify-center space-x-2 px-5 py-2.5 rounded-2xl bg-[#151D17] hover:bg-rose-950/40 border border-[#1C271E] hover:border-rose-500/50 text-[#86998A] hover:text-rose-300 font-bold text-xs transition cursor-pointer"
               >
-                <span>Go to Notes</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <LogOut className="w-4 h-4" />
+                <span>Log Out</span>
+              </button>
             </div>
           </div>
         ) : (
