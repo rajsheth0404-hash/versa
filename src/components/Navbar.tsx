@@ -25,11 +25,10 @@ import { UserProfile } from '@/lib/types';
 const DEFAULT_TAB_NAMES: Record<string, string> = {
   '/resources': 'Notes & Materials',
   '/youtube': 'Video Lectures',
-  '/calculator': 'SGPA Calculator',
   '/admin/upload': 'Upload Notes',
 };
 
-const TAB_STORAGE_KEY = 'somaiya_nav_tab_names_pure_notes_v3';
+const TAB_STORAGE_KEY = 'somaiya_nav_tab_names_pure_notes_v4';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -86,7 +85,6 @@ export default function Navbar() {
   const navLinks = [
     { href: '/resources', icon: BookOpen, badge: undefined },
     { href: '/youtube', icon: Tv, badge: 'YouTube' },
-    { href: '/calculator', icon: Calculator, badge: 'Soon' },
     { href: '/admin/upload', icon: UploadCloud, badge: undefined },
   ];
 

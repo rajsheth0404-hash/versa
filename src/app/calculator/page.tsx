@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calculator, Clock, Sparkles, CheckCircle2, ShieldCheck, Bell } from 'lucide-react';
+import Link from 'next/link';
+import { Calculator, Clock, Sparkles, CheckCircle2, ShieldCheck, Bell, ArrowLeft, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function CalculatorPage() {
@@ -19,12 +20,27 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-8 min-h-screen">
-      {/* Badge */}
-      <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 text-[#34D399] text-xs font-semibold">
-        <Clock className="w-3.5 h-3.5 animate-spin" />
-        <span>Coming in Future Update</span>
-      </div>
+    <div className="min-h-screen flex flex-col justify-between">
+      {/* Top Standalone Header */}
+      <header className="w-full border-b border-[#1C271E] bg-[#080A08]/80 backdrop-blur-md sticky top-0 z-30 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+        <Link href="/" className="inline-flex items-center space-x-2 text-xs font-semibold text-[#86998A] hover:text-[#34D399] transition">
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Versa Home</span>
+        </Link>
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center text-black">
+            <GraduationCap className="w-4 h-4 text-black" />
+          </div>
+          <span className="font-extrabold text-sm text-[#F0FDF4]">Versa</span>
+        </Link>
+      </header>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center space-y-8 flex-1 flex flex-col justify-center">
+        {/* Badge */}
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 text-[#34D399] text-xs font-semibold mx-auto">
+          <Clock className="w-3.5 h-3.5 animate-spin" />
+          <span>Coming in Future Update</span>
+        </div>
 
       {/* Main Heading */}
       <div className="space-y-3">
@@ -97,6 +113,7 @@ export default function CalculatorPage() {
             </button>
           </form>
         )}
+      </div>
       </div>
     </div>
   );
