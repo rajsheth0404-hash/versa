@@ -17,6 +17,8 @@ import {
   LogIn,
   LogOut,
   User,
+  FileQuestion,
+  BookMarked,
 } from 'lucide-react';
 import { signOutFirebaseUser } from '@/lib/firebase-services';
 import { HubStore } from '@/lib/store';
@@ -25,10 +27,12 @@ import { UserProfile } from '@/lib/types';
 const DEFAULT_TAB_NAMES: Record<string, string> = {
   '/resources': 'Notes & Materials',
   '/youtube': 'Video Lectures',
+  '/pyqs': 'PYQs',
+  '/reference-books': 'Reference Books',
   '/admin/upload': 'Upload Notes',
 };
 
-const TAB_STORAGE_KEY = 'somaiya_nav_tab_names_pure_notes_v4';
+const TAB_STORAGE_KEY = 'somaiya_nav_tab_names_pure_notes_v5';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -85,6 +89,8 @@ export default function Navbar() {
   const navLinks = [
     { href: '/resources', icon: BookOpen, badge: undefined },
     { href: '/youtube', icon: Tv, badge: 'YouTube' },
+    { href: '/pyqs', icon: FileQuestion, badge: undefined },
+    { href: '/reference-books', icon: BookMarked, badge: undefined },
     { href: '/admin/upload', icon: UploadCloud, badge: undefined },
   ];
 

@@ -298,9 +298,7 @@ export default function ResourcesPage() {
     const tabs = [
       { type: 'notes', label: 'Notes', icon: FileText, count: notesCount },
       { type: 'practice_ques', label: 'Practice Ques', icon: FileCheck, count: practiceCount },
-      { type: 'pyq', label: 'PYQs', icon: FileCheck, count: pyqCount },
       { type: 'formula_sheet', label: 'Formula Sheet', icon: FileCode, count: formulaCount },
-      { type: 'pdf', label: 'Reference Book', icon: BookOpen, count: bookCount },
     ];
 
     if (syllabusCount > 0) {

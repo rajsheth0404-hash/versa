@@ -24,7 +24,7 @@ export interface UserProfile {
 
 export interface Subject {
   id: string;
-  semester: 1 | 2; // Sem 1 or Sem 2 (Common for all First Year students)
+  semester: number; // Sem 1 & 2 (FY), Sem 3 & 4 (SY)
   code: string; // e.g. 'BSC101'
   name: string;
   category?: string; // e.g. 'BSC' | 'ESC' | 'PCC' | 'HSMC' | 'VSEC' | 'AEC'

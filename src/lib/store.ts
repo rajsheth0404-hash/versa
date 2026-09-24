@@ -185,8 +185,8 @@ export class HubStore {
     this.setCurrentUser(null);
   }
 
-  // --- Subjects (Sem 1 & Sem 2 Common) ---
-  static getSubjects(semester?: 1 | 2): Subject[] {
+  // --- Subjects (Sem 1, 2, 3, 4) ---
+  static getSubjects(semester?: number): Subject[] {
     const all = this.get<Subject[]>(STORAGE_KEYS.SUBJECTS, INITIAL_SUBJECTS);
     if (!semester) return all;
     return all.filter((s) => s.semester === semester);
