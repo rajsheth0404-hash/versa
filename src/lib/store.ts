@@ -30,7 +30,11 @@ const STORAGE_KEYS = {
   ATTENDANCE: 'somaiya_fy_attendance_v3',
   CGPA: 'somaiya_fy_cgpa_v3',
   USER: 'somaiya_fy_current_user_v3',
+  AUTH_TIMESTAMP: 'somaiya_fy_auth_timestamp_v3',
 };
+
+// Auto log-out session expiration: 2 days (48 hours)
+const SESSION_DURATION_MS = 2 * 24 * 60 * 60 * 1000;
 
 // Default First Year student user
 export const DEFAULT_USER: UserProfile = {
@@ -117,8 +121,42 @@ export class HubStore {
     window.dispatchEvent(new Event('somaiya_store_updated'));
   }
 
+  // --- Session & Expiration Lifecycle (2-Day Max Session) ---
+  static isSessionExpired(): boolean {
+    if (typeof window === 'undefined') return false;
+    const timestampStr = localStorage.getItem(STORAGE_KEYS.AUTH_TIMESTAMP);
+    if (!timestampStr) return false;
+    const loginTime = parseInt(timestampStr, 10);
+    if (isNaN(loginTime)) return false;
+    return Date.now() - loginTime > SESSION_DURATION_MS;
+  }
+
+  static touchSession(forceReset = false): void {
+    if (typeof window === 'undefined') return;
+    const existing = localStorage.getItem(STORAGE_KEYS.AUTH_TIMESTAMP);
+    if (forceReset || !existing) {
+      localStorage.setItem(STORAGE_KEYS.AUTH_TIMESTAMP, Date.now().toString());
+    }
+  }
+
+  static clearSession(): void {
+    if (typeof window === 'undefined') return;
+    localStorage.removeItem(STORAGE_KEYS.USER);
+    localStorage.removeItem(STORAGE_KEYS.AUTH_TIMESTAMP);
+    window.dispatchEvent(new Event('somaiya_store_updated'));
+  }
+
   // --- User & Role State ---
   static getCurrentUser(): UserProfile | null {
+    if (this.isSessionExpired()) {
+      this.clearSession();
+      if (typeof window !== 'undefined') {
+        import('./firebase-services').then(({ signOutFirebaseUser }) => {
+          signOutFirebaseUser();
+        }).catch(() => {});
+      }
+      return null;
+    }
     const user = this.get<UserProfile | null>(STORAGE_KEYS.USER, null);
     if (user && (user.id === 'usr-fy-student-1' || user.email === 'student.fy@somaiya.edu')) {
       if (typeof window !== 'undefined') {
@@ -131,16 +169,15 @@ export class HubStore {
 
   static setCurrentUser(user: UserProfile | null): void {
     if (user === null) {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem(STORAGE_KEYS.USER);
-        window.dispatchEvent(new Event('somaiya_store_updated'));
-      }
+      this.clearSession();
       return;
     }
+    this.touchSession(false);
     this.set(STORAGE_KEYS.USER, user);
   }
 
   static loginAsAdmin(): void {
+    this.touchSession(true);
     this.setCurrentUser(DEFAULT_ADMIN);
   }
 

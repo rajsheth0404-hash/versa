@@ -22,6 +22,7 @@ import {
 } from 'firebase/storage';
 import { auth, googleProvider, db, storage, isFirebaseConfigured } from './firebase';
 import { AcademicResource, UserProfile, AttendanceCourse, FlashcardDeck, MermaidDiagram, Subject } from './types';
+import { HubStore } from './store';
 
 // ==========================================
 // 1. FIREBASE AUTHENTICATION SERVICES
@@ -60,6 +61,9 @@ export async function signInWithSomaiyaGoogle(): Promise<{ success: boolean; use
       createdAt: new Date().toISOString(),
     };
 
+    // Reset 2-day session timer starting now
+    HubStore.touchSession(true);
+
     // Also persist user profile in Firestore
     if (db) {
       try {
@@ -80,6 +84,7 @@ export async function signInWithSomaiyaGoogle(): Promise<{ success: boolean; use
 }
 
 export async function signOutFirebaseUser(): Promise<void> {
+  HubStore.clearSession();
   if (auth) {
     try {
       await signOut(auth);
